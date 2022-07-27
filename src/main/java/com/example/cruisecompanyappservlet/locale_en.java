@@ -14,7 +14,20 @@ public class locale_en extends ListResourceBundle {
             {"cruiseTime","Cruise time"},
             {"IfYouDoNotHave","If you do not have an account, you can"},
             {"Register","Register"},
-            {"Username","Username"}
+            {"Username","Username"},
+            {"emailInUse", "This email is already in use"},
+            {"EnterWrongFormat","You entered data in wrong format"},
+            {"MustBeEmailFormatAndPassword","Email must be correct format." +
+                    " Password must contain capital, small letters and digits"},
+            {"Cruises","Cruises"},
+            {"DepartureDate", "Departure date"},
+            {"Cost","Cost"},
+            {"daysInJourney", "Days in journey"},
+            {"Route","Route"},
+            {"SignOut","Sign out"},
+            {"goToFirstPage","Go to first page"},
+            {"ChangeMoney","Change cash on your account"}
+
     };
     @Override
     protected Object[][] getContents() {

@@ -1,4 +1,7 @@
-package com.example.cruisecompanyappservlet.entity;
+package com.example.cruisecompanyappservlet.entity.builders;
+
+import com.example.cruisecompanyappservlet.entity.User;
+import com.example.cruisecompanyappservlet.entity.UserType;
 
 public class UserBuilder {
     private long id;
