@@ -10,7 +10,9 @@ public class CruiseBuilder {
     private long id;
     private Route route;
     private HashMap<Port, Date> schedule;
-    private int cost;
+    private int costEconom;
+    private int costMiddle;
+    private int costPremium;
     private List<Staff> staff;
     private HashMap<RoomClass,Integer> freePlaces;
     private Status status;
@@ -31,8 +33,16 @@ public class CruiseBuilder {
         return this;
     }
 
-    public CruiseBuilder cost(int cost) {
-        this.cost = cost;
+    public CruiseBuilder costEconom(int cost) {
+        this.costEconom = cost;
+        return this;
+    }
+    public CruiseBuilder costMiddle(int cost) {
+        this.costMiddle = cost;
+        return this;
+    }
+    public CruiseBuilder costPremium(int cost) {
+        this.costPremium = cost;
         return this;
     }
 
@@ -58,7 +68,9 @@ public class CruiseBuilder {
         cruise.setRoute(route);
         cruise.setSchedule(schedule);
         cruise.setStaff(staff);
-        cruise.setCost(cost);
+        cruise.setCostEconom(costEconom);
+        cruise.setCostMiddle(costMiddle);
+        cruise.setCostPremium(costPremium);
         cruise.setFreePlaces(freePlaces);
         cruise.setSeats(seats);
         cruise.setStatus(status);

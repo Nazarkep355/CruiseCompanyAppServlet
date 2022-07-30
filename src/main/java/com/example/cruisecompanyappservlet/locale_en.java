@@ -26,7 +26,19 @@ public class locale_en extends ListResourceBundle {
             {"Route","Route"},
             {"SignOut","Sign out"},
             {"goToFirstPage","Go to first page"},
-            {"ChangeMoney","Change cash on your account"}
+            {"ChangeMoney","Change cash on your account"},
+            {"PlanCruise", "Plan cruise"},
+            {"EnterCapacity","Enter capacity"},
+            {"seats","seats"},
+            {"ChooseRoute","Choose route"},
+            {"Id","Id"},
+            {"ChooseStaff","Choose staff"},
+            {"Name","Name"},
+            {"Position","Position"},
+            {"EnterCostFor","Enter cost for"},
+            {"CruiseInfo","Information about cruise"},
+            {"FreePlaces","Free places"}
+
 
     };
     @Override

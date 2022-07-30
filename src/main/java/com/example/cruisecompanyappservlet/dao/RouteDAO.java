@@ -97,7 +97,7 @@ public class RouteDAO {
         }
     }
 
-    private boolean insert(Route route) {
+    public boolean insert(Route route) {
         try (Connection connection = DBHikariManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(INSERT_ROUTES)) {
             Array ports = connection.createArrayOf("integer",

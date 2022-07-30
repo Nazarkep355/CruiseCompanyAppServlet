@@ -19,14 +19,14 @@ public class StaffDAO {
     private static final String SELECT_ALL_BY_CRUISE = "SELECT s.id,s.name,s.position FROM " +
             "staff s, cruises c WHERE c.staff @> ARRAY[s.id] AND c.id = ?";
     private static final String SELECT_PAGINATED_STAFF_BY_CRUISE = "SELECT s.id,s.name,s.position FROM" +
-            "staff s, cruises c WHERE c.staff @> ARRAY[s.id] AND c.id = ? LIMIT ? OFFSET ?";
+            " staff s, cruises c WHERE c.staff @> ARRAY[s.id] AND c.id = ? LIMIT ? OFFSET ?";
     private static final String SELECT_PAGINATED_STAFF_ORDERED_BY_ID = "SELECT * FROM staff ORDER BY id" +
-            "LIMIT ? OFFSET ?";
+            " LIMIT ? OFFSET ?";
     private static final String SELECT_STAFF_BY_NAME = "SELECT * FROM staff WHERE name " +
             "LIKE '%' || ? || '%' LIMIT ? OFFSET ?";
     private static final String SELECT_STAFF_BY_ID = "SELECT * FROM staff WHERE id = ?";
     private static final String UPDATE_STAFF_BY_ID = "UPDATE staff SET name =?," +
-            "position = ? WHERE id = ?";
+            " position = ? WHERE id = ?";
     private static final String INSERT_STAFF = "INSERT INTO staff values(default,?,?)";
 
     public List<Staff> findAll() {

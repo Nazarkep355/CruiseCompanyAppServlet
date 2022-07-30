@@ -27,7 +27,18 @@ public class locale_ua extends ListResourceBundle {
             {"Route", "Маршрут"},
             {"SignOut", "Вийти"},
             {"goToFirstPage", "Перейти до першої сторінки"},
-            {"ChangeMoney", "Змінити кіслькість коштів"}
+            {"ChangeMoney", "Змінити кіслькість коштів"},
+            {"PlanCruise", "Запланувати круїз"},
+            {"EnterCapacity","Введіть кількість"},
+            {"seats","місць"},
+            {"ChooseRoute","Оберіть маршрут"},
+            {"Id","Ідентифікатор"},
+            {"ChooseStaff","Обрати екіпаж"},
+            {"Name","Ім'я"},
+            {"Position","Посада"},
+            {"EnterCostFor","Введіть ціну для"},
+            {"CruiseInfo","Інформація про круїз"},
+            {"FreePlaces","Вільні місця"}
 
 };
 @Override

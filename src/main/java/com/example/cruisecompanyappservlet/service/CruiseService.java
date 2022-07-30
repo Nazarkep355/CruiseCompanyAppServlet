@@ -13,6 +13,9 @@ public class CruiseService {
     public CruiseService(){
         cruiseDAO=new CruiseDAO();
     }
+    public Cruise findById(long id){
+        return cruiseDAO.findById(id);
+    }
     public List<Cruise> getAllCruises(){
         return cruiseDAO.findAll();
     }
@@ -31,5 +34,11 @@ public class CruiseService {
     public List<Cruise> getPaginated(int page){
         int offset=(page*5)-5;
         return cruiseDAO.findAllPaginatedOrderByIdDesc(offset);
+    }
+    public boolean insert(Cruise cruise){
+        return cruiseDAO.insert(cruise);
+    }
+    public boolean update(Cruise cruise){
+        return cruiseDAO.update(cruise);
     }
 }

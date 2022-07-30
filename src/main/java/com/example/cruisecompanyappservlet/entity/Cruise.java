@@ -8,7 +8,9 @@ public class Cruise {
     private long id;
     private Route route;
     private HashMap<Port, Date> schedule;
-    private int cost;
+    private int costEconom;
+    private int costMiddle;
+    private int costPremium;
     private List<Staff> staff;
     private HashMap<RoomClass,Integer> freePlaces;
     private Status status;
@@ -20,11 +22,13 @@ public class Cruise {
                 "id=" + id +
                 ", route=" + route +
                 ", schedule=" + schedule +
-                ", cost=" + cost +
+                ", costEconom=" + costEconom +
+                ", costMiddle=" + costMiddle +
+                ", costPremium=" + costPremium +
                 ", staff=" + staff +
                 ", freePlaces=" + freePlaces +
-                ", seats=" + seats +
                 ", status=" + status +
+                ", seats=" + seats +
                 '}';
     }
 
@@ -50,14 +54,6 @@ public class Cruise {
 
     public void setSchedule(HashMap<Port, Date> schedule) {
         this.schedule = schedule;
-    }
-
-    public int getCost() {
-        return cost;
-    }
-
-    public void setCost(int cost) {
-        this.cost = cost;
     }
 
     public List<Staff> getStaff() {
@@ -98,5 +94,29 @@ public class Cruise {
         return route.getDelays().stream()
                 .mapToInt(Integer::intValue)
                 .sum();
+    }
+
+    public int getCostEconom() {
+        return costEconom;
+    }
+
+    public void setCostEconom(int costEconom) {
+        this.costEconom = costEconom;
+    }
+
+    public int getCostMiddle() {
+        return costMiddle;
+    }
+
+    public void setCostMiddle(int costMiddle) {
+        this.costMiddle = costMiddle;
+    }
+
+    public int getCostPremium() {
+        return costPremium;
+    }
+
+    public void setCostPremium(int costPremium) {
+        this.costPremium = costPremium;
     }
 }

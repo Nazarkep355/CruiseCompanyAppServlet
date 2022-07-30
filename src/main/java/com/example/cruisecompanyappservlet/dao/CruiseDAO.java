@@ -36,9 +36,10 @@ public class CruiseDAO {
             "                ports p, routes r WHERE departure> now() AND premium @> ARRAY[false]" +
             "                        OR middle @> ARRAY[false] OR econom @> ARRAY[false]" +
             "                        AND c.route =r.id AND r.ports @> ARRAY[p.id] AND p.city LIKE  '%' || ? || '%' LIMIT ? OFFSET ?";
-    private final static String INSERT_CRUISE = "INSERT INTO cruises VALUES(default,?,?,?,?,?,?,?,WAITING,?)";
+    private final static String INSERT_CRUISE = "INSERT INTO cruises VALUES(default,?,?,?,?,?,?,'WAITING',?,?,?,?)";
     private final static String UPDATE_CRUISE = "UPDATE cruises SET route =?, departure= ?, " +
-            "cost = ?, staff = ?, premium = ?, econom = ?, middle = ?, status = ?, seats =? WHERE id = ?";
+            "costeconom = ?, staff = ?, premium = ?, econom = ?, middle = ?, status = ?, seats =?" +
+            ", costmiddle = ?, costpremium = ? WHERE id = ?";
     public List<Cruise> findAll() {
         List<Cruise> cruises = new ArrayList<>();
         try (Connection connection = DBHikariManager.getConnection();
@@ -169,12 +170,14 @@ public class CruiseDAO {
             Array middleArray = connection.createArrayOf("boolean", booleans.toArray());
             statement.setLong(1, cruise.getRoute().getId());
             statement.setTimestamp(2, new Timestamp(departure.getTime()));
-            statement.setInt(3, cruise.getCost());
-            statement.setArray(4, staffArray);
-            statement.setArray(5, premiumArray);
-            statement.setArray(6, economArray);
-            statement.setArray(7, middleArray);
-            statement.setInt(8,cruise.getSeats());
+            statement.setArray(3, staffArray);
+            statement.setArray(4, premiumArray);
+            statement.setArray(5, economArray);
+            statement.setArray(6, middleArray);
+            statement.setInt(7,cruise.getSeats());
+            statement.setInt(8,cruise.getCostEconom());
+            statement.setInt(9,cruise.getCostMiddle());
+            statement.setInt(10,cruise.getCostPremium());
             return statement.execute();
         } catch (Throwable e) {
             String message = "Can't insert cruise";
@@ -208,14 +211,16 @@ public class CruiseDAO {
             Array middleArray = connection.createArrayOf("boolean", booleans.toArray());
             statement.setLong(1, cruise.getRoute().getId());
             statement.setTimestamp(2, new Timestamp(departure.getTime()));
-            statement.setInt(3, cruise.getCost());
+            statement.setInt(3, cruise.getCostEconom());
             statement.setArray(4, staffArray);
             statement.setArray(5, premiumArray);
             statement.setArray(6, economArray);
             statement.setArray(7, middleArray);
             statement.setString(8,cruise.getStatus().name());
             statement.setInt(9,cruise.getSeats());
-            statement.setLong(10,cruise.getId());
+            statement.setInt(10,cruise.getCostMiddle());
+            statement.setInt(11,cruise.getCostPremium());
+            statement.setLong(12,cruise.getId());
             return statement.execute();
         } catch (Throwable e) {
             String message = "Can't update cruise";
@@ -265,7 +270,9 @@ public class CruiseDAO {
                 .calculateSchedule(depDate, route.getPorts(), route.getDelays());
         Status status = Status.valueOf(set.getString("status"));
         return new CruiseBuilder().id(set.getLong("id"))
-                .cost(set.getInt("cost"))
+                .costEconom(set.getInt("costeconom"))
+                .costMiddle(set.getInt("costmiddle"))
+                .costPremium(set.getInt("costpremium"))
                 .seats(set.getInt("seats"))
                 .schedule(schedule)
                 .route(route)

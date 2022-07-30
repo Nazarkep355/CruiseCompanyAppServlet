@@ -26,7 +26,7 @@
 <%--        <li class="nav-item"><a href="/?command=tickets&page=1" class="nav-link">--%>
 <%--            <fmt:message bundle="${bundle}" key="Tickets"/></a></li>--%>
        <c:if test="${isLogged}"> <li class="nav-item"><form action="/"  method="post">
-            <input type="hidden" name="controller" value="signOut">
+            <input type="hidden" name=" " value="signOut">
             <button type="submit" class="nav-link"><fmt:message bundle="${bundle}" key="SignOut"/></button></form></li>
        </c:if>  </ul>
     <c:if test="${isLogged}">
@@ -52,7 +52,7 @@
                 </a>
             </li>
 </c:if>
-    <c:if test="${page>1    }">
+    <c:if test="${page>1}">
             <li class="page-item"><a
                     class="page-link" href="/?controller=cruises&page=${page-1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}"
             >${page-1}</a></li>
@@ -73,21 +73,17 @@
 <tr>
     <th scope="col" ><fmt:message bundle="${bundle}" key="DepartureDate" /></th>
     <th scope="col"><fmt:message bundle="${bundle}" key="daysInJourney"/></th>
-    <th scope="col" ><fmt:message bundle="${bundle}" key="Cost"/></th>
     <th scope="col" ><fmt:message bundle="${bundle}" key="Route"/></th>
 </tr>
 </thead>
 <tbody>
 <c:forEach items="${cruises}" var="cruise">
-        <tr style="table-layout: fixed"
-            onclick="location.replace('/?command=trainInfo&trainId=${train.getId()}')" >
+        <tr style="table-layout: fixed" onclick="location.replace('/?controller=cruiseInfo&id=${cruise.getId()}')" >
         <td scope="row">${cruise.departureDate()}</td>
         <td scope="row">${cruise.daysInJourney()}</td>
-        <td scope="row">${cruise.cost}</td>
         <td scope="row" style="max-height: 40px;max-width: 300px;overflow: auto"
         >${cruise.route.routeToString()}
         </td></tr>
-
     </c:forEach>
 </tbody>
 </table>

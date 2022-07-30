@@ -47,7 +47,7 @@
 </c:if>
 <ul class="nav nav-pills flex-column mb-auto" style="margin-left: 25px; ">
     <li class="nav-item">
-        <a href="/?command=trains&page=1" class="nav-link active" aria-current="page" style="width: 250px;">
+        <a href="/?=trains&page=1" class="nav-link active" aria-current="page" style="width: 250px;">
             <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
             <fmt:message bundle="${bundle}" key="BuyTicket"/>
         </a>
@@ -57,7 +57,7 @@
     <%--        <input type="number" name = "sum" >--%>
     <%--        <button type="submit" />--%>
     <%--    </form>--%>
-    <li> <a href="/?command=changeMoneyPage" class="nav-link active" aria-current="page" style="width: 250px;margin-top: 15px">
+    <li> <a href="/?controller=changeMoneyPage" class="nav-link active" aria-current="page" style="width: 250px;margin-top: 15px">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
         <fmt:message bundle="${bundle}" key="ChangeMoney"/>
     </a></li>
@@ -67,7 +67,7 @@
     <%--         ${Messages}</a></li>--%>
     <c:if test='${user.isAdmin()}'>
         <li class="nav-item" style="margin-top: 15px">
-            <a href="/?command=createRoutePage" class="nav-link active" aria-current="page"
+            <a href="/?controller=createRoutePage" class="nav-link active" aria-current="page"
                style="width: 250px;"><svg class="bi me-2" width="16"
                                           height="16"><use xlink:href="#home"></use></svg>
                 <fmt:message bundle="${bundle}" key="CreateRoute"/>
@@ -81,15 +81,15 @@
         <%--            </a></li>--%>
         <%--        </li>--%>
         <li class="nav-item" style="margin-top: 15px">
-            <a href="/?command=addStationPage" class="nav-link active" aria-current="page" style="width: 250px;"><svg
+            <a href="/?controller=addStationPage" class="nav-link active" aria-current="page" style="width: 250px;"><svg
                     class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
                 <m:locale-tag key="AddStation"/>
             </a>
         </li>
         <li class="nav-item" style="margin-top: 15px">
-            <a href="/?command=planTrainPage" class="nav-link active" aria-current="page"
+            <a href="/?controller=numOfStaff" class="nav-link active" aria-current="page"
                style="width: 250px"> <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                <m:locale-tag key="PlanTrain"/>
+                <fmt:message bundle="${bundle}" key="PlanCruise"/>
             </a></li>
     </c:if>
 

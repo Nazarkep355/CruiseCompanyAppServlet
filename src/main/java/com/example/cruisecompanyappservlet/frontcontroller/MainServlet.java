@@ -13,6 +13,11 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 @WebServlet("/")
+@MultipartConfig(
+        fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
+        maxFileSize = 1024 * 1024 * 10,      // 10 MB
+        maxRequestSize = 1024 * 1024 * 100   // 100 MB
+)
 public class MainServlet extends HttpServlet {
     private HashMap<String, Controller> controllers = new HashMap<>();
     private Logger logger = Logger.getLogger(MainServlet.class);
@@ -27,6 +32,13 @@ public class MainServlet extends HttpServlet {
         controllers.put("login", new LoginController());
         controllers.put("cruises",new CruisesController());
         controllers.put("signOut",new SignOutController());
+        controllers.put("read",new readController());
+        controllers.put("test",new goToTestContoller());
+        controllers.put("planCruisePage",new PlanCruisePageController());
+        controllers.put("chooseStaff",new ChooseStaffPageController());
+        controllers.put("numOfStaff", new ChooseNumOfStaffController());
+        controllers.put("planCruise",new PlanCruiseController());
+        controllers.put("cruiseInfo",new CruiseInfoController());
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -36,6 +48,7 @@ public class MainServlet extends HttpServlet {
             String controllerName = request.getParameter("controller");
             User user = (User) request.getSession().getAttribute("user");
             Controller controller = controllers.get(controllerName);
+            System.out.println("get"+SecurityUtil.isAccessGranted(user,controller));
             if (SecurityUtil.isAccessGranted(user, controller)) {
                 String address = controller.execute(request, response);
                 if (isNeedToRedirect(request)) {
@@ -59,6 +72,7 @@ public class MainServlet extends HttpServlet {
             String controllerName = request.getParameter("controller");
             User user = (User) request.getSession().getAttribute("user");
             Controller controller = controllers.get(controllerName);
+            System.out.println("post"+SecurityUtil.isAccessGranted(user,controller));
             if (SecurityUtil.isAccessGranted(user, controller)) {
                 String redirect = controller.execute(request, response);
                 response.sendRedirect(redirect);

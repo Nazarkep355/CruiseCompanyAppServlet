@@ -15,7 +15,7 @@ public class SecurityUtil {
             int ordinal = accessLevel.ordinal();
             return ordinal == 0;
         }
-        return user.getUserType().ordinal() >= accessLevel.ordinal();
+        return user.getUserType().ordinal()+1 >= accessLevel.ordinal();
     }
 
     public static void insertUserInformation(HttpServletRequest request) throws DAOException {

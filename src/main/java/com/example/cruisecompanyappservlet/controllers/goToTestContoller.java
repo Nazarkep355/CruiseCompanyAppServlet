@@ -7,13 +7,10 @@ import com.example.cruisecompanyappservlet.frontcontroller.Controller;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class SignOutController implements Controller {
-
+public class goToTestContoller implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DAOException {
-        request.getSession().setAttribute("user",null);
-        System.out.println("singedOut");
-        return "/";
+        return "test.jsp";
     }
 
     @Override
