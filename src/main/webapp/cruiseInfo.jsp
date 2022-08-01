@@ -49,27 +49,38 @@
 <%--        <small class = "text-muted" style="margin-left: 40%"><m:locale-tag key="NoFreeSeats"/></small>--%>
 <%--    </c:if>--%>
     <div style="margin-left: 50px">
-        <h3>Premium <fmt:message bundle="${bundle}" key="Cost"/>:  ${cruise.getCostPremium()} </h3>
-        <h3><fmt:message bundle="${bundle}" key='FreePlaces'/>: ${cruise.freePlaces.get(RoomClass.PREMIUM)}</h3>
+        <h5><i style="color: red">Premium</i> <fmt:message bundle="${bundle}" key="Cost"/>:  ${cruise.getCostPremium()} </h5>
+        <h5><fmt:message bundle="${bundle}" key='FreePlaces'/>: ${cruise.freePlaces.get(RoomClass.PREMIUM)}</h5>
+        <c:if test="${isLogged}"><a href="/?controller=sendRequestPage&id=${cruise.id}&room=PREMIUM">buy Premium</a></c:if>
     </div>
-<%--    <table class="table table-striped table-hover ms-5 " style="max-width: 500px">--%>
-<%--        <thead>--%>
-<%--        <tr>--%>
-<%--            <th scope="col" style="text-align: center"><fmt:message key="Station"/></th>--%>
-<%--            <th scope="col" style="text-align: center"><m:locale-tag key="ArrivalTime"/></th>--%>
-<%--        </tr>--%>
-<%--        </thead>--%>
-<%--        <tbody>--%>
-<%--        <c:forEach var="station" items="${train.getStations()}">--%>
-<%--        <tr>--%>
-<%--            <td scope="row" style="text-align: center">${station.name}</td>--%>
-<%--            <td scope="row" style="text-align: center">${Utility.dateToString(train.agenda.get(station))}</td>--%>
-<%--        </tr>--%>
-<%--        </c:forEach>--%>
+    <div style="margin-left: 50px">
+        <h5><i style="color: darkblue">MIDDLE</i> <fmt:message bundle="${bundle}" key="Cost"/>:  ${cruise.getCostMiddle()} </h5>
+        <h5><fmt:message bundle="${bundle}" key='FreePlaces'/>: ${cruise.freePlaces.get(RoomClass.MIDDLE)}</h5>
+        <c:if test="${isLogged}"><a href="/?controller=sendRequestPage&id=${cruise.id}&room=MIDDLE">buy MIDDLE</a></c:if>
+    </div>
+    <div style="margin-left: 50px">
+        <h5><i style="color: gray">ECONOM</i> <fmt:message bundle="${bundle}" key="Cost"/>:  ${cruise.getCostEconom()} </h5>
+        <h5><fmt:message bundle="${bundle}" key='FreePlaces'/>: ${cruise.freePlaces.get(RoomClass.ECONOM)}</h5>
+        <c:if test="${isLogged}"><a href="/?controller=sendRequestPage&id=${cruise.id}&room=ECONOM">buy ECONOM</a></c:if>
+    </div>
+    <table class="table table-striped table-hover ms-5 " style="max-width: 500px">
+        <thead>
+        <tr>
+            <th scope="col" style="text-align: center"><fmt:message bundle="${bundle}" key="City"/></th>
+            <th scope="col" style="text-align: center"><fmt:message bundle="${bundle}" key="DepartureDate"/></th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="port" items="${cruise.route.ports}">
+        <tr>
+            <td scope="row" style="text-align: center">${port.city}</td>
+            <td scope="row" style="text-align: center">${cruise.schedule.get(port)}</td>
+        </tr>
+        </c:forEach>
 
-<%--</div>--%>
-<%--</tbody>--%>
-<%--</table>--%>
+
+</tbody>
+</table>
 <%--<c:if test='${user!=null&&user.isAdmin()}'>--%>
 <%--    <form  style="width: 300px;padding-left: 150px;" action="/" method="post">--%>
 <%--        <input name="command" type="hidden" value="cancelTrain">--%>
@@ -109,7 +120,7 @@
             <input type="hidden" name="controller" value="changeToUA">
             <input type="hidden" name="prev"
                    value="/?controller=cruiseInfo&id=${cruise.id}">
-            <li class="nav-item"><button type="submit">Українська мова</button></li></form>
+              <li class="nav-item"><button type="submit">Українська мова</button></li></form>
         <form action="/" method="post">
             <input type="hidden" name="controller" value="changeToEn">
             <input type="hidden" name="prev"

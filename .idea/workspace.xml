@@ -9,48 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="336684d1-d890-448f-b743-9d44dbe9f717" name="Changes" comment="adding JDBC">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/ChooseNumOfStaffController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/ChooseStaffPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/CruiseInfoController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/PlanCruiseController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/PlanCruisePageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/goToTestContoller.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/readController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/CruiseRequestDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/TicketDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/CruiseRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/Protocol.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/Ticket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/builders/CruiseRequestBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/builders/TicketBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/RouteService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/StaffService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/TicketService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/EmailSessionBean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/chooseNumberOfStaff.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/chooseStaff.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/cruiseInfo.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/planCruise.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/test.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/CruiseCompanyAppServlet_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/CruiseCompanyAppServlet_war_exploded.xml" afterDir="false" />
+    <list default="true" id="336684d1-d890-448f-b743-9d44dbe9f717" name="Changes" comment="adding new page1">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/SendRequestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/SendRequestPageController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/CruiseRequestService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/sendRequest.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/SignOutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/SignOutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/CruiseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/CruiseDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/RouteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/RouteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/StaffDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/StaffDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/Cruise.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/Cruise.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/Status.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/Status.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/builders/CruiseBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/builders/CruiseBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/CruiseRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/CruiseRequestDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/CruiseRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/CruiseRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/builders/CruiseRequestBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/builders/CruiseRequestBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/frontcontroller/MainServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/frontcontroller/MainServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/locale_en.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/locale_en.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/locale_ua.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/locale_ua.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/CruiseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/CruiseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/CruiseUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/CruiseUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/RequestReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/RequestReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/SecurityUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/SecurityUtil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/accountPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/accountPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/cruises.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cruises.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cruiseInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cruiseInfo.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +67,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Quant/IdeaProjects/FInalProject3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Quant/CruiseCompanyAppServlet&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -233,7 +206,9 @@
       <workItem from="1658918760536" duration="35780000" />
       <workItem from="1659010181549" duration="14409000" />
       <workItem from="1659101904591" duration="12669000" />
-      <workItem from="1659176747126" duration="3783000" />
+      <workItem from="1659176747126" duration="7945000" />
+      <workItem from="1659202295967" duration="6585000" />
+      <workItem from="1659349783784" duration="588000" />
     </task>
     <task id="LOCAL-00001" summary="first Steps">
       <created>1658770161378</created>
@@ -249,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1658958371745</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="adding new page1">
+      <created>1659182092182</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1659182092182</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -269,7 +251,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first Steps" />
     <MESSAGE value="adding JDBC" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding JDBC" />
+    <MESSAGE value="adding new page1" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding new page1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -282,6 +265,15 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/frontcontroller/MainServlet.java</url>
+          <line>45</line>
+          <properties class="com.example.cruisecompanyappservlet.frontcontroller.MainServlet" method="doGet">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/StaffDAO.java</url>

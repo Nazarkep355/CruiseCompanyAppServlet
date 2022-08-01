@@ -37,7 +37,10 @@ public class locale_en extends ListResourceBundle {
             {"Position","Position"},
             {"EnterCostFor","Enter cost for"},
             {"CruiseInfo","Information about cruise"},
-            {"FreePlaces","Free places"}
+            {"FreePlaces","Free places"},
+            {"City","City"},
+            {"SendRequest", "Send request"},
+            {"ChooseDoc","Please choose your document"}
 
 
     };

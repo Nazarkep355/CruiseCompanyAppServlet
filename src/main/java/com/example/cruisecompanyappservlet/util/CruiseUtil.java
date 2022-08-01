@@ -13,7 +13,7 @@ public class CruiseUtil {
         Date tmpDate = new Date(departure.getTime());
         for(int i =0;i<delays.size();i++){
             tmpDate = new Date(tmpDate.getTime());
-            tmpDate.setDate(tmpDate.getDate()+delays.get(i));
+            tmpDate.setDate(tmpDate.getDate()+delays.get(i)+1);
             schedule.put(ports.get(i+1),tmpDate);
         }
         return schedule;

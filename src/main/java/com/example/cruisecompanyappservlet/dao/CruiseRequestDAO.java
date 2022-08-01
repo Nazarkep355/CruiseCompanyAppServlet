@@ -1,10 +1,7 @@
 package com.example.cruisecompanyappservlet.dao;
 
 
-import com.example.cruisecompanyappservlet.entity.Cruise;
-import com.example.cruisecompanyappservlet.entity.CruiseRequest;
-import com.example.cruisecompanyappservlet.entity.Status;
-import com.example.cruisecompanyappservlet.entity.User;
+import com.example.cruisecompanyappservlet.entity.*;
 import com.example.cruisecompanyappservlet.entity.builders.CruiseRequestBuilder;
 import com.example.cruisecompanyappservlet.util.DBHikariManager;
 import org.apache.log4j.Logger;
@@ -39,8 +36,8 @@ public class CruiseRequestDAO {
     private static final String SELECT_REQUESTS_OF_USER_PAGINATED = "SELECT * FROM cruiserequests " +
             "WHERE sender = ? AND ORDER BY id DESC LIMIT ? OFFSET ?";
     private static final String UPDATE_REQUEST = "UPDATE cruiserequests SET sender = ?, " +
-            "cruise = ?, photo = ?, status = ? WHERE id = ?";
-    private static final String INSERT_REQUEST = "INSERT INTO cruiserequests VALUES(default ,?,?,?,?)";
+            "cruise = ?, photo = ?, status = ?, class = ? WHERE id = ?";
+    private static final String INSERT_REQUEST = "INSERT INTO cruiserequests VALUES(default ,?,?,?,?,?)";
 
     public List<CruiseRequest> findAll() {
         List<CruiseRequest> cruiseRequests = new ArrayList<>();
@@ -109,13 +106,14 @@ public class CruiseRequestDAO {
             throw new RuntimeException(message, e);
         }
     }
-    public CruiseRequest findById(Long id){
+
+    public CruiseRequest findById(Long id) {
         try (Connection connection = DBHikariManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(SELECT_REQUEST_BY_ID)) {
             statement.setLong(1, id);
             ResultSet set = statement.executeQuery();
-            if(set.next()) {
-               return getCruiseRequestFromResultSet(set);
+            if (set.next()) {
+                return getCruiseRequestFromResultSet(set);
             }
             return null;
         } catch (Throwable e) {
@@ -163,35 +161,40 @@ public class CruiseRequestDAO {
             throw new RuntimeException(message, e);
         }
     }
-    public boolean update(CruiseRequest request){
-        try(Connection connection = DBHikariManager.getConnection();
-            PreparedStatement statement = connection.prepareStatement(UPDATE_REQUEST)){
-            statement.setLong(1,request.getSender().getId());
-            statement.setLong(2,request.getCruise().getId());
-            statement.setString(3,request.getPhoto());
-            statement.setString(4,request.getStatus().name());
-            statement.setLong(5,request.getId());
+
+    public boolean update(CruiseRequest request) {
+        try (Connection connection = DBHikariManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(UPDATE_REQUEST)) {
+            statement.setLong(1, request.getSender().getId());
+            statement.setLong(2, request.getCruise().getId());
+            statement.setString(3, request.getPhoto());
+            statement.setString(4, request.getStatus().name());
+            statement.setString(5, request.getRoomClass().name());
+            statement.setLong(6, request.getId());
             return statement.execute();
-        }catch (Throwable e){
+        } catch (Throwable e) {
             String message = "Can't update request";
-            logger.info(message,e);
-            throw new RuntimeException(message,e);
+            logger.info(message, e);
+            throw new RuntimeException(message, e);
         }
     }
-    public boolean insert(CruiseRequest request){
-        try(Connection connection = DBHikariManager.getConnection();
-            PreparedStatement statement = connection.prepareStatement(INSERT_REQUEST)){
-            statement.setLong(1,request.getSender().getId());
-            statement.setLong(2,request.getCruise().getId());
-            statement.setString(3,request.getPhoto());
-            statement.setString(4,request.getStatus().name());
+
+    public boolean insert(CruiseRequest request) {
+        try (Connection connection = DBHikariManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(INSERT_REQUEST)) {
+            statement.setLong(1, request.getSender().getId());
+            statement.setLong(2, request.getCruise().getId());
+            statement.setString(3, request.getPhoto());
+            statement.setString(4, request.getStatus().name());
+            statement.setString(5, request.getRoomClass().name());
             return statement.execute();
-        }catch (Throwable e){
+        } catch (Throwable e) {
             String message = "Can't insert request";
-            logger.info(message,e);
-            throw new RuntimeException(message,e);
+            logger.info(message, e);
+            throw new RuntimeException(message, e);
         }
     }
+
     private CruiseRequest getCruiseRequestFromResultSet(ResultSet set) throws SQLException, DAOException {
         User sender = userDAO.findById(set.getLong("sender"));
         Cruise cruise = cruiseDAO.findById(set.getLong("cruise"));
@@ -200,6 +203,7 @@ public class CruiseRequestDAO {
                 .cruise(cruise)
                 .sender(sender)
                 .status(Status.valueOf(set.getString("status")))
+                .roomClass(RoomClass.valueOf(set.getString("class")))
                 .build();
 
     }

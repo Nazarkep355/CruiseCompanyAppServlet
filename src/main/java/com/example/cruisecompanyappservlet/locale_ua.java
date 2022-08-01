@@ -38,7 +38,10 @@ public class locale_ua extends ListResourceBundle {
             {"Position","Посада"},
             {"EnterCostFor","Введіть ціну для"},
             {"CruiseInfo","Інформація про круїз"},
-            {"FreePlaces","Вільні місця"}
+            {"FreePlaces","Вільні місця"},
+            {"City","Місто"},
+            {"SendRequest", "Надіслати запит"},
+            {"ChooseDoc","Будь ласка, оберіть документ"}
 
 };
 @Override

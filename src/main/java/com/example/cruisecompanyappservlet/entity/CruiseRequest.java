@@ -5,6 +5,7 @@ public class CruiseRequest {
     private User sender;
     private Cruise cruise;
     private String photo;
+    private RoomClass roomClass;
     private Status status;
 
     public User getSender() {
@@ -45,5 +46,13 @@ public class CruiseRequest {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    public RoomClass getRoomClass() {
+        return roomClass;
+    }
+
+    public void setRoomClass(RoomClass roomClass) {
+        this.roomClass = roomClass;
     }
 }
