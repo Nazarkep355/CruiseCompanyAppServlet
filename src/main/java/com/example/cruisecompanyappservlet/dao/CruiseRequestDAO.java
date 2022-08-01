@@ -33,8 +33,12 @@ public class CruiseRequestDAO {
             " WHERE cruise = ? AND status =?";
     private static final String SELECT_REQUESTS_OF_CRUISE_AND_STATUS_PAGINATED = "SELECT * FROM " +
             "cruiserequests WHERE cruise = ? AND status = ? ORDER BY id DESC LIMIT ? OFFSET ?";
+    private static final String SELECT_REQUESTS_OF_CRUISE_PAGINATED = "SELECT * FROM " +
+            "cruiserequests WHERE cruise = ? ORDER BY id DESC LIMIT ? OFFSET ?";
     private static final String SELECT_REQUESTS_OF_USER_PAGINATED = "SELECT * FROM cruiserequests " +
             "WHERE sender = ? AND ORDER BY id DESC LIMIT ? OFFSET ?";
+    private static final String SELECT_REQUEST_ORDER_BY_DESC_PAGINATED = "SELECT * FROM cruiserequests " +
+            " ORDER BY id DESC LIMIT ? OFFSET ?";
     private static final String UPDATE_REQUEST = "UPDATE cruiserequests SET sender = ?, " +
             "cruise = ?, photo = ?, status = ?, class = ? WHERE id = ?";
     private static final String INSERT_REQUEST = "INSERT INTO cruiserequests VALUES(default ,?,?,?,?,?)";
@@ -142,6 +146,24 @@ public class CruiseRequestDAO {
             throw new RuntimeException(message, e);
         }
     }
+    public List<CruiseRequest> findByCruisePaginated(Cruise cruise, int offset){
+        List<CruiseRequest> cruiseRequests = new ArrayList<>();
+        try (Connection connection = DBHikariManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_REQUESTS_OF_CRUISE_PAGINATED)) {
+            statement.setLong(1, cruise.getId());
+            statement.setInt(2, 5);
+            statement.setInt(3, offset);
+            ResultSet set = statement.executeQuery();
+            while (set.next()) {
+                cruiseRequests.add(getCruiseRequestFromResultSet(set));
+            }
+            return cruiseRequests;
+        } catch (Throwable e) {
+            String message = "Can't find requests by cruise and status paginated";
+            logger.info(message, e);
+            throw new RuntimeException(message, e);
+        }
+    }
 
     public List<CruiseRequest> findByUserPaginated(User user, int offset) {
         List<CruiseRequest> cruiseRequests = new ArrayList<>();
@@ -157,6 +179,23 @@ public class CruiseRequestDAO {
             return cruiseRequests;
         } catch (Throwable e) {
             String message = "Can't find requests by user paginated";
+            logger.info(message, e);
+            throw new RuntimeException(message, e);
+        }
+    }
+    public List<CruiseRequest> findAllOrderByIdDescPaginated(int offset){
+        List<CruiseRequest> cruiseRequests = new ArrayList<>();
+        try (Connection connection = DBHikariManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_REQUEST_ORDER_BY_DESC_PAGINATED)) {
+            statement.setInt(1,5);
+            statement.setInt(2,offset);
+            ResultSet set = statement.executeQuery();
+            while (set.next()) {
+                cruiseRequests.add(getCruiseRequestFromResultSet(set));
+            }
+            return cruiseRequests;
+        } catch (Throwable e) {
+            String message = "Can't find all requests paginated";
             logger.info(message, e);
             throw new RuntimeException(message, e);
         }
@@ -202,6 +241,7 @@ public class CruiseRequestDAO {
                 .id(set.getLong("id"))
                 .cruise(cruise)
                 .sender(sender)
+                .photo(set.getString("photo"))
                 .status(Status.valueOf(set.getString("status")))
                 .roomClass(RoomClass.valueOf(set.getString("class")))
                 .build();

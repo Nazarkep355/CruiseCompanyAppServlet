@@ -40,7 +40,13 @@ public class locale_en extends ListResourceBundle {
             {"FreePlaces","Free places"},
             {"City","City"},
             {"SendRequest", "Send request"},
-            {"ChooseDoc","Please choose your document"}
+            {"ChooseDoc","Please choose your document"},
+            {"Requests","Requests"},
+            {"Status","Status"},
+            {"Class","Class"},
+            {"Request","Request"},
+            {"UserBalance","User's balance"},
+            {"Document","Document"}
 
 
     };

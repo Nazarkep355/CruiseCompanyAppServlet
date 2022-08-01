@@ -3,8 +3,11 @@ package com.example.cruisecompanyappservlet.util;
 import com.example.cruisecompanyappservlet.dao.CruiseDAO;
 import com.example.cruisecompanyappservlet.entity.*;
 import com.example.cruisecompanyappservlet.entity.builders.CruiseBuilder;
+import com.example.cruisecompanyappservlet.entity.builders.UserBuilder;
+import com.example.cruisecompanyappservlet.service.CruiseRequestService;
 import com.example.cruisecompanyappservlet.service.CruiseService;
 import com.example.cruisecompanyappservlet.service.RouteService;
+import com.example.cruisecompanyappservlet.service.UserService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -18,8 +21,10 @@ public class RequestReader {
     public RequestReader() {
         cruiseService = new CruiseService();
         routeService = new RouteService();
+        cruiseRequestService = new CruiseRequestService();
     }
-
+    private static UserService userService;
+    static private CruiseRequestService cruiseRequestService;
     static private CruiseService cruiseService;
     static private RouteService routeService;
 
@@ -107,5 +112,25 @@ public class RequestReader {
                 .freePlaces(classIntegerHashMap)
                 .staff(staff)
                 .status(Status.WAITING).build();
+    }
+    public static List<CruiseRequest> getListOfRequestsFromRequest(HttpServletRequest request){
+        int page = Integer.parseInt(request.getParameter("page"));
+        request.setAttribute("page",page);
+        String cruiseId = request.getParameter("cruise");
+        String statusParam = request.getParameter("status");
+        if(cruiseId!=null&&!cruiseId.equals("")){
+            request.setAttribute("id",cruiseId);
+            Cruise cruise = new CruiseBuilder()
+                    .id(Long.parseLong(cruiseId))
+                    .build();
+            if(statusParam!=null&&!statusParam.equals("")){
+                request.setAttribute("status",statusParam);
+                Status status =Status.valueOf(statusParam);
+                return cruiseRequestService.findByCruiseAndStatusPaginated(cruise,status,page);
+            }
+            return cruiseRequestService.findByCruisePaginated(cruise,page);
+        }
+        return cruiseRequestService.getPaginatedList(page);
+
     }
 }

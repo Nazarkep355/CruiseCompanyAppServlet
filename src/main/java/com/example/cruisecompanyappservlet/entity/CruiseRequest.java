@@ -28,6 +28,18 @@ public class CruiseRequest {
         return photo;
     }
 
+    @Override
+    public String toString() {
+        return "CruiseRequest{" +
+                "id=" + id +
+                ", sender=" + sender +
+                ", cruise=" + cruise +
+                ", photo='" + photo + '\'' +
+                ", roomClass=" + roomClass +
+                ", status=" + status +
+                '}';
+    }
+
     public void setPhoto(String photo) {
         this.photo = photo;
     }

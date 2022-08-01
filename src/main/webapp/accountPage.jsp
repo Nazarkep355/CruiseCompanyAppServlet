@@ -81,9 +81,9 @@
         <%--            </a></li>--%>
         <%--        </li>--%>
         <li class="nav-item" style="margin-top: 15px">
-            <a href="/?controller=addStationPage" class="nav-link active" aria-current="page" style="width: 250px;"><svg
+            <a href="/?controller=requests&page=1" class="nav-link active" aria-current="page" style="width: 250px;"><svg
                     class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-                <m:locale-tag key="AddStation"/>
+                <fmt:message bundle="${bundle}" key="Requests"/>
             </a>
         </li>
         <li class="nav-item" style="margin-top: 15px">

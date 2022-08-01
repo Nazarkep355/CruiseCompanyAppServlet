@@ -41,9 +41,16 @@ public class locale_ua extends ListResourceBundle {
             {"FreePlaces","Вільні місця"},
             {"City","Місто"},
             {"SendRequest", "Надіслати запит"},
-            {"ChooseDoc","Будь ласка, оберіть документ"}
+            {"ChooseDoc","Будь ласка, оберіть документ"},
+            {"Requests","Запити"},
+            {"Status","Статус"},
+            {"Class","Клас"},
+            {"Request","Запит"},
+            {"UserBalance","Баланс корустувача"},
+            {"Document","Документ"}
 
-};
+
+    };
 @Override
 protected Object[][]getContents(){
         return contents;

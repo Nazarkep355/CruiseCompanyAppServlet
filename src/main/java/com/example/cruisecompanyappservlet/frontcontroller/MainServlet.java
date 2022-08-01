@@ -32,8 +32,6 @@ public class MainServlet extends HttpServlet {
         controllers.put("login", new LoginController());
         controllers.put("cruises",new CruisesController());
         controllers.put("signOut",new SignOutController());
-        controllers.put("read",new readController());
-        controllers.put("test",new goToTestContoller());
         controllers.put("planCruisePage",new PlanCruisePageController());
         controllers.put("chooseStaff",new ChooseStaffPageController());
         controllers.put("numOfStaff", new ChooseNumOfStaffController());
@@ -41,6 +39,8 @@ public class MainServlet extends HttpServlet {
         controllers.put("cruiseInfo",new CruiseInfoController());
         controllers.put("sendRequestPage",new SendRequestPageController());
         controllers.put("sendRequest",new SendRequestController());
+        controllers.put("requests",new RequestsController());
+        controllers.put("requestInfo",new InfoAboutRequestController());
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
