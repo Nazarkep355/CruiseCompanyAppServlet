@@ -25,7 +25,7 @@ public class PlanCruiseController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DAOException {
         Cruise cruise = RequestReader.createCruise(request);
         cruiseService.insert(cruise);
-        return "/?controller=cruises&actual=true&page=1";
+        return "/controller?controller=cruises&actual=true&page=1";
     }
 
     @Override

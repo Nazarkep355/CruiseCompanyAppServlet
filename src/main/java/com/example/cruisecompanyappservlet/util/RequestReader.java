@@ -52,12 +52,12 @@ public class RequestReader {
     }
     public static String saveImage(HttpServletRequest request) throws IOException, ServletException {
         Part filePart = request.getPart("file");
-        String fileName = filePart.getSubmittedFileName();
-        String fullName = "C:\\Users\\Quant\\CruiseCompanyAppServlet\\src\\main\\images\\" +(int)(Math.random()*Integer.MAX_VALUE)+fileName;
+        String fileName = +(int)(Math.random()*Integer.MAX_VALUE)+filePart.getSubmittedFileName();
+        String fullName = "C:\\Users\\Quant\\CruiseCompanyAppServlet\\src\\main\\webapp\\images\\" +fileName;
         for (Part part : request.getParts()) {
             part.write(fullName);
         }
-        return fullName;
+        return fileName;
     }
     public static Date getDateFromString(String dateString){
         Date date= new Date();

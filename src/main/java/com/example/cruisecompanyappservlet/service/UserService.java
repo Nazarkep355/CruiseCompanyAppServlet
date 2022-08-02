@@ -29,6 +29,9 @@ public class UserService {
         userDAO.insertUser(user);
         return userDAO.findByEmail(email);
     }
+    public boolean update(User user) throws DAOException {
+        return userDAO.updateUser(user);
+    }
     public User loginUser(String email, String password) throws DAOException {
         if(!isUserWithEmailExist(email)){
             throw new IllegalArgumentException("Wrong password");

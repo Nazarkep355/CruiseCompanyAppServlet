@@ -22,11 +22,11 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">
                 <fmt:message bundle="${bundle}" key="Home"/></a></li>
-            <li class="nav-item"><a href="/?controller=cruises&freeOnly=true&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller?controller=cruises&freeOnly=true&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
-            <li class="nav-item"><a href="/?command=tickets&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller?command=tickets&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Tickets"/></a></li>
-            <li class="nav-item"><form action="/"  method="post">
+            <li class="nav-item"><form action="/controller"  method="post">
                 <input type="hidden" name="controller" value="signOut">
                 <button type="submit" class="nav-link"><fmt:message bundle="${bundle}" key="SignOut"/></button></form></li>
         </ul>
@@ -47,7 +47,7 @@
 </c:if>
 <ul class="nav nav-pills flex-column mb-auto" style="margin-left: 25px; ">
     <li class="nav-item">
-        <a href="/?=trains&page=1" class="nav-link active" aria-current="page" style="width: 250px;">
+        <a href="/controller?=trains&page=1" class="nav-link active" aria-current="page" style="width: 250px;">
             <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
             <fmt:message bundle="${bundle}" key="BuyTicket"/>
         </a>
@@ -57,7 +57,7 @@
     <%--        <input type="number" name = "sum" >--%>
     <%--        <button type="submit" />--%>
     <%--    </form>--%>
-    <li> <a href="/?controller=changeMoneyPage" class="nav-link active" aria-current="page" style="width: 250px;margin-top: 15px">
+    <li> <a href="/controller?controller=changeMoneyPage" class="nav-link active" aria-current="page" style="width: 250px;margin-top: 15px">
         <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
         <fmt:message bundle="${bundle}" key="ChangeMoney"/>
     </a></li>
@@ -67,7 +67,7 @@
     <%--         ${Messages}</a></li>--%>
     <c:if test='${user.isAdmin()}'>
         <li class="nav-item" style="margin-top: 15px">
-            <a href="/?controller=createRoutePage" class="nav-link active" aria-current="page"
+            <a href="/controller?controller=createRoutePage" class="nav-link active" aria-current="page"
                style="width: 250px;"><svg class="bi me-2" width="16"
                                           height="16"><use xlink:href="#home"></use></svg>
                 <fmt:message bundle="${bundle}" key="CreateRoute"/>
@@ -81,13 +81,13 @@
         <%--            </a></li>--%>
         <%--        </li>--%>
         <li class="nav-item" style="margin-top: 15px">
-            <a href="/?controller=requests&page=1" class="nav-link active" aria-current="page" style="width: 250px;"><svg
+            <a href="/controller?controller=requests&page=1" class="nav-link active" aria-current="page" style="width: 250px;"><svg
                     class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
                 <fmt:message bundle="${bundle}" key="Requests"/>
             </a>
         </li>
         <li class="nav-item" style="margin-top: 15px">
-            <a href="/?controller=numOfStaff" class="nav-link active" aria-current="page"
+            <a href="/controller?controller=numOfStaff" class="nav-link active" aria-current="page"
                style="width: 250px"> <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
                 <fmt:message bundle="${bundle}" key="PlanCruise"/>
             </a></li>
@@ -100,13 +100,13 @@
   width: 100%;
   height: 80px;">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToUA">
-            <input type="hidden" name="prev" value="/">
+            <input type="hidden" name="prev" value="/controller">
             <li class="nav-item"><button type="submit">Українська мова</button></li></form>
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToEn">
-            <input type="hidden" name="prev" value="/">
+            <input type="hidden" name="prev" value="/controller">
             <li class="nav-item"><button type="submit">English language</button></li></form>  </ul>
 </footer>
 </body>

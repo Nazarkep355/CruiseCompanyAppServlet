@@ -19,9 +19,9 @@
 <div class="container">
     <header class="d-flex justify-content-center py-3">
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">
+            <li class="nav-item"><a href="/controller" class="nav-link active" aria-current="page">
                 <fmt:message bundle="${bundle}" key="Home"/></a></li>
-            <li class="nav-item"><a href="/?controller=cruises&freeOnly=true&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller?controller=cruises&freeOnly=true&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
             <%--        <li class="nav-item"><a href="/?command=tickets&page=1" class="nav-link">--%>
             <%--            <fmt:message bundle="${bundle}" key="Tickets"/></a></li>--%>
@@ -46,13 +46,13 @@
             <c:if test="${page>2}">
                 <li class="page-item"><a
                         class="page-link"
-                        href="/?controller=cruises&page=1&freeOnly=${freeOnly}&actual=${actual}&city=${city}">
+                        href="/controller?controller=cruises&page=1&freeOnly=${freeOnly}&actual=${actual}&city=${city}">
                     <fmt:message bundle="${bundle}" key="goToFirstPage"/></a></li>
             </c:if>
             <c:if test="${page>1}">
                 <li class="page-item">
                     <a class="page-link"
-                       href="/?controller=cruises&page=${page-1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}"
+                       href="/controller?controller=cruises&page=${page-1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}"
                        aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
@@ -61,21 +61,21 @@
             <c:if test="${page>1}">
                 <li class="page-item"><a
                         class="page-link"
-                        href="/?controller=cruises&page=${page-1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}"
+                        href="/controller?controller=cruises&page=${page-1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}"
                 >${page-1}</a></li>
             </c:if>
 
             <li class="page-item"><a
                     class="page-link"
-                    href="/?controller=cruises&page=${page}&freeOnly=${freeOnly}&actual=${actual}&city=${city}">${page}</a>
+                    href="/controller?controller=cruises&page=${page}&freeOnly=${freeOnly}&actual=${actual}&city=${city}">${page}</a>
             </li>
             <li class="page-item"><a
                     class="page-link"
-                    href="/?controller=cruises&page=${page+1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}">${page+1}</a>
+                    href="/controller?controller=cruises&page=${page+1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}">${page+1}</a>
             </li>
             <li class="page-item">
                 <a class="page-link"
-                   href="/?controller=cruises&page=${page+1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}"
+                   href="/controller?controller=cruises&page=${page+1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}"
                    aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
@@ -91,7 +91,7 @@
     </thead>
     <tbody>
     <c:forEach items="${cruises}" var="cruise">
-        <tr style="table-layout: fixed" onclick="location.replace('/?controller=cruiseInfo&id=${cruise.getId()}')">
+        <tr style="table-layout: fixed" onclick="location.replace('/controller?controller=cruiseInfo&id=${cruise.getId()}')">
             <td scope="row">${cruise.departureDate()}</td>
             <td scope="row">${cruise.daysInJourney()}</td>
             <td scope="row" style="max-height: 40px;max-width: 300px;overflow: auto"
@@ -107,18 +107,18 @@
   width: 100%;
   height: 80px;">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToUA">
             <input type="hidden" name="prev"
-                   value="/?controller=cruises&page=${page}&freeOnly=${freeOnly}&actual=${actual}&city=${city}">
+                   value="/controller?controller=cruises&page=${page}&freeOnly=${freeOnly}&actual=${actual}&city=${city}">
             <li class="nav-item">
                 <button type="submit">Українська мова</button>
             </li>
         </form>
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToEn">
             <input type="hidden" name="prev"
-                   value="/?controller=cruises&page=${page}&freeOnly=${freeOnly}&actual=${actual}&city=${city}">
+                   value="/controller?controller=cruises&page=${page}&freeOnly=${freeOnly}&actual=${actual}&city=${city}">
             <li class="nav-item">
                 <button type="submit">English language</button>
             </li>

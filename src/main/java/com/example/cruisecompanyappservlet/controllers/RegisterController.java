@@ -32,14 +32,14 @@ public class RegisterController implements Controller {
             if (ValidateUtil.isEmailValid(email) && ValidateUtil.isPasswordValid(password)) {
                 if (userService.isUserWithEmailExist(email)) {
                     request.getSession().setAttribute("error", "emailInUse");
-                    return "/?controller=registerPage";
+                    return "/controller?controller=registerPage";
                 }
                 User user = userService.registerUser(email, password, name);
                 request.getSession().setAttribute("user", user);
-                return "/";
+                return "/controller";
             } else {
                 request.getSession().setAttribute("error", "EnterWrongFormat");
-                return "/?controller=registerPage";
+                return "/controller?controller=registerPage";
             }
         } catch (DAOException e) {
             logger.info(e);

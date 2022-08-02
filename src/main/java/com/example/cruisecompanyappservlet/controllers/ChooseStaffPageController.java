@@ -37,7 +37,7 @@ public class ChooseStaffPageController implements Controller {
             }
         }
         if (current >= of)
-            return "/?controller=planCruisePage";
+            return "/controller?controller=planCruisePage";
         request.setAttribute("current", current);
         List<Staff> extract = staffService.findStaffPaginated(page);
         request.setAttribute("page", page);

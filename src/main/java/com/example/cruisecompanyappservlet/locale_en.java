@@ -46,7 +46,10 @@ public class locale_en extends ListResourceBundle {
             {"Class","Class"},
             {"Request","Request"},
             {"UserBalance","User's balance"},
-            {"Document","Document"}
+            {"Document","Document"},
+            {"Accept","Accept"},
+            {"Cruise","Cruise"},
+            {"Decline","Decline"}
 
 
     };

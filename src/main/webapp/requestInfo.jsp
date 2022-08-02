@@ -19,9 +19,9 @@
 <div class="container">
     <header class="d-flex justify-content-center py-3">
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">
+            <li class="nav-item"><a href="/controller" class="nav-link active" aria-current="page">
                 <fmt:message bundle="${bundle}" key="Home"/></a></li>
-            <li class="nav-item"><a href="/?controller=cruises&freeOnly=true&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller?controller=cruises&freeOnly=true&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
             <%--        <li class="nav-item"><a href="/?command=tickets&page=1" class="nav-link">--%>
             <%--            <fmt:message bundle="${bundle}" key="Tickets"/></a></li>--%>
@@ -73,26 +73,43 @@
     </tr>
     </tbody>
 </table>
-<img style="height:200px; width:100px;floatleft; " src="images${cRequest.photo}">
-
-<footer class="py-3 my-4" style=" position: absolute;
+<ul class="nav nav-pills">
+    <li class="nav-item"><a href="/controller?controller=cruiseInfo&id=${cRequest.cruise.id}" class="nav-link active" aria-current="page">
+        <fmt:message bundle="${bundle}" key="Cruise"/></a></li></ul>
+<h4><fmt:message bundle="${bundle}" key="Document" /></h4>
+ <img style="height:500px; width:500px"  alt="Document" src="images/${cRequest.photo}">
+<c:if test="${cRequest.cruise.freePlaces.get(cRequest.roomClass)>0}">
+    <form action="/controller" method="post">
+        <input type="hidden" name="controller" value="responseRequest">
+        <input type="hidden" name='response' value="true"/>
+        <input type="hidden" name="id" value="${cRequest.id}">
+        <button type="submit"><fmt:message bundle="${bundle}" key ="Accept"/></button>
+    </form>
+</c:if>
+<form action="/controller" method="post">
+    <input type="hidden" name="controller" value="responseRequest">
+    <input type="hidden"  name="id" value="${cRequest.id}">
+    <input type="hidden" name='response' value="false"/>
+    <button type="submit"><fmt:message bundle="${bundle}" key ="Decline"/></button>
+</form>
+<footer class="py-3 my-4" style=" position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 80px;">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToUA">
             <input type="hidden" name="prev"
-                   value="/?controller=requestInfo&id=${cRequest.id}">
+                   value="/controller?controller=requestInfo&id=${cRequest.id}">
             <li class="nav-item">
                 <button type="submit">Українська мова</button>
             </li>
         </form>
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToEn">
             <input type="hidden" name="prev"
-                   value="/?controller=requestInfo&id=${cRequest.id}">
+                   value="/controller?controller=requestInfo&id=${cRequest.id}">
             <li class="nav-item">
                 <button type="submit">English language</button>
             </li>

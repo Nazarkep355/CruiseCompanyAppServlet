@@ -23,9 +23,9 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">
                 <fmt:message bundle="${bundle}" key="Home"/></a></li>
-            <li class="nav-item"><a href="/?controller=cruises&freeOnly=true&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller?controller=cruises&freeOnly=true&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
-            <li class="nav-item"><a href="/?command=tickets&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller?command=tickets&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Tickets"/></a></li>
             <li class="nav-item"><form action="/"  method="post">
                 <input type="hidden" name="controller" value="signOut">
@@ -44,7 +44,7 @@
     </div>
 </div>
 <div style="min-height: 500px" class="col-md-10 mx-auto col-lg-5">
-    <form action="/" method="get" class="p-4 p-md-5 border rounded-3 bg-light">
+    <form action="/controller" method="get" class="p-4 p-md-5 border rounded-3 bg-light">
         <input type="hidden" value="chooseStaff" name="controller">
         <input type="hidden" value="0" name="current" >
         <input type="hidden" name="page" value="1" >
@@ -58,13 +58,13 @@
   width: 100%;
   height: 80px;">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToUA">
-            <input type="hidden" name="prev" value="/?controller=">
+            <input type="hidden" name="prev" value="/controller">
             <li class="nav-item"><button type="submit">Українська мова</button></li></form>
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToEn">
-            <input type="hidden" name="prev" value="/">
+            <input type="hidden" name="prev" value="/controller">
             <li class="nav-item"><button type="submit">English language</button></li></form>  </ul>
 </footer>
 </body>

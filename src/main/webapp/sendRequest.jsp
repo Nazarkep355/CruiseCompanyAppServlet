@@ -20,14 +20,14 @@
 <body>
 <header class="d-flex justify-content-center py-3">
     <ul class="nav nav-pills">
-        <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">
+        <li class="nav-item"><a href="/controller" class="nav-link active" aria-current="page">
             <fmt:message bundle="${bundle}" key="Home"/></a></li>
-        <li class="nav-item"><a href="/?controller=stations&page=1" class="nav-link">
+        <li class="nav-item"><a href="/controller?controller=stations&page=1" class="nav-link">
             <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
         <c:if test="${isLogged}">
-            <li class="nav-item"><a href="/?command=tickets&page=1"
+            <li class="nav-item"><a href="/controller?command=tickets&page=1"
                                     class="nav-link"><m:locale-tag key="Tickets"/></a></li>
-            <li class="nav-item"><form action="/"  method="post">
+            <li class="nav-item"><form action="/controller"  method="post">
                 <input type="hidden" name="controller" value="signOut">
                 <button type="submit" class="nav-link"><fmt:message bundle="${bundle}" key="SignOut"/>
                 </button></form></li></c:if>
@@ -46,7 +46,7 @@
     </div>
 </div>
 <div style="min-height: 600px" class="col-md-10 mx-auto col-lg-5">
-    <form action="/" enctype="multipart/form-data" method="post"
+    <form action="/controller" enctype="multipart/form-data" method="post"
           class="p-4 p-md-5 border rounded-3 bg-light">
         <input type="hidden" name="controller" value="sendRequest">
         <input type="hidden" name="id" value="${cruise.id}">
@@ -65,15 +65,15 @@
   width: 100%;
   height: 80px;">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToUA">
             <input type="hidden" name="prev"
-                   value="/?controller=sendRequestPage&id=${cruise.id}&room=${roomClass}">
+                   value="/controller?controller=sendRequestPage&id=${cruise.id}&room=${roomClass}">
             <li class="nav-item"><button type="submit">Українська мова</button></li></form>
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToEn">
             <input type="hidden" name="prev"
-                   value="/?controller=sendRequestPage&id=${cruise.id}&room=${roomClass}">
+                   value="/controller?controller=sendRequestPage&id=${cruise.id}&room=${roomClass}">
             <li class="nav-item"><button type="submit">English language</button></li></form>
     </ul>
 </footer>

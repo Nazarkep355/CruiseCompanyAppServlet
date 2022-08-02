@@ -24,9 +24,9 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">
                 <fmt:message bundle="${bundle}" key="Home"/></a></li>
-            <li class="nav-item"><a href="/?controller=stations&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller?controller=stations&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
-            <li class="nav-item"><a href="/?command=tickets&page=1" class="nav-link"><m:locale-tag key="Tickets"/></a></li>
+            <li class="nav-item"><a href="/controller?command=tickets&page=1" class="nav-link"><m:locale-tag key="Tickets"/></a></li>
             <li class="nav-item"><form action="/"  method="post">
                 <input type="hidden" name="controller" value="signOut">
                 <button type="submit" class="nav-link"><fmt:message bundle="${bundle}" key="SignOut"/>
@@ -43,12 +43,12 @@
         <ul class="pagination">
             <c:if test="${page>2}">
                 <li class="page-item"><a
-                        class="page-link" href="/?controller=chooseStaff&page=1&current=${current}&of=${of}">
+                        class="page-link" href="/controller?controller=chooseStaff&page=1&current=${current}&of=${of}">
                     <fmt:message bundle="${bundle}" key="goToFirstPage"/></a></li>
             </c:if>
             <c:if test="${page>1}">
                 <li class="page-item">
-                    <a class="page-link" href="/?controller=chooseStaff&page=${page-1}&current=${current}&of=${of}"
+                    <a class="page-link" href="/controller?controller=chooseStaff&page=${page-1}&current=${current}&of=${of}"
                        aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
@@ -56,16 +56,16 @@
             </c:if>
             <c:if test="${page>1}">
                 <li class="page-item"><a
-                        class="page-link" href="/?controller=chooseStaff&page=${page-1}&current=${current}&of=${of}"
+                        class="page-link" href="/controller?controller=chooseStaff&page=${page-1}&current=${current}&of=${of}"
                 >${page-1}</a></li>
             </c:if>
 
             <li class="page-item"><a
-                    class="page-link" href="/?controller=chooseStaff&page=${page}&current=${current}&of=${of}">${page}</a></li>
+                    class="page-link" href="/controller?controller=chooseStaff&page=${page}&current=${current}&of=${of}">${page}</a></li>
             <li class="page-item"><a
-                    class="page-link" href="/?controller=chooseStaff&page=${page+1}&current=${current}&of=${of}">${page+1}</a></li>
+                    class="page-link" href="/controller?controller=chooseStaff&page=${page+1}&current=${current}&of=${of}">${page+1}</a></li>
             <li class="page-item">
-                <a class="page-link" href="/?controller=chooseStaff&page=${page+1}&current=${current}&of=${of}" aria-label="Next">
+                <a class="page-link" href="/controller?controller=chooseStaff&page=${page+1}&current=${current}&of=${of}" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
             </li>
@@ -79,7 +79,7 @@
     </thead>
     <tbody>
     <c:forEach items="${staff}" var="staf">
-        <tr style="table-layout: fixed" onclick="location.replace('/?controller=chooseStaff&page=${page}&current=${current+1}&of=${of}&id=${staf.id}')" >
+        <tr style="table-layout: fixed" onclick="location.replace('/controller?controller=chooseStaff&page=${page}&current=${current+1}&of=${of}&id=${staf.id}')" >
             <td scope="row">${staf.name}</td>
             <td scope="row">${staf.position}</td>
     </c:forEach>
@@ -91,13 +91,13 @@
   width: 100%;
   height: 80px;">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToUA">
-            <input type="hidden" name="prev" value="/?controller=chooseStaff&page=${page}&current=${current}&of=${of}">
+            <input type="hidden" name="prev" value="/controller?controller=chooseStaff&page=${page}&current=${current}&of=${of}">
             <li class="nav-item"><button type="submit">Українська мова</button></li></form>
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToEn">
-            <input type="hidden" name="prev" value="/?controller=chooseStaff&page=${page}&current=${current}&of=${of}">
+            <input type="hidden" name="prev" value="/controller?controller=chooseStaff&page=${page}&current=${current}&of=${of}">
             <li class="nav-item"><button type="submit">English language</button></li></form>
     </ul>
 </footer>

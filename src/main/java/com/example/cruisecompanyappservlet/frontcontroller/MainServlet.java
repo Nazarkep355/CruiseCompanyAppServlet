@@ -12,7 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
-@WebServlet("/")
+@WebServlet("/controller")
 @MultipartConfig(
         fileSizeThreshold = 1024 * 1024 * 1, // 1 MB
         maxFileSize = 1024 * 1024 * 10,      // 10 MB
@@ -41,6 +41,7 @@ public class MainServlet extends HttpServlet {
         controllers.put("sendRequest",new SendRequestController());
         controllers.put("requests",new RequestsController());
         controllers.put("requestInfo",new InfoAboutRequestController());
+        controllers.put("responseRequest",new ResponseRequestController());
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

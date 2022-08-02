@@ -20,14 +20,14 @@
 <div class="container">
     <header class="d-flex justify-content-center py-3">
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="/" class="nav-link active" aria-current="page"><fmt:message key="Home" bundle="${bundle}"/></a></li>
-            <li class="nav-item"><a href="/?controller=cruises&freeOnly=true&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller" class="nav-link active" aria-current="page"><fmt:message key="Home" bundle="${bundle}"/></a></li>
+            <li class="nav-item"><a href="/controller?controller=cruises&freeOnly=true&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li> </ul>
     </header>
 </div>
 
 <div class="col-md-10 mx-auto col-lg-5">
-    <form action="/" method="post" class="p-4 p-md-5 border rounded-3 bg-light">
+    <form action="/controller" method="post" class="p-4 p-md-5 border rounded-3 bg-light">
         <input name="controller" type="hidden" value="register">
         <div class="form-floating mb-3">
             <input type="text" required="required" name="email" class="form-control" id="floatingInput" placeholder="name@example.com"
@@ -60,13 +60,13 @@
   width: 100%;
   height: 80px;">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToUA">
-            <input type="hidden" name="prev" value="/?controller=registerPage">
+            <input type="hidden" name="prev" value="/controller?controller=registerPage">
             <li class="nav-item"><button type="submit">Українська мова</button></li></form>
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToEn">
-            <input type="hidden" name="prev" value="/?controller=registerPage">
+            <input type="hidden" name="prev" value="/controller?controller=registerPage">
             <li class="nav-item"><button type="submit">English language</button></li></form>
     </ul>
 </footer>

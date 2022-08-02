@@ -1,5 +1,6 @@
 package com.example.cruisecompanyappservlet.util;
 
+import com.example.cruisecompanyappservlet.entity.CruiseRequest;
 import com.example.cruisecompanyappservlet.entity.Protocol;
 
 import javax.ejb.LocalBean;
@@ -101,5 +102,27 @@ public class EmailSessionBean {
         message.setText(body);
         Transport.send(message);
 
+    }
+    public void sendMessageAboutAccepting(CruiseRequest request) throws MessagingException {
+        StringBuilder message = new StringBuilder();
+        message.append("Hello, ").append(request.getSender().getName()+". Your request on cruise ")
+                .append(request.getCruise().getRoute().routeToString() +" on "+
+                        request.getCruise().getSchedule().get(request.getCruise().getRoute().getPorts().get(0)))
+                .append(" was just accepted. So your account balance was changed." +
+                        " If you didn't have enough money on the balance. " +
+                        "We recommend you to add some until your balance will equal or more then 0." +
+                        " Ticket about cruise was added to your account. You can check in 'Tickets' section." +
+                        "Have a nice day. ");
+        String subject = "Your request about cruise was accepted";
+        sendEmail(request.getSender().getEmail(),subject,message.toString());
+    }
+    public void sendMessageAboutRefusing(CruiseRequest request) throws MessagingException {
+        StringBuilder message = new StringBuilder();
+        message.append("Hello, ").append(request.getSender().getName()+". Your request on cruise ")
+                .append(request.getCruise().getRoute().routeToString() +" on "+
+                        request.getCruise().getSchedule().get(request.getCruise().getRoute().getPorts().get(0)))
+                .append(" was just refused. We are sorry, but we can't explain you details");
+        String subject = "Your request about cruise was refused";
+        sendEmail(request.getSender().getEmail(),subject,message.toString());
     }
 }

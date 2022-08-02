@@ -47,7 +47,10 @@ public class locale_ua extends ListResourceBundle {
             {"Class","Клас"},
             {"Request","Запит"},
             {"UserBalance","Баланс корустувача"},
-            {"Document","Документ"}
+            {"Document","Документ"},
+            {"Accept","Прийняти запит"},
+            {"Cruise","Круїз"},
+            {"Decline","Відхилити"}
 
 
     };

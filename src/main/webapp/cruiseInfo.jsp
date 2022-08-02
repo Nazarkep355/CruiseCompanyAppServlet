@@ -22,11 +22,11 @@
 
 <header class="d-flex justify-content-center py-3">
     <ul class="nav nav-pills">
-        <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">
+        <li class="nav-item"><a href="/controller" class="nav-link active" aria-current="page">
             <fmt:message bundle="${bundle}" key="Home"/></a></li>
-        <li class="nav-item"><a href="/?controller=stations&page=1" class="nav-link">
+        <li class="nav-item"><a href="/controller?controller=stations&page=1" class="nav-link">
             <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
-        <c:if test="${isLogged}">    <li class="nav-item"><a href="/?command=tickets&page=1" class="nav-link"><m:locale-tag key="Tickets"/></a></li>
+        <c:if test="${isLogged}">    <li class="nav-item"><a href="/controller?command=tickets&page=1" class="nav-link"><m:locale-tag key="Tickets"/></a></li>
         <li class="nav-item"><form action="/"  method="post">
             <input type="hidden" name="controller" value="signOut">
             <button type="submit" class="nav-link"><fmt:message bundle="${bundle}" key="SignOut"/>
@@ -51,17 +51,17 @@
     <div style="margin-left: 50px">
         <h5><i style="color: red">Premium</i> <fmt:message bundle="${bundle}" key="Cost"/>:  ${cruise.getCostPremium()} </h5>
         <h5><fmt:message bundle="${bundle}" key='FreePlaces'/>: ${cruise.freePlaces.get(RoomClass.PREMIUM)}</h5>
-        <c:if test="${isLogged}"><a href="/?controller=sendRequestPage&id=${cruise.id}&room=PREMIUM">buy Premium</a></c:if>
+        <c:if test="${isLogged}"><a href="/controller?controller=sendRequestPage&id=${cruise.id}&room=PREMIUM">buy Premium</a></c:if>
     </div>
     <div style="margin-left: 50px">
         <h5><i style="color: darkblue">MIDDLE</i> <fmt:message bundle="${bundle}" key="Cost"/>:  ${cruise.getCostMiddle()} </h5>
         <h5><fmt:message bundle="${bundle}" key='FreePlaces'/>: ${cruise.freePlaces.get(RoomClass.MIDDLE)}</h5>
-        <c:if test="${isLogged}"><a href="/?controller=sendRequestPage&id=${cruise.id}&room=MIDDLE">buy MIDDLE</a></c:if>
+        <c:if test="${isLogged}"><a href="/controller?controller=sendRequestPage&id=${cruise.id}&room=MIDDLE">buy MIDDLE</a></c:if>
     </div>
     <div style="margin-left: 50px">
         <h5><i style="color: gray">ECONOM</i> <fmt:message bundle="${bundle}" key="Cost"/>:  ${cruise.getCostEconom()} </h5>
         <h5><fmt:message bundle="${bundle}" key='FreePlaces'/>: ${cruise.freePlaces.get(RoomClass.ECONOM)}</h5>
-        <c:if test="${isLogged}"><a href="/?controller=sendRequestPage&id=${cruise.id}&room=ECONOM">buy ECONOM</a></c:if>
+        <c:if test="${isLogged}"><a href="/controller?controller=sendRequestPage&id=${cruise.id}&room=ECONOM">buy ECONOM</a></c:if>
     </div>
     <table class="table table-striped table-hover ms-5 " style="max-width: 500px">
         <thead>
@@ -97,7 +97,7 @@
 <%--        </form>--%>
 <%--    </c:if>--%>
 <%--    <c:if test="${station1!=null}">--%>
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input name="command" type="hidden" value="buyOne">
             <input type="hidden" name="from" value="${station1}">
             <input type="hidden" name="to" value="${station2}">
@@ -116,15 +116,15 @@
   width: 100%;
   height: 80px;">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToUA">
             <input type="hidden" name="prev"
-                   value="/?controller=cruiseInfo&id=${cruise.id}">
+                   value="/controller?controller=cruiseInfo&id=${cruise.id}">
               <li class="nav-item"><button type="submit">Українська мова</button></li></form>
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToEn">
             <input type="hidden" name="prev"
-                   value="/?controller=cruiseInfo&id=${cruise.id}">
+                   value="/controller?controller=cruiseInfo&id=${cruise.id}">
             <li class="nav-item"><button type="submit">English language</button></li></form>
     </ul>
 </footer>

@@ -43,7 +43,7 @@ public class SendRequestController implements Controller {
             throw new RuntimeException(e);
         }
 
-        return "/";
+        return "/controller";
     }
 
     @Override

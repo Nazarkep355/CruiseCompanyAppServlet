@@ -43,6 +43,13 @@ public class Cruise {
     public Route getRoute() {
         return route;
     }
+    public int getCostByClass(RoomClass roomClass){
+        if(roomClass==RoomClass.ECONOM)
+            return costEconom;
+        if(roomClass==RoomClass.MIDDLE)
+            return costMiddle;
+        else return costPremium;
+    }
 
     public void setRoute(Route route) {
         this.route = route;

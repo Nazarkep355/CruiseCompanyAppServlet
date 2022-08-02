@@ -19,7 +19,7 @@ public class UserDAO {
     private static String SELECT_USER_BY_EMAIL = "SELECT * FROM users WHERE email = ?";
     private static String INSERT_USER = "INSERT INTO users VALUES(default,?,?,?,0,0)";
     private static String UPDATE_USER_BY_ID = "UPDATE users SET email = ?," +
-            " password = ?,name = ?, money = ?, type = ?";
+            " password = ?,name = ?, money = ?, type = ? WHERE id = ?";
 
     public List<User> findAll() throws DAOException {
         List<User> users = new ArrayList<>();

@@ -13,7 +13,7 @@ public class SignOutController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DAOException {
         request.getSession().setAttribute("user",null);
         System.out.println("singedOut");
-        return "/";
+        return "/controller";
     }
 
     @Override

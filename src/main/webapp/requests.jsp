@@ -19,15 +19,15 @@
 <div class="container">
     <header class="d-flex justify-content-center py-3">
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="/" class="nav-link active" aria-current="page">
+            <li class="nav-item"><a href="/controller" class="nav-link active" aria-current="page">
                 <fmt:message bundle="${bundle}" key="Home"/></a></li>
-            <li class="nav-item"><a href="/?controller=cruises&freeOnly=true&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller?controller=cruises&freeOnly=true&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
             <%--        <li class="nav-item"><a href="/?command=tickets&page=1" class="nav-link">--%>
             <%--            <fmt:message bundle="${bundle}" key="Tickets"/></a></li>--%>
             <c:if test="${isLogged}">
                 <li class="nav-item">
-                    <form action="/" method="post">
+                    <form action="/controller" method="post">
                         <input type="hidden" name=" " value="signOut">
                         <button type="submit" class="nav-link"><fmt:message bundle="${bundle}" key="SignOut"/></button>
                     </form>
@@ -49,13 +49,13 @@
             <c:if test="${page>2}">
                 <li class="page-item"><a
                         class="page-link"
-                        href="/?controller=requests&page=1&status=${status}&cruise=${id}">
+                        href="/controller?controller=requests&page=1&status=${status}&cruise=${id}">
                     <fmt:message bundle="${bundle}" key="goToFirstPage"/></a></li>
             </c:if>
             <c:if test="${page>1}">
                 <li class="page-item">
                     <a class="page-link"
-                       href="/?controller=requests&page=${page-1}&status=${status}&cruise=${id}"
+                       href="/controller?controller=requests&page=${page-1}&status=${status}&cruise=${id}"
                        aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
@@ -64,21 +64,21 @@
             <c:if test="${page>1}">
                 <li class="page-item"><a
                         class="page-link"
-                        href="/?controller=requests&page=${page-1}&status=${status}&cruise=${id}"
+                        href="/controller?controller=requests&page=${page-1}&status=${status}&cruise=${id}"
                 >${page-1}</a></li>
             </c:if>
 
             <li class="page-item"><a
                     class="page-link"
-                    href="/?controller=requests&page=${page}&status=${status}&cruise=${id}">${page}</a>
+                    href="/controller?controller=requests&page=${page}&status=${status}&cruise=${id}">${page}</a>
             </li>
             <li class="page-item"><a
                     class="page-link"
-                    href="/?controller=requests&page=${page+1}&status=${status}&cruise=${id}">${page+1}</a>
+                    href="/controller?controller=requests&page=${page+1}&status=${status}&cruise=${id}">${page+1}</a>
             </li>
             <li class="page-item">
                 <a class="page-link"
-                   href="/?controller=requests&page=${page+1}&status=${status}&cruise=${id}"
+                   href="/controller?controller=requests&page=${page+1}&status=${status}&cruise=${id}"
                    aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
@@ -94,7 +94,7 @@
     </thead>
     <tbody>
     <c:forEach items="${requests}" var="r">
-        <tr style="table-layout: fixed" onclick="location.replace('/?controller=requestInfo&id=${r.id}')">
+        <tr style="table-layout: fixed" onclick="location.replace('/controller?controller=requestInfo&id=${r.id}')">
             <td scope="row">${r.status.name()}</td>
             <td scope="row">${r.roomClass.name()}</td>
             <td scope="row" style="max-height: 40px;max-width: 300px;overflow: auto"
@@ -110,18 +110,18 @@
   width: 100%;
   height: 80px;">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToUA">
             <input type="hidden" name="prev"
-                   value="/?controller=requests&page=${page}&status=${status}&cruise=${cruise.id}">
+                   value="/controller?controller=requests&page=${page}&status=${status}&cruise=${cruise.id}">
             <li class="nav-item">
                 <button type="submit">Українська мова</button>
             </li>
         </form>
-        <form action="/" method="post">
+        <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToEn">
             <input type="hidden" name="prev"
-                   value="/?controller=requests&page=${page}&status=${status}&cruise=${cruise.id}">
+                   value="/controller?controller=requests&page=${page}&status=${status}&cruise=${cruise.id}">
             <li class="nav-item">
                 <button type="submit">English language</button>
             </li>
