@@ -26,17 +26,20 @@ public class CruiseDAO {
             " BY id DESC LIMIT ? OFFSET ?";
     private static final String SELECT_CRUISE_BY_ID = "SELECT * FROM cruises WHERE id = ?";
     private static final String SELECT_CRUISE_ACTUAL = "SELECT * FROM cruises WHERE " +
-            "departure> now() ORDER BY id DESC LIMIT ? OFFSET ?";
+            "departure > now() ORDER BY id DESC LIMIT ? OFFSET ?";
     private static final String SELECT_CRUISE_WITH_FREE_PLACES_PAGINATED = "SELECT * FROM cruises WHERE " +
-            "departure> now() AND premium @> ARRAY[false] " +
-            "OR middle @> ARRAY[false] OR econom @> ARRAY[false]" +
+            "departure> now() AND (premium @> ARRAY[false] " +
+            "OR middle @> ARRAY[false] OR econom @> ARRAY[false])" +
             " ORDER BY id LIMIT ? OFFSET ?";
-    private static final String SELECT_CRUISE_BY_CITY = "SELECT distinct c.id,c.route, c.departure, c.cost, c.econom," +
+    private static final String SELECT_CRUISE_BY_CITY = "SELECT distinct c.id,c.route, c.departure, " +
+            "c.costeconom, c.costmiddle, c.costpremium, c.seats , c.econom," +
             "                c.middle, c.premium, c.staff, c.status  FROM cruises c," +
-            "                ports p, routes r WHERE departure> now() AND premium @> ARRAY[false]" +
-            "                        OR middle @> ARRAY[false] OR econom @> ARRAY[false]" +
-            "                        AND c.route =r.id AND r.ports @> ARRAY[p.id] AND p.city LIKE  '%' || ? || '%' LIMIT ? OFFSET ?";
-    private final static String INSERT_CRUISE = "INSERT INTO cruises VALUES(default,?,?,?,?,?,?,'WAITING',?,?,?,?)";
+            "                ports p, routes r WHERE c.departure > now()" +
+            "  AND premium @> ARRAY [false]  AND c.route =r.id AND r.ports @> ARRAY [p.id]" +
+            " AND p.city LIKE '%' || ? || '%' AND( middle @> ARRAY [false] " +
+            "OR econom @> ARRAY [false]) LIMIT ? OFFSET ?";
+    private final static String INSERT_CRUISE = "INSERT INTO cruises VALUES(default,?,?,?,?,?,?," +
+            "'WAITING',?,?,?,?)";
     private final static String UPDATE_CRUISE = "UPDATE cruises SET route =?, departure= ?, " +
             "costeconom = ?, staff = ?, premium = ?, econom = ?, middle = ?, status = ?, seats =?" +
             ", costmiddle = ?, costpremium = ? WHERE id = ?";

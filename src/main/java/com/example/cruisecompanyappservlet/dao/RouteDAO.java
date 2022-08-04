@@ -22,6 +22,7 @@ public class RouteDAO {
     private static final String SELECT_BY_ID = "SELECT * FROM routes WHERE id = ?";
     private static final String SELECT_PAGINATED_ROUTES_ORDER_BY_ID = "SELECT * FROM routes " +
             "ORDER BY id LIMIT ? OFFSET ?";
+
     private static final String UPDATE_ROUTES = "UPDATE routes SET ports = ?, " +
             "delays = ? WHERE id =?";
     private static final String INSERT_ROUTES = "INSERT INTO routes VALUES(default,?,?)";

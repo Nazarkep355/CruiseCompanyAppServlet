@@ -26,8 +26,11 @@
             <fmt:message bundle="${bundle}" key="Home"/></a></li>
         <li class="nav-item"><a href="/controller?controller=stations&page=1" class="nav-link">
             <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
-        <c:if test="${isLogged}">    <li class="nav-item"><a href="/controller?command=tickets&page=1" class="nav-link"><m:locale-tag key="Tickets"/></a></li>
-        <li class="nav-item"><form action="/"  method="post">
+        <c:if test="${isLogged}">  <li class="nav-item"><a
+                href="/controller?controller=tickets&page=1"
+                                                           class="nav-link">
+            <fmt:message bundle="${bundle}" key="Tickets"/></a></li>
+        <li class="nav-item"><form action="/controller"  method="post">
             <input type="hidden" name="controller" value="signOut">
             <button type="submit" class="nav-link"><fmt:message bundle="${bundle}" key="SignOut"/>
             </button></form></li></c:if>
@@ -41,27 +44,20 @@
 <hr>
 
 <div style="min-height: 70%">
-<%--    <c:if test='${requestScope.get("error")!=null&&requestScope.get("error").equals("notEnoughFunds")}'>--%>
-<%--        <small class = "text-muted" style="margin-left: 40%"><m:locale-tag key="notEnoughFunds"/></small>--%>
-<%--    </c:if>--%>
-
-<%--    <c:if test='${requestScope.get("error")!=null&&requestScope.get("error").equals("NoFreeSeats")}'>--%>
-<%--        <small class = "text-muted" style="margin-left: 40%"><m:locale-tag key="NoFreeSeats"/></small>--%>
-<%--    </c:if>--%>
     <div style="margin-left: 50px">
         <h5><i style="color: red">Premium</i> <fmt:message bundle="${bundle}" key="Cost"/>:  ${cruise.getCostPremium()} </h5>
         <h5><fmt:message bundle="${bundle}" key='FreePlaces'/>: ${cruise.freePlaces.get(RoomClass.PREMIUM)}</h5>
-        <c:if test="${isLogged}"><a href="/controller?controller=sendRequestPage&id=${cruise.id}&room=PREMIUM">buy Premium</a></c:if>
+        <c:if test="${isLogged&&cruise.freePlaces.get(RoomClass.PREMIUM)>0}"><a href="/controller?controller=sendRequestPage&id=${cruise.id}&room=PREMIUM">buy Premium</a></c:if>
     </div>
     <div style="margin-left: 50px">
         <h5><i style="color: darkblue">MIDDLE</i> <fmt:message bundle="${bundle}" key="Cost"/>:  ${cruise.getCostMiddle()} </h5>
         <h5><fmt:message bundle="${bundle}" key='FreePlaces'/>: ${cruise.freePlaces.get(RoomClass.MIDDLE)}</h5>
-        <c:if test="${isLogged}"><a href="/controller?controller=sendRequestPage&id=${cruise.id}&room=MIDDLE">buy MIDDLE</a></c:if>
+        <c:if test="${isLogged&&cruise.freePlaces.get(RoomClass.MIDDLE)>0}"><a href="/controller?controller=sendRequestPage&id=${cruise.id}&room=MIDDLE">buy MIDDLE</a></c:if>
     </div>
     <div style="margin-left: 50px">
         <h5><i style="color: gray">ECONOM</i> <fmt:message bundle="${bundle}" key="Cost"/>:  ${cruise.getCostEconom()} </h5>
         <h5><fmt:message bundle="${bundle}" key='FreePlaces'/>: ${cruise.freePlaces.get(RoomClass.ECONOM)}</h5>
-        <c:if test="${isLogged}"><a href="/controller?controller=sendRequestPage&id=${cruise.id}&room=ECONOM">buy ECONOM</a></c:if>
+        <c:if test="${isLogged&&cruise.freePlaces.get(RoomClass.ECONOM)>0}"><a href="/controller?controller=sendRequestPage&id=${cruise.id}&room=ECONOM">buy ECONOM</a></c:if>
     </div>
     <table class="table table-striped table-hover ms-5 " style="max-width: 500px">
         <thead>

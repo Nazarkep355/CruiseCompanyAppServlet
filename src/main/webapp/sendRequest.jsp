@@ -25,8 +25,8 @@
         <li class="nav-item"><a href="/controller?controller=stations&page=1" class="nav-link">
             <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
         <c:if test="${isLogged}">
-            <li class="nav-item"><a href="/controller?command=tickets&page=1"
-                                    class="nav-link"><m:locale-tag key="Tickets"/></a></li>
+            <li class="nav-item"><a href="/controller?controller=tickets&page=1" class="nav-link">
+                <fmt:message bundle="${bundle}" key="Tickets"/></a></li>
             <li class="nav-item"><form action="/controller"  method="post">
                 <input type="hidden" name="controller" value="signOut">
                 <button type="submit" class="nav-link"><fmt:message bundle="${bundle}" key="SignOut"/>
@@ -48,7 +48,9 @@
 <div style="min-height: 600px" class="col-md-10 mx-auto col-lg-5">
     <form action="/controller" enctype="multipart/form-data" method="post"
           class="p-4 p-md-5 border rounded-3 bg-light">
-        <input type="hidden" name="controller" value="sendRequest">
+        <c:if test="${error!=null&&error.equals('NoFreePlaces')}"><small class="text-muted" style="text-align: center;color: red" >
+            <fmt:message bundle="${bundle}" key="NoFreePlaces"/>  </small>
+        </c:if> <input type="hidden" name="controller" value="sendRequest">
         <input type="hidden" name="id" value="${cruise.id}">
         <input type="hidden" name="roomClass" value="${roomClass}">
         <div class="mb-3">

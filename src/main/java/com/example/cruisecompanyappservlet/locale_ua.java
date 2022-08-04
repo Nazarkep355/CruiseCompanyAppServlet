@@ -29,33 +29,48 @@ public class locale_ua extends ListResourceBundle {
             {"goToFirstPage", "Перейти до першої сторінки"},
             {"ChangeMoney", "Змінити кіслькість коштів"},
             {"PlanCruise", "Запланувати круїз"},
-            {"EnterCapacity","Введіть кількість"},
-            {"seats","місць"},
-            {"ChooseRoute","Оберіть маршрут"},
-            {"Id","Ідентифікатор"},
-            {"ChooseStaff","Обрати екіпаж"},
-            {"Name","Ім'я"},
-            {"Position","Посада"},
-            {"EnterCostFor","Введіть ціну для"},
-            {"CruiseInfo","Інформація про круїз"},
-            {"FreePlaces","Вільні місця"},
-            {"City","Місто"},
+            {"EnterCapacity", "Введіть кількість"},
+            {"seats", "місць"},
+            {"ChooseRoute", "Оберіть маршрут"},
+            {"Id", "Ідентифікатор"},
+            {"ChooseStaff", "Обрати екіпаж"},
+            {"Name", "Ім'я"},
+            {"Position", "Посада"},
+            {"EnterCostFor", "Введіть ціну для"},
+            {"CruiseInfo", "Інформація про круїз"},
+            {"FreePlaces", "Вільні місця"},
+            {"City", "Місто"},
             {"SendRequest", "Надіслати запит"},
-            {"ChooseDoc","Будь ласка, оберіть документ"},
-            {"Requests","Запити"},
-            {"Status","Статус"},
-            {"Class","Клас"},
-            {"Request","Запит"},
-            {"UserBalance","Баланс корустувача"},
-            {"Document","Документ"},
-            {"Accept","Прийняти запит"},
-            {"Cruise","Круїз"},
-            {"Decline","Відхилити"}
+            {"ChooseDoc", "Будь ласка, оберіть документ"},
+            {"Requests", "Запити"},
+            {"Status", "Статус"},
+            {"Class", "Клас"},
+            {"Request", "Запит"},
+            {"UserBalance", "Баланс корустувача"},
+            {"Document", "Документ"},
+            {"Accept", "Прийняти запит"},
+            {"Cruise", "Круїз"},
+            {"Decline", "Відхилити"},
+            {"Tickets", "Квитки"},
+            {"ReturningDate", "Дата повернення"},
+            {"ActualOnly", "Тільки актуальні"},
+            {"OnlyFreePlaces", "Тільки де є вільні місця"},
+            {"Find", "Знайти"},
+            {"NoFreePlaces", "Немає вільних місць"},
+            {"AddPort", "Додати порт"},
+            {"EnterCity", "Введіть місто"},
+            {"PortInDB","Порт вже в базі"},
+            {"CreateRoute","Створити маршрут"},
+            {"PortNotFound","Порт не знайдено"},
+            {"NumberOfPorts","Кількість портів"},
+            {"EnterDelay","Введіть час поїздки"},
+            {"Ports","Порти"}
 
 
     };
-@Override
-protected Object[][]getContents(){
+
+    @Override
+    public Object[][] getContents() {
         return contents;
-        }
-        }
+    }
+}

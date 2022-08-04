@@ -23,7 +23,8 @@
         <fmt:message bundle="${bundle}" key="Home"/></a></li>
       <li class="nav-item"><a href="/controller?controller=stations&page=1" class="nav-link">
         <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
-      <li class="nav-item"><a href="/controller?command=tickets&page=1" class="nav-link"><m:locale-tag key="Tickets"/></a></li>
+      <li class="nav-item"><a href="/controller?controller=tickets&page=1" class="nav-link">
+        <fmt:message bundle="${bundle}" key="Tickets"/></a></li>
       <li class="nav-item"><form action="/controller"  method="post">
         <input type="hidden" name="controller" value="signOut">
         <button type="submit" class="nav-link"><fmt:message bundle="${bundle}" key="SignOut"/>

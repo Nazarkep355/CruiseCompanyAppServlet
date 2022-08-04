@@ -22,14 +22,9 @@ public class InfoAboutRequestController implements Controller {
         long id = Long.parseLong(request.getParameter("id"));
         CruiseRequest cruiseRequest = cruiseRequestService.findById(id);
         Cruise cruise = cruiseRequest.getCruise();
-        if(cruiseRequest.getRoomClass()== RoomClass.PREMIUM)
-            request.setAttribute("cost",cruise.getCostPremium());
-        if(cruiseRequest.getRoomClass()== RoomClass.MIDDLE)
-            request.setAttribute("cost",cruise.getCostMiddle());
-        if(cruiseRequest.getRoomClass()== RoomClass.ECONOM)
-            request.setAttribute("cost",cruise.getCostEconom());
+        int cost = cruise.getCostByClass(cruiseRequest.getRoomClass());
+        request.setAttribute("cost",cost);
         request.setAttribute("cRequest",cruiseRequest);
-        System.out.println(cruiseRequest);
         return "requestInfo.jsp";
     }
 

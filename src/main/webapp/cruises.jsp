@@ -23,11 +23,11 @@
                 <fmt:message bundle="${bundle}" key="Home"/></a></li>
             <li class="nav-item"><a href="/controller?controller=cruises&freeOnly=true&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
-            <%--        <li class="nav-item"><a href="/?command=tickets&page=1" class="nav-link">--%>
-            <%--            <fmt:message bundle="${bundle}" key="Tickets"/></a></li>--%>
             <c:if test="${isLogged}">
+                <li class="nav-item"><a href="/controller?controller=tickets&page=1" class="nav-link">
+                    <fmt:message bundle="${bundle}" key="Tickets"/></a></li>
                 <li class="nav-item">
-                    <form action="/" method="post">
+                    <form action="/controller" method="post">
                         <input type="hidden" name=" " value="signOut">
                         <button type="submit" class="nav-link"><fmt:message bundle="${bundle}" key="SignOut"/></button>
                     </form>
@@ -40,6 +40,27 @@
     </header>
 </div>
 <hr>
+<form action="/controller" method="get" class="row gx-3 gy-2 align-items-center mx-auto">
+    <input type="hidden" name="page" value="1">
+    <input type="hidden" name="controller" value="cruises">
+    <div class="col-sm-3">
+        <label class="visually-hidden" for="City">Name</label>
+        <input type="text" name="city" class="form-control"  id="City"
+               placeholder="<fmt:message bundle="${bundle}" key="City"/>">
+    </div>
+    <div>
+    <input type="checkbox" name="freeOnly" class="form-check-input mt-0" id="freeOnly">
+    <label for="freeOnly"><fmt:message bundle="${bundle}" key="OnlyFreePlaces"/></label>
+    </div>
+    <div>
+    <input type="checkbox" name="actual" class="form-check-input mt-0" id="actualOnly">
+    <label for="actualOnly"><fmt:message bundle="${bundle}" key="ActualOnly"/></label>
+    </div>
+    <div class="col-sm-3">
+        <button type="submit" class="btn btn-primary" ><fmt:message bundle="${bundle}" key="Find"/></button>
+    </div>
+</form>
+
 <table class="table table-striped table-hover" style="table-layout: fixed;text-overflow: clip">
     <nav style="margin-left: 47%" aria-label="Page navigation example">
         <ul class="pagination">

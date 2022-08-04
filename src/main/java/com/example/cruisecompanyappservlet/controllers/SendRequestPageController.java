@@ -2,9 +2,11 @@ package com.example.cruisecompanyappservlet.controllers;
 
 import com.example.cruisecompanyappservlet.dao.DAOException;
 import com.example.cruisecompanyappservlet.entity.Cruise;
+import com.example.cruisecompanyappservlet.entity.RoomClass;
 import com.example.cruisecompanyappservlet.frontcontroller.AccessLevel;
 import com.example.cruisecompanyappservlet.frontcontroller.Controller;
 import com.example.cruisecompanyappservlet.service.CruiseService;
+import com.example.cruisecompanyappservlet.util.RequestReader;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,16 +18,11 @@ public class SendRequestPageController implements Controller {
     }
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DAOException {
+        RequestReader.setError(request);
         long id = Long.parseLong(request.getParameter("id"));
-        String roomClass = request.getParameter("room");
-        System.out.println(roomClass);
+        RoomClass roomClass = RoomClass.valueOf(request.getParameter("room"));
         Cruise cruise = cruiseService.findById(id);
-        if(roomClass.equalsIgnoreCase("PREMIUM"))
-            request.setAttribute("cost",cruise.getCostPremium());
-        if(roomClass.equalsIgnoreCase("MIDDLE"))
-            request.setAttribute("cost",cruise.getCostMiddle());
-        if(roomClass.equalsIgnoreCase("ECONOM"))
-            request.setAttribute("cost",cruise.getCostEconom());
+        request.setAttribute("cost",cruise.getCostByClass(roomClass));
         request.setAttribute("roomClass",roomClass);
         request.setAttribute("cruise",cruise);
         return "sendRequest.jsp";

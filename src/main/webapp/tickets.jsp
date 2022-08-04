@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Quant
-  Date: 01.08.2022
-  Time: 14:23
+  Date: 03.08.2022
+  Time: 20:36
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
@@ -12,7 +12,7 @@
 <fmt:setLocale value='${sessionScope.get("locale")}'/>
 <fmt:setBundle basename='com.example.cruisecompanyappservlet.locale' var="bundle"/>
 <head>
-    <title><fmt:message bundle="${bundle}" key="Requests"/></title>
+    <title><fmt:message bundle="${bundle}" key="Tickets"/></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -40,22 +40,19 @@
     </header>
 </div>
 <hr>
-
-
-
 <table class="table table-striped table-hover" style="table-layout: fixed;text-overflow: clip">
     <nav style="margin-left: 47%" aria-label="Page navigation example">
         <ul class="pagination">
             <c:if test="${page>2}">
                 <li class="page-item"><a
                         class="page-link"
-                        href="/controller?controller=requests&page=1&status=${status}&cruise=${id}">
+                        href="/controller?controller=tickets&page=1">
                     <fmt:message bundle="${bundle}" key="goToFirstPage"/></a></li>
             </c:if>
             <c:if test="${page>1}">
                 <li class="page-item">
                     <a class="page-link"
-                       href="/controller?controller=requests&page=${page-1}&status=${status}&cruise=${id}"
+                       href="/controller?controller=tickets&page=${page-1}"
                        aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </a>
@@ -64,21 +61,21 @@
             <c:if test="${page>1}">
                 <li class="page-item"><a
                         class="page-link"
-                        href="/controller?controller=requests&page=${page-1}&status=${status}&cruise=${id}"
+                        href="//controller?controller=tickets&page=${page-1}"
                 >${page-1}</a></li>
             </c:if>
 
             <li class="page-item"><a
                     class="page-link"
-                    href="/controller?controller=requests&page=${page}&status=${status}&cruise=${id}">${page}</a>
+                    href="/controller?controller=tickets&page=${page}">${page}</a>
             </li>
             <li class="page-item"><a
                     class="page-link"
-                    href="/controller?controller=requests&page=${page+1}&status=${status}&cruise=${id}">${page+1}</a>
+                    href="/controller?controller=tickets&page=${page+1}">${page+1}</a>
             </li>
             <li class="page-item">
                 <a class="page-link"
-                   href="/controller?controller=requests&page=${page+1}&status=${status}&cruise=${id}"
+                   href="/controller?controller=tickets&page=${page+1}"
                    aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                 </a>
@@ -87,19 +84,21 @@
     </nav>
     <thead>
     <tr>
-        <th scope="col"><fmt:message bundle="${bundle}" key="Status"/></th>
+        <th scope="col"><fmt:message bundle="${bundle}" key="DepartureDate"/></th>
         <th scope="col"><fmt:message bundle="${bundle}" key="Class"/></th>
         <th scope="col"><fmt:message bundle="${bundle}" key="Route"/></th>
+        <th scope="col"><fmt:message bundle="${bundle}" key="ReturningDate"/></th>
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${requests}" var="r">
-        <tr style="table-layout: fixed" onclick="location.replace('/controller?controller=requestInfo&id=${r.id}')">
-            <td scope="row">${r.status.name()}</td>
-            <td scope="row">${r.roomClass.name()}</td>
+    <c:forEach items="${tickets}" var="ticket">
+        <tr style="table-layout: fixed" onclick="location.replace('/controller?controller=cruiseInfo&id=${ticket.cruise.getId()}')">
+            <td scope="row">${ticket.cruise.schedule.get(ticket.cruise.route.ports.get(0))}</td>
+            <td scope="row">${ticket.roomClass}</td>
             <td scope="row" style="max-height: 40px;max-width: 300px;overflow: auto"
-            >${r.cruise.route.routeToString()}
+            >${cruise.route.routeToString()}
             </td>
+            <td scope="row">${ticket.cruise.schedule.get(ticket.cruise.route.ports.get(ticket.cruise.route.ports.size()-1))}</td>
         </tr>
     </c:forEach>
     </tbody>
@@ -113,7 +112,7 @@
         <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToUA">
             <input type="hidden" name="prev"
-                   value="/controller?controller=requests&page=${page}&status=${status}&cruise=${cruise.id}">
+                   value="/controller?controller=tickets&page=${page}">
             <li class="nav-item">
                 <button type="submit">Українська мова</button>
             </li>
@@ -121,12 +120,13 @@
         <form action="/controller" method="post">
             <input type="hidden" name="controller" value="changeToEn">
             <input type="hidden" name="prev"
-                   value="/controller?controller=requests&page=${page}&status=${status}&cruise=${cruise.id}">
+                   value="/controller?controller=tickets&page=${page}">
             <li class="nav-item">
                 <button type="submit">English language</button>
             </li>
         </form>
     </ul>
 </footer>
+
 </body>
 </html>

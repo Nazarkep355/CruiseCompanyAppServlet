@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class PortDAO {
     private Logger logger = Logger.getLogger(PortDAO.class);
@@ -21,7 +22,12 @@ public class PortDAO {
             "WHERE r.ports @> ARRAY[p.id] AND r.id = ?";
     private static final String SELECT_PAGINATED_PORTS_BY_CITY = "SELECT * FROM ports" +
             " WHERE city LIKE  '%' || ? || '%' ORDER BY id LIMIT ? OFFSET ?";
+
+    private static final String SELECT_PORTS_PAGINATED = "SELECT * FROM ports ORDER BY city LIMIT ? OFFSET ?";
+
+    private static final String SELECT_PORT_BY_CITY = "SELECT * FROM ports WHERE city = ?";
     private static final String UPDATE_PORT = "UPDATE ports SET city = ? WHERE id =?";
+
     private static final String INSERT_PORT = "INSERT INTO ports VALUES(default,?)";
 
     public List<Port> findAll() {
@@ -91,6 +97,23 @@ public class PortDAO {
             throw new RuntimeException(message, e);
         }
     }
+    public List<Port> findPortOrderByCityPaginated(int offset){
+        List<Port> ports = new ArrayList<>();
+        try (Connection connection = DBHikariManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_PORTS_PAGINATED)) {
+            statement.setInt(1, 5);
+            statement.setInt(2, offset);
+            ResultSet set = statement.executeQuery();
+            while (set.next()) {
+                ports.add(getPortFromResultSet(set));
+            }
+            return ports;
+        } catch (Throwable e) {
+            String message = "Can't find ports paginated";
+            logger.info(message, e);
+            throw new RuntimeException(message, e);
+        }
+    }
 
     public boolean update(Port port) {
         List<Port> ports = new ArrayList<>();
@@ -106,11 +129,28 @@ public class PortDAO {
         }
     }
 
+    public Optional<Port> findByCity(String city) {
+        try (Connection connection = DBHikariManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_PORT_BY_CITY)) {
+            statement.setString(1, city);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return Optional.of(getPortFromResultSet(resultSet));
+            } else {
+                return Optional.empty();
+            }
+        } catch (Throwable e) {
+            String message = "Can't find port by city";
+            logger.info(message, e);
+            throw new RuntimeException(message, e);
+        }
+    }
+
     public boolean insert(Port port) {
         try (Connection connection = DBHikariManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(INSERT_PORT)) {
             statement.setString(1, port.getCity());
-           return statement.execute();
+            return statement.execute();
         } catch (Throwable e) {
             String message = "Can't insert port";
             logger.info(message, e);

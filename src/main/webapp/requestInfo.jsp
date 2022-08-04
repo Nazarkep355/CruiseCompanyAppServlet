@@ -23,9 +23,10 @@
                 <fmt:message bundle="${bundle}" key="Home"/></a></li>
             <li class="nav-item"><a href="/controller?controller=cruises&freeOnly=true&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
-            <%--        <li class="nav-item"><a href="/?command=tickets&page=1" class="nav-link">--%>
-            <%--            <fmt:message bundle="${bundle}" key="Tickets"/></a></li>--%>
+
             <c:if test="${isLogged}">
+                <li class="nav-item"><a href="/controller?controller=tickets&page=1" class="nav-link">
+                    <fmt:message bundle="${bundle}" key="Tickets"/></a></li>
                 <li class="nav-item">
                     <form action="/" method="post">
                         <input type="hidden" name=" " value="signOut">
