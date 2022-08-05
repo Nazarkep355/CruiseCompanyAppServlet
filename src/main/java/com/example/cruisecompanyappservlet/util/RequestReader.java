@@ -66,6 +66,8 @@ public class RequestReader {
         Part filePart = request.getPart("file");
         String fileName = +(int) (Math.random() * Integer.MAX_VALUE) + filePart.getSubmittedFileName();
         String fullName = "C:\\Users\\Quant\\CruiseCompanyAppServlet\\target\\CruiseCompanyAppServlet-1.0-SNAPSHOT\\images\\" + fileName;
+//        String fullName1 = request.getContextPath()+"\\images\\"+ fileName;
+//        System.out.println(fullName1);
         for (Part part : request.getParts()) {
             part.write(fullName);
         }

@@ -14,8 +14,14 @@ import org.apache.log4j.Logger;
 
 public class ResponseRequestController implements Controller {
     private CruiseRequestService cruiseRequestService;
-    private Logger logger = Logger.getLogger(ResponseRequestController.class);
+    private static Logger logger = Logger.getLogger(ResponseRequestController.class);
     CruiseService cruiseService;
+
+    public ResponseRequestController(CruiseRequestService cruiseRequestService, CruiseService cruiseService) {
+        this.cruiseRequestService = cruiseRequestService;
+        this.cruiseService = cruiseService;
+    }
+
     public ResponseRequestController(){
         cruiseRequestService = new CruiseRequestService();
         cruiseService = new CruiseService();
@@ -26,7 +32,7 @@ public class ResponseRequestController implements Controller {
         long requestId = Long.parseLong(request.getParameter("id"));
         CruiseRequest cruiseRequest = cruiseRequestService.findById(requestId);
         cruiseRequestService.changeRequest(cruiseRequest,resp);
-        return "/controller?controller=requests&page=1";}
+        return "redirect:/controller?controller=requests&page=1";}
         catch (MessagingException e){
             String message = "Can't send email";
             logger.info(message,e);

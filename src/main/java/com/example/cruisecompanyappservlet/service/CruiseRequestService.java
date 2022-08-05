@@ -1,8 +1,8 @@
 package com.example.cruisecompanyappservlet.service;
 
-import com.example.cruisecompanyappservlet.dao.CruiseRequestDAO;
-import com.example.cruisecompanyappservlet.dao.DAOException;
+import com.example.cruisecompanyappservlet.dao.*;
 import com.example.cruisecompanyappservlet.entity.*;
+import com.example.cruisecompanyappservlet.entity.builders.TicketBuilder;
 import com.example.cruisecompanyappservlet.util.EmailSessionBean;
 
 import javax.ejb.EJB;
@@ -11,17 +11,24 @@ import java.util.List;
 
 public class CruiseRequestService {
     private CruiseRequestDAO cruiseRequestDAO;
-    private CruiseService cruiseService;
-    private UserService userService;
-    private TicketService ticketService;
+    private CruiseDAO cruiseDAO;
+    private UserDAO userDAO;
+    private TicketDAO ticketDAO;
     @EJB
     private EmailSessionBean emailSessionBean = new EmailSessionBean();
 
+    public CruiseRequestService(CruiseRequestDAO cruiseRequestDAO, CruiseDAO cruiseDAO, UserDAO userDAO, TicketDAO ticketDAO) {
+        this.cruiseRequestDAO = cruiseRequestDAO;
+        this.cruiseDAO = cruiseDAO;
+        this.userDAO = userDAO;
+        this.ticketDAO = ticketDAO;
+    }
+
     public CruiseRequestService() {
-        ticketService = new TicketService();
+        ticketDAO = new TicketDAO();
         cruiseRequestDAO = new CruiseRequestDAO();
-        userService = new UserService();
-        cruiseService = new CruiseService();
+        userDAO = new UserDAO();
+        cruiseDAO = new CruiseDAO();
     }
 
     public CruiseRequest findById(long id) {
@@ -64,11 +71,11 @@ public class CruiseRequestService {
             cruise.getFreePlaces().put(cruiseRequest.getRoomClass(),
                     cruise.getFreePlaces().get(cruiseRequest.getRoomClass()) - 1);
             cruiseRequest.setStatus(Status.ACCEPTED);
-            userService.update(user);
-            cruiseService.update(cruise);
+            userDAO.updateUser(user);
+            cruiseDAO.update(cruise);
             cruiseRequestDAO.update(cruiseRequest);
-            Ticket ticket =ticketService.createTicketBy(cruiseRequest);
-            ticketService.insert(ticket);
+            Ticket ticket = TicketBuilder.createTicketBy(cruiseRequest);
+            ticketDAO.insert(ticket);
             emailSessionBean.sendMessageAboutAccepting(cruiseRequest);
             return true;
         } else {

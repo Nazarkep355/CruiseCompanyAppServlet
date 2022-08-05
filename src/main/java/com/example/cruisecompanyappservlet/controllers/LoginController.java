@@ -30,7 +30,7 @@ public class LoginController implements Controller {
         }catch (IllegalArgumentException e){
             request.getSession().setAttribute("error",e.getMessage());
         }
-        return "/controller";
+        return "redirect:/controller";
     }
 
     @Override

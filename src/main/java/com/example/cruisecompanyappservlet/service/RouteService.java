@@ -7,6 +7,11 @@ import java.util.List;
 
 public class RouteService {
     private RouteDAO routeDAO;
+
+    public RouteService(RouteDAO routeDAO) {
+        this.routeDAO = routeDAO;
+    }
+
     public RouteService(){
         routeDAO = new RouteDAO();
     }

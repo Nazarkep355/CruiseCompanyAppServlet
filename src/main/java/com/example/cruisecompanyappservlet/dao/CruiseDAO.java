@@ -13,14 +13,20 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CruiseDAO {
-    public CruiseDAO() {
-        routeDAO = new RouteDAO();
-        staffDAO = new StaffDAO();
-    }
+
 
     private static Logger logger = Logger.getLogger(CruiseDAO.class);
     private StaffDAO staffDAO;
     private RouteDAO routeDAO;
+    public CruiseDAO(StaffDAO staffDAO, RouteDAO routeDAO) {
+        this.staffDAO = staffDAO;
+        this.routeDAO = routeDAO;
+    }
+
+    public CruiseDAO() {
+        routeDAO = new RouteDAO();
+        staffDAO = new StaffDAO();
+    }
     private static final String SELECT_ALL_CRUISES = "SELECT * FROM cruises";
     private static final String SELECT_PAGINATED_CRUISES = "SELECT * FROM cruises ORDER" +
             " BY id DESC LIMIT ? OFFSET ?";

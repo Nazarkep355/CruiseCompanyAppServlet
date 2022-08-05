@@ -1,13 +1,17 @@
 package com.example.cruisecompanyappservlet.frontcontroller;
 
 import com.example.cruisecompanyappservlet.controllers.*;
+import com.example.cruisecompanyappservlet.entity.Cruise;
+import com.example.cruisecompanyappservlet.entity.CruiseRequest;
 import com.example.cruisecompanyappservlet.entity.User;
+import com.example.cruisecompanyappservlet.service.*;
 import com.example.cruisecompanyappservlet.util.LocaleUtil;
 import com.example.cruisecompanyappservlet.util.SecurityUtil;
 import org.apache.log4j.Logger;
 
 import java.io.*;
 import java.util.HashMap;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -22,32 +26,43 @@ public class MainServlet extends HttpServlet {
     private HashMap<String, Controller> controllers = new HashMap<>();
     private Logger logger = Logger.getLogger(MainServlet.class);
 
+    @Override
     public void init() {
+        ServletContext context = getServletContext();
+        CruiseRequestService cruiseRequestService = (CruiseRequestService) context.getAttribute("cruiseRequestService");
+        CruiseService cruiseService = (CruiseService) context.getAttribute("cruiseService");
+        PortService portService = (PortService) context.getAttribute("portService");
+        RouteService routeService = (RouteService) context.getAttribute("routeService");
+        StaffService staffService = (StaffService) context.getAttribute("staffService");
+        TicketService ticketService = (TicketService) context.getAttribute("ticketService");
+        UserService userService = (UserService) context.getAttribute("userService");
+
+
         controllers.put("changeToEn", new EnglishLocaleController());
         controllers.put("changeToUA", new UkrainianLocaleController());
         controllers.put("loginPage", new LoginPageController());
         controllers.put(null, new HelloController());
         controllers.put("registerPage", new RegisterPageController());
-        controllers.put("register", new RegisterController());
-        controllers.put("login", new LoginController());
+        controllers.put("register", new RegisterController(userService));
+        controllers.put("login", new LoginController(userService));
         controllers.put("cruises", new CruisesController());
         controllers.put("signOut", new SignOutController());
-        controllers.put("planCruisePage", new PlanCruisePageController());
-        controllers.put("chooseStaff", new ChooseStaffPageController());
+        controllers.put("planCruisePage", new PlanCruisePageController(routeService));
+        controllers.put("chooseStaff", new ChooseStaffPageController(staffService));
         controllers.put("numOfStaff", new ChooseNumOfStaffController());
-        controllers.put("planCruise", new PlanCruiseController());
-        controllers.put("cruiseInfo", new CruiseInfoController());
-        controllers.put("sendRequestPage", new SendRequestPageController());
-        controllers.put("sendRequest", new SendRequestController());
-        controllers.put("requests", new RequestsController());
-        controllers.put("requestInfo", new InfoAboutRequestController());
-        controllers.put("responseRequest", new ResponseRequestController());
-        controllers.put("tickets", new TicketsController());
-        controllers.put("addPort", new AddPortController());
+        controllers.put("planCruise", new PlanCruiseController(routeService,cruiseService));
+        controllers.put("cruiseInfo", new CruiseInfoController(cruiseService));
+        controllers.put("sendRequestPage", new SendRequestPageController(cruiseService));
+        controllers.put("sendRequest", new SendRequestController(cruiseService,cruiseRequestService));
+        controllers.put("requests", new RequestsController(cruiseRequestService));
+        controllers.put("requestInfo", new InfoAboutRequestController(cruiseRequestService));
+        controllers.put("responseRequest", new ResponseRequestController(cruiseRequestService,cruiseService));
+        controllers.put("tickets", new TicketsController(ticketService));
+        controllers.put("addPort", new AddPortController(portService));
         controllers.put("addPortPage", new AddPortPageController());
-        controllers.put("ports", new PortsController());
+        controllers.put("ports", new PortsController(portService));
         controllers.put("createRoutePage", new CreateRoutePageController());
-        controllers.put("createRoute",new CreateRouteController());
+        controllers.put("createRoute",new CreateRouteController(routeService));
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -60,10 +75,11 @@ public class MainServlet extends HttpServlet {
             System.out.println("get" + SecurityUtil.isAccessGranted(user, controller));
             if (SecurityUtil.isAccessGranted(user, controller)) {
                 String address = controller.execute(request, response);
-                if (isNeedToRedirect(request)) {
+                if(address.startsWith("redirect:")){
+                    address=address.split("rect:")[1];
                     response.sendRedirect(address);
-                } else {
-                    request.getRequestDispatcher(address).forward(request, response);
+                }else {
+                    request.getRequestDispatcher(address).forward(request,response);
                 }
 
             } else {
@@ -85,7 +101,12 @@ public class MainServlet extends HttpServlet {
             System.out.println("post" + SecurityUtil.isAccessGranted(user, controller));
             if (SecurityUtil.isAccessGranted(user, controller)) {
                 String redirect = controller.execute(request, response);
-                response.sendRedirect(redirect);
+                if(redirect.startsWith("redirect:")){
+                    redirect=redirect.split("rect:")[1];
+                    response.sendRedirect(redirect);
+                }else {
+                    response.sendRedirect(redirect);
+                }
             } else {
                 response.sendRedirect("/controller");
             }

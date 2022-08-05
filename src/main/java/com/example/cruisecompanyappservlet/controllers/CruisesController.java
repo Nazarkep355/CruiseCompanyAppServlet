@@ -12,6 +12,11 @@ import java.util.List;
 
 public class CruisesController implements Controller {
     private RequestReader requestReader;
+
+    public CruisesController(RequestReader requestReader) {
+        this.requestReader = requestReader;
+    }
+
     public CruisesController(){
         requestReader=new RequestReader();
     }

@@ -18,6 +18,11 @@ public class SendRequestController implements Controller {
     private CruiseService cruiseService;
     private CruiseRequestService cruiseRequestService;
 
+    public SendRequestController(CruiseService cruiseService, CruiseRequestService cruiseRequestService) {
+        this.cruiseService = cruiseService;
+        this.cruiseRequestService = cruiseRequestService;
+    }
+
     public SendRequestController() {
         cruiseRequestService = new CruiseRequestService();
         cruiseService = new CruiseService();
@@ -49,10 +54,10 @@ public class SendRequestController implements Controller {
         }else{
             request.getSession().setAttribute("error","NoFreePlaces");
             request.setAttribute("redirect",true);
-            return "/controller?controller=sendRequestPage&id="+id+"&room="+rClass;
+            return "redirect:/controller?controller=sendRequestPage&id="+id+"&room="+rClass;
         }
 
-        return "/controller";
+        return "redirect:/controller";
     }
 
     @Override

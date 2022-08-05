@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 
 public class CruiseInfoController implements Controller {
     private CruiseService cruiseService;
+
+    public CruiseInfoController(CruiseService cruiseService) {
+        this.cruiseService = cruiseService;
+    }
+
     public CruiseInfoController(){
         cruiseService = new CruiseService();
     }

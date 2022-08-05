@@ -13,6 +13,11 @@ import java.util.List;
 
 public class RequestsController implements Controller {
     private CruiseRequestService cruiseRequestService;
+
+    public RequestsController(CruiseRequestService cruiseRequestService) {
+        this.cruiseRequestService = cruiseRequestService;
+    }
+
     public RequestsController(){
         cruiseRequestService = new CruiseRequestService();
     }

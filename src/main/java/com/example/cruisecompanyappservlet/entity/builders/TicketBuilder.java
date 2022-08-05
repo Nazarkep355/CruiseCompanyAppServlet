@@ -1,10 +1,8 @@
 package com.example.cruisecompanyappservlet.entity.builders;
 
-import com.example.cruisecompanyappservlet.entity.Cruise;
-import com.example.cruisecompanyappservlet.entity.RoomClass;
-import com.example.cruisecompanyappservlet.entity.Ticket;
-import com.example.cruisecompanyappservlet.entity.User;
+import com.example.cruisecompanyappservlet.entity.*;
 
+import java.time.Instant;
 import java.util.Date;
 
 public class TicketBuilder {
@@ -37,6 +35,15 @@ public class TicketBuilder {
     public TicketBuilder purchaseDate(Date date){
         this.purchaseDate = date;
         return this;
+    }
+    public static Ticket createTicketBy(CruiseRequest cruiseRequest){
+        return new TicketBuilder()
+                .cruise(cruiseRequest.getCruise())
+                .owner(cruiseRequest.getSender())
+                .roomClass(cruiseRequest.getRoomClass())
+                .cost(cruiseRequest.getCruise().getCostByClass(cruiseRequest.getRoomClass()))
+                .purchaseDate(Date.from(Instant.now()))
+                .build();
     }
     public Ticket build(){
         Ticket ticket=new Ticket();

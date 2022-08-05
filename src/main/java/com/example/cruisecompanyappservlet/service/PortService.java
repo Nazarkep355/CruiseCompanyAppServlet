@@ -12,6 +12,9 @@ public class PortService {
     public PortService(){
         portDAO= new PortDAO();
     }
+    public PortService(PortDAO portDAO){
+        this.portDAO= new PortDAO();
+    }
     public List<Port> findPortsPaginated(int page){
         int offset = (5*page)-5;
         return portDAO.findPortOrderByCityPaginated(offset);

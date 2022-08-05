@@ -17,6 +17,12 @@ import java.util.List;
 public class PlanCruiseController implements Controller {
     RouteService routeService;
     CruiseService cruiseService;
+
+    public PlanCruiseController(RouteService routeService, CruiseService cruiseService) {
+        this.routeService = routeService;
+        this.cruiseService = cruiseService;
+    }
+
     public PlanCruiseController(){
         routeService = new RouteService();
         cruiseService = new CruiseService();
@@ -25,7 +31,7 @@ public class PlanCruiseController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DAOException {
         Cruise cruise = RequestReader.createCruise(request);
         cruiseService.insert(cruise);
-        return "/controller?controller=cruises&actual=true&page=1";
+        return "redirect:/controller?controller=cruises&actual=true&page=1";
     }
 
     @Override

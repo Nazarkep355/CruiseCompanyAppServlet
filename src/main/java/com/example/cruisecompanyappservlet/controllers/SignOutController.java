@@ -12,8 +12,7 @@ public class SignOutController implements Controller {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DAOException {
         request.getSession().setAttribute("user",null);
-        System.out.println("singedOut");
-        return "/controller";
+        return "redirect:/controller";
     }
 
     @Override

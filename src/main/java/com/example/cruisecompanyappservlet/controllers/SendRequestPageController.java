@@ -13,6 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 
 public class SendRequestPageController implements Controller {
     private CruiseService cruiseService;
+
+    public SendRequestPageController(CruiseService cruiseService) {
+        this.cruiseService = cruiseService;
+    }
+
     public SendRequestPageController(){
         cruiseService = new CruiseService();
     }

@@ -15,6 +15,10 @@ import java.util.List;
 public class ChooseStaffPageController implements Controller {
     private StaffService staffService;
 
+    public ChooseStaffPageController(StaffService staffService) {
+        this.staffService = staffService;
+    }
+
     public ChooseStaffPageController() {
         staffService = new StaffService();
     }
@@ -37,7 +41,7 @@ public class ChooseStaffPageController implements Controller {
             }
         }
         if (current >= of)
-            return "/controller?controller=planCruisePage";
+            return "redirect:/controller?controller=planCruisePage";
         request.setAttribute("current", current);
         List<Staff> extract = staffService.findStaffPaginated(page);
         request.setAttribute("page", page);

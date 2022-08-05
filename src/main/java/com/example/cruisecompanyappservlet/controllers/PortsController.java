@@ -13,6 +13,11 @@ import java.util.List;
 
 public class PortsController implements Controller {
     private PortService portService;
+
+    public PortsController(PortService portService) {
+        this.portService = portService;
+    }
+
     public PortsController(){
         portService = new PortService();
     }

@@ -62,7 +62,7 @@
 <%--                </c:if>--%>
                 <hr class="my-4">
                 <small class="text-muted"><fmt:message key="ByClickingSignUp" bundle ='${bundle}'/></small>
-                <small class="text-muted"><fmt:message key="IfYouDoNotHave" bundle ='${bundle}'/><a href="/?controller=registerPage">
+                <small class="text-muted"><fmt:message key="IfYouDoNotHave" bundle ='${bundle}'/><a href="/controller?controller=registerPage">
                     <fmt:message key="Register" bundle ='${bundle}'/></a></small>
             </form>
         </div>

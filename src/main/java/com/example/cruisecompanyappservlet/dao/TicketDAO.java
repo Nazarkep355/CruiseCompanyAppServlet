@@ -14,6 +14,11 @@ public class TicketDAO {
     private CruiseDAO cruiseDAO;
     private UserDAO userDAO;
 
+    public TicketDAO(CruiseDAO cruiseDAO, UserDAO userDAO) {
+        this.cruiseDAO = cruiseDAO;
+        this.userDAO = userDAO;
+    }
+
     public TicketDAO() {
         cruiseDAO = new CruiseDAO();
         userDAO = new UserDAO();

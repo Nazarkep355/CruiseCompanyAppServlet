@@ -22,6 +22,11 @@ public class CruiseRequestDAO {
         userDAO = new UserDAO();
     }
 
+    public CruiseRequestDAO(CruiseDAO cruiseDAO, UserDAO userDAO) {
+        this.cruiseDAO = cruiseDAO;
+        this.userDAO = userDAO;
+    }
+
     private static Logger logger = Logger.getLogger(CruiseRequestDAO.class);
     private static final String SELECT_ALL_REQUESTS = "SELECT * FROM cruiserequests";
     private static final String SELECT_REQUEST_BY_ID = "SELECT * FROM cruiserequests WHERE id =?";

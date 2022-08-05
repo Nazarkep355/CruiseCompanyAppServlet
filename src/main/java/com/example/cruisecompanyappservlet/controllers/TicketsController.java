@@ -13,6 +13,11 @@ import java.util.List;
 
 public class TicketsController implements Controller {
     private TicketService ticketService;
+
+    public TicketsController(TicketService ticketService) {
+        this.ticketService = ticketService;
+    }
+
     public TicketsController(){
         ticketService = new TicketService();
     }

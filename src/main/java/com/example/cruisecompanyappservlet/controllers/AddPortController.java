@@ -13,6 +13,11 @@ import java.util.Optional;
 
 public class AddPortController implements Controller {
     private PortService portService;
+
+    public AddPortController(PortService portService) {
+        this.portService = portService;
+    }
+
     public AddPortController(){
         portService = new PortService();
     }
@@ -21,12 +26,12 @@ public class AddPortController implements Controller {
         String city = request.getParameter("city");
         if(portService.isPortExists(city)){
             request.getSession().setAttribute("error","PortInDB");
-            return "/controller?controller=addPortPage";
+            return "redirect:/controller?controller=addPortPage";
         }else {
             portService.insert(new PortBuilder()
                     .city(city)
                     .build());
-            return "/controller?controller=ports&page=1";
+            return "redirect:/controller?controller=ports&page=1";
 
         }
     }

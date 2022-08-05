@@ -7,6 +7,11 @@ import java.util.List;
 
 public class StaffService {
     private StaffDAO staffDAO;
+
+    public StaffService(StaffDAO staffDAO) {
+        this.staffDAO = staffDAO;
+    }
+
     public StaffService(){
         staffDAO = new StaffDAO();
     }

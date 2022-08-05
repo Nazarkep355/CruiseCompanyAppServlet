@@ -11,7 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RouteDAO {
-    private static PortDAO portDAO;
+    private  PortDAO portDAO;
+
+    public RouteDAO(PortDAO portDAO) {
+        this.portDAO = portDAO;
+    }
 
     public RouteDAO() {
         portDAO = new PortDAO();
@@ -118,7 +122,7 @@ public class RouteDAO {
         }
     }
 
-    private static Route getRouteFromResultSet(ResultSet set) throws SQLException {
+    private  Route getRouteFromResultSet(ResultSet set) throws SQLException {
         List<Integer> delays = new ArrayList<>();
         List<Port> ports = new ArrayList<>();
         Array array = set.getArray("ports");

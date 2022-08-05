@@ -13,6 +13,11 @@ import java.util.List;
 
 public class PlanCruisePageController implements Controller {
     RouteService routeService;
+
+    public PlanCruisePageController(RouteService routeService) {
+        this.routeService = routeService;
+    }
+
     public PlanCruisePageController(){
         routeService = new RouteService();
     }

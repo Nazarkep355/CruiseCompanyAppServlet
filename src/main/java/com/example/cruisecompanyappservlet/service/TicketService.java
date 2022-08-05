@@ -13,18 +13,15 @@ import java.util.List;
 
 public class TicketService {
     private TicketDAO ticketDAO;
+
+    public TicketService(TicketDAO ticketDAO) {
+        this.ticketDAO = ticketDAO;
+    }
+
     public TicketService(){
         ticketDAO = new TicketDAO();
     }
-    public Ticket createTicketBy(CruiseRequest cruiseRequest){
-            return new TicketBuilder()
-                    .cruise(cruiseRequest.getCruise())
-                    .owner(cruiseRequest.getSender())
-                    .roomClass(cruiseRequest.getRoomClass())
-                    .cost(cruiseRequest.getCruise().getCostByClass(cruiseRequest.getRoomClass()))
-                    .purchaseDate(Date.from(Instant.now()))
-                    .build();
-    }
+
     public boolean insert(Ticket ticket){
         return ticketDAO.insert(ticket);
     }
