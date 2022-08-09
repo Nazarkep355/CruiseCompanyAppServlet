@@ -7,13 +7,14 @@ import com.example.cruisecompanyappservlet.entity.Route;
 import java.util.List;
 import java.util.Optional;
 
+
 public class PortService {
-    PortDAO portDAO;
+    private PortDAO portDAO;
     public PortService(){
         portDAO= new PortDAO();
     }
     public PortService(PortDAO portDAO){
-        this.portDAO= new PortDAO();
+        this.portDAO= portDAO;
     }
     public List<Port> findPortsPaginated(int page){
         int offset = (5*page)-5;

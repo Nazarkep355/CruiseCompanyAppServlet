@@ -26,7 +26,7 @@ public class locale_en extends ListResourceBundle {
             {"Route", "Route"},
             {"SignOut", "Sign out"},
             {"goToFirstPage", "Go to first page"},
-            {"ChangeMoney", "Change cash on your account"},
+            {"ChangeMoney", "Change balance on your account"},
             {"PlanCruise", "Plan cruise"},
             {"EnterCapacity", "Enter capacity"},
             {"seats", "seats"},
@@ -63,7 +63,11 @@ public class locale_en extends ListResourceBundle {
             {"PortNotFound","Port not found"},
             {"NumberOfPorts","Number of ports"},
             {"EnterDelay","Enter delay"},
-            {"Ports","Ports"}
+            {"Ports","Ports"},
+            {"AddStaff","Add staff"},
+            {"EmployeeAlreadyAdded","This employee is already added"},
+            {"Staff","Staff"},
+            {"EnterAmount","Enter the amount added to the balance"}
 
 
     };

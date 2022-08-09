@@ -63,6 +63,11 @@ public class MainServlet extends HttpServlet {
         controllers.put("ports", new PortsController(portService));
         controllers.put("createRoutePage", new CreateRoutePageController());
         controllers.put("createRoute",new CreateRouteController(routeService));
+        controllers.put("addStaffPage",new AddStaffPageController());
+        controllers.put("addStaff",new AddStaffController(staffService));
+        controllers.put("staff",new StaffController(staffService));
+        controllers.put("changeMoneyPage",new ChangeMoneyPageController());
+        controllers.put("changeMoney",new ChangeMoneyController(userService));
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

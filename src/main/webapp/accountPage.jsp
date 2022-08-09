@@ -71,6 +71,24 @@
     </li>
     <c:if test='${user.isAdmin()}'>
         <li class="nav-item" style="margin-top: 15px">
+            <a href="/controller?controller=staff&page=1" class="nav-link active" aria-current="page"
+               style="width: 250px;">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#home"></use>
+                </svg>
+                <fmt:message bundle="${bundle}" key="Staff"/>
+            </a>
+        </li>
+        <li class="nav-item" style="margin-top: 15px">
+            <a href="/controller?controller=addStaffPage" class="nav-link active" aria-current="page"
+               style="width: 250px;">
+                <svg class="bi me-2" width="16" height="16">
+                    <use xlink:href="#home"></use>
+                </svg>
+                <fmt:message bundle="${bundle}" key="AddStaff"/>
+            </a>
+        </li>
+        <li class="nav-item" style="margin-top: 15px">
             <a href="/controller?controller=addPortPage" class="nav-link active" aria-current="page"
                style="width: 250px;">
                 <svg class="bi me-2" width="16" height="16">

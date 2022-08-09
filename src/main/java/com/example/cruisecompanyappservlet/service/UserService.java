@@ -32,6 +32,10 @@ public class UserService {
     public boolean update(User user) throws DAOException {
         return userDAO.updateUser(user);
     }
+    public boolean ChangeUserMoney(User user, int money) throws DAOException {
+        user.setMoney(user.getMoney()+money);
+        return update(user);
+    }
     public User loginUser(String email, String password) throws DAOException {
         if(!isUserWithEmailExist(email)){
             throw new IllegalArgumentException("Wrong password");

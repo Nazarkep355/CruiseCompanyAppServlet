@@ -22,9 +22,10 @@ public class StaffDAO {
             " staff s, cruises c WHERE c.staff @> ARRAY[s.id] AND c.id = ? LIMIT ? OFFSET ?";
     private static final String SELECT_PAGINATED_STAFF_ORDERED_BY_ID = "SELECT * FROM staff ORDER BY id" +
             " LIMIT ? OFFSET ?";
-    private static final String SELECT_STAFF_BY_NAME = "SELECT * FROM staff WHERE name " +
+    private static final String SELECT_STAFF_LIKE_NAME = "SELECT * FROM staff WHERE name " +
             "LIKE '%' || ? || '%' LIMIT ? OFFSET ?";
     private static final String SELECT_STAFF_BY_ID = "SELECT * FROM staff WHERE id = ?";
+    private static final String SELECT_STAFF_BY_NAME = "SELECT * FROM staff WHERE name = ?";
     private static final String UPDATE_STAFF_BY_ID = "UPDATE staff SET name =?," +
             " position = ? WHERE id = ?";
     private static final String INSERT_STAFF = "INSERT INTO staff values(default,?,?)";
@@ -102,7 +103,7 @@ public class StaffDAO {
     public List<Staff> findPaginatedListThatNameContains(String partName, int offset) {
         List<Staff> staff = new ArrayList<>();
         try (Connection connection = DBHikariManager.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SELECT_STAFF_BY_NAME)) {
+             PreparedStatement statement = connection.prepareStatement(SELECT_STAFF_LIKE_NAME)) {
             statement.setString(1, partName);
             statement.setInt(2, offset);
             ResultSet set = statement.executeQuery();
@@ -142,6 +143,18 @@ public class StaffDAO {
             return statement.execute();
         } catch (Throwable e) {
             String message = "Can't update staff by id";
+            logger.info(message, e);
+            throw new RuntimeException(message, e);
+        }
+    }
+    public boolean isStaffWithNameExists(String name){
+        try (Connection connection = DBHikariManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(SELECT_STAFF_BY_NAME)) {
+            statement.setString(1, name);
+            ResultSet set = statement.executeQuery();
+            return (set.next());
+        } catch (Throwable e) {
+            String message = "Can't insert staff";
             logger.info(message, e);
             throw new RuntimeException(message, e);
         }

@@ -27,7 +27,7 @@ public class locale_ua extends ListResourceBundle {
             {"Route", "Маршрут"},
             {"SignOut", "Вийти"},
             {"goToFirstPage", "Перейти до першої сторінки"},
-            {"ChangeMoney", "Змінити кіслькість коштів"},
+            {"ChangeMoney", "Змінити баланс"},
             {"PlanCruise", "Запланувати круїз"},
             {"EnterCapacity", "Введіть кількість"},
             {"seats", "місць"},
@@ -64,7 +64,11 @@ public class locale_ua extends ListResourceBundle {
             {"PortNotFound","Порт не знайдено"},
             {"NumberOfPorts","Кількість портів"},
             {"EnterDelay","Введіть час поїздки"},
-            {"Ports","Порти"}
+            {"Ports","Порти"},
+            {"AddStaff","Додати персонал"},
+            {"EmployeeAlreadyAdded","Працівник вже доданий"},
+            {"Staff","Персонал"},
+            {"EnterAmount","Введіть додану на баланс суму"}
 
 
     };
