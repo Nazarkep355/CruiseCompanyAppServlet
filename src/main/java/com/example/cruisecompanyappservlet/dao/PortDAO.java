@@ -101,7 +101,7 @@ public class PortDAO {
         List<Port> ports = new ArrayList<>();
         try (Connection connection = DBHikariManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(SELECT_PORTS_PAGINATED)) {
-            statement.setInt(1, 5);
+            statement.setInt(1, 6);
             statement.setInt(2, offset);
             ResultSet set = statement.executeQuery();
             while (set.next()) {

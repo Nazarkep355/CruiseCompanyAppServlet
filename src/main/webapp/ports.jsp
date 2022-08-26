@@ -21,7 +21,7 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="/controller" class="nav-link active" aria-current="page">
                 <fmt:message bundle="${bundle}" key="Home"/></a></li>
-            <li class="nav-item"><a href="/controller?controller=cruises&freeOnly=true&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller?controller=cruises&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
            <c:if test="${isLogged}"> <li class="nav-item"><a href="/controller?controller=tickets&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Tickets"/></a></li>
@@ -52,15 +52,6 @@
                     <fmt:message bundle="${bundle}" key="goToFirstPage"/></a></li>
             </c:if>
             <c:if test="${page>1}">
-                <li class="page-item">
-                    <a class="page-link"
-                       href="/controller?controller=ports&page=${page-1}"
-                       aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-            </c:if>
-            <c:if test="${page>1}">
                 <li class="page-item"><a
                         class="page-link"
                         href="/controller?controller=ports&page=${page-1}"
@@ -71,17 +62,12 @@
                     class="page-link"
                     href="/controller?controller=ports&page=${page}">${page}</a>
             </li>
+            <c:if test="${!max}">
             <li class="page-item"><a
                     class="page-link"
                     href="/controller?controller=ports&page=${page+1}">${page+1}</a>
             </li>
-            <li class="page-item">
-                <a class="page-link"
-                   href="/controller?controller=ports&page=${page+1}"
-                   aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
+            </c:if>
         </ul>
     </nav>
     <thead>

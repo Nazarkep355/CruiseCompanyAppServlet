@@ -25,6 +25,7 @@ public class RequestReader {
         userService = new UserService();
         portService = new PortService();
     }
+
     private static PortService portService;
     private static UserService userService;
     static private CruiseRequestService cruiseRequestService;
@@ -36,9 +37,6 @@ public class RequestReader {
         String city = request.getParameter("city");
         String actual = request.getParameter("actual");
         String onlyFree = request.getParameter("freeOnly");
-        request.setAttribute("page", page);
-        request.setAttribute("actual", Boolean.parseBoolean(actual));
-        request.setAttribute("onlyFree", Boolean.parseBoolean(onlyFree));
 
         Boolean onlyFreeBool = (Boolean.parseBoolean(onlyFree) ||
                 !StringUtils.isEmpty(onlyFree) && onlyFree.equals("on"));
@@ -46,30 +44,55 @@ public class RequestReader {
         Boolean actualBool = (Boolean.parseBoolean(actual) ||
                 !StringUtils.isEmpty(actual) && actual.equals("on"));
 
+        request.setAttribute("page", page);
+        request.setAttribute("actual", actualBool);
+        request.setAttribute("onlyFree", onlyFreeBool);
+
         if (!StringUtils.isBlank(city)) {
             request.setAttribute("city", city);
-            return cruiseService.getCruisesByCity(city, page);
+            List<Cruise> cruises = cruiseService.getCruisesByCity(city, page);
+            if (cruises.size() < 6) {
+                request.setAttribute("max", true);
+                return cruises;
+            }
+            request.setAttribute("max", false);
+            return cruises.subList(0, 5);
+
         }
         if (onlyFreeBool) {
-            return cruiseService.getAllActualCruisesWithFreePlacesPaginated(page);
+            List<Cruise> cruises = cruiseService.getAllActualCruisesWithFreePlacesPaginated(page);
+            if (cruises.size() < 6) {
+                request.setAttribute("max", true);
+                return cruises;
+            }
+            request.setAttribute("max", false);
+            return cruises.subList(0, 5);
         }
         if (actualBool) {
-            return cruiseService.getActualCruisesPaginated(page);
+            List<Cruise> cruises =cruiseService.getActualCruisesPaginated(page);
+            if (cruises.size() < 6) {
+                request.setAttribute("max", true);
+                return cruises;
+            }
+            request.setAttribute("max", false);
+            return cruises.subList(0, 5);
         }
-        System.out.println("other");
-        return cruiseService.getPaginated(page);
-
+        List<Cruise> cruises =cruiseService.getPaginated(page);
+        if (cruises.size() < 6) {
+            request.setAttribute("max", true);
+            return cruises;
+        }
+        request.setAttribute("max", false);
+        return cruises.subList(0, 5);
 
     }
 
     public static String saveImage(HttpServletRequest request) throws IOException, ServletException {
         Part filePart = request.getPart("file");
         String fileName = +(int) (Math.random() * Integer.MAX_VALUE) + filePart.getSubmittedFileName();
-        String fullName = "C:\\Users\\Quant\\CruiseCompanyAppServlet\\target\\CruiseCompanyAppServlet-1.0-SNAPSHOT\\images\\" + fileName;
-//        String fullName1 = request.getContextPath()+"\\images\\"+ fileName;
-//        System.out.println(fullName1);
+        String fullName1 = request.getRealPath("\\images\\") + "\\" + fileName;
         for (Part part : request.getParts()) {
-            part.write(fullName);
+            part.write(fullName1);
         }
         return fileName;
     }
@@ -130,22 +153,24 @@ public class RequestReader {
                 .staff(staff)
                 .status(Status.WAITING).build();
     }
-    public static void setError(HttpServletRequest request){
+
+    public static void setError(HttpServletRequest request) {
         String error = (String) request.getSession().getAttribute("error");
-        request.setAttribute("error",error);
+        request.setAttribute("error", error);
     }
-    public static Route getRouteFromRequest(HttpServletRequest request){
+
+    public static Route getRouteFromRequest(HttpServletRequest request) {
         int portNumber = Integer.parseInt(request.getParameter("portNumber"));
         List<Port> ports = new ArrayList<>();
         List<Integer> delays = new ArrayList<>();
-        for(int i=1;i<=portNumber;i++){
-            String city = request.getParameter("city"+i);
-            if(!portService.isPortExists(city)){
+        for (int i = 1; i <= portNumber; i++) {
+            String city = request.getParameter("city" + i);
+            if (!portService.isPortExists(city)) {
                 return null;
             }
             ports.add(portService.findPortByCity(city));
-            if(portNumber==i)continue;
-            delays.add(Integer.parseInt(request.getParameter("delay"+i)));
+            if (portNumber == i) continue;
+            delays.add(Integer.parseInt(request.getParameter("delay" + i)));
         }
         return new RouteBuilder()
                 .ports(ports)

@@ -25,8 +25,14 @@ public class PortsController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DAOException {
         int page = Integer.parseInt(request.getParameter("page"));
         List<Port> ports = portService.findPortsPaginated(page);
+        if(ports.size()<6){
+            request.setAttribute("max",true);
+            request.setAttribute("ports",ports);
+        }else {
+            request.setAttribute("max",false);
+            request.setAttribute("ports",ports.subList(0,5));
+        }
         request.setAttribute("page",page);
-        request.setAttribute("ports",ports);
         return "ports.jsp";
     }
 

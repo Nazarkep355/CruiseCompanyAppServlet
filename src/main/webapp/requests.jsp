@@ -21,7 +21,7 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="/controller" class="nav-link active" aria-current="page">
                 <fmt:message bundle="${bundle}" key="Home"/></a></li>
-            <li class="nav-item"><a href="/controller?controller=cruises&freeOnly=true&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller?controller=cruises&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
             <c:if test="${isLogged}">
                 <li class="nav-item"><a href="/controller?controller=tickets&page=1" class="nav-link">

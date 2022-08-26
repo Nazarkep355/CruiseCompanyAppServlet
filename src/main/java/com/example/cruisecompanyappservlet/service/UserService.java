@@ -13,36 +13,44 @@ public class UserService {
     }
 
     private UserDAO userDAO;
-    public UserService(){
+
+    public UserService() {
         userDAO = new UserDAO();
     }
+
     public List<User> getAllUsers() throws DAOException {
         return userDAO.findAll();
     }
+
     public boolean isUserWithEmailExist(String email) throws DAOException {
-        return userDAO.findByEmail(email)!=null;
+        return userDAO.findByEmail(email) != null;
     }
-    public User registerUser(String email,String password,String name) throws DAOException {
-        if(isUserWithEmailExist(email))
+
+    public User registerUser(String email, String password, String name) throws DAOException {
+        if (isUserWithEmailExist(email))
             throw new IllegalArgumentException("emailInUse");
         User user = new UserBuilder().email(email).password(password).name(name).build();
         userDAO.insertUser(user);
         return userDAO.findByEmail(email);
     }
+
     public boolean update(User user) throws DAOException {
         return userDAO.updateUser(user);
     }
+
     public boolean ChangeUserMoney(User user, int money) throws DAOException {
-        user.setMoney(user.getMoney()+money);
+        user.setMoney(user.getMoney() + money);
         return update(user);
     }
+
     public User loginUser(String email, String password) throws DAOException {
-        if(!isUserWithEmailExist(email)){
+        if (!isUserWithEmailExist(email)) {
             throw new IllegalArgumentException("Wrong password");
         }
-        User user= userDAO.findByEmail(email);
-        if(!user.getPassword().equals(password))
+        User user = userDAO.findByEmail(email);
+        if (!user.getPassword().equals(password)) {
             throw new IllegalArgumentException("Wrong password");
+        }
         return user;
     }
 }

@@ -19,9 +19,6 @@ public class ChooseStaffPageController implements Controller {
         this.staffService = staffService;
     }
 
-    public ChooseStaffPageController() {
-        staffService = new StaffService();
-    }
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DAOException {
@@ -32,7 +29,7 @@ public class ChooseStaffPageController implements Controller {
         if (idStr != null) {
             Long id = Long.parseLong(idStr);
             List<Staff> staffList = (List<Staff>) request.getSession().getAttribute("staffList");
-            if (staffList == null||current==1) {
+            if (staffList == null || current == 1) {
                 staffList = new ArrayList<>();
                 staffList.add(staffService.findById(id));
                 request.getSession().setAttribute("staffList", staffList);
@@ -46,7 +43,7 @@ public class ChooseStaffPageController implements Controller {
         List<Staff> extract = staffService.findStaffPaginated(page);
         request.setAttribute("page", page);
         request.setAttribute("of", of);
-        request.setAttribute("staff",extract);
+        request.setAttribute("staff", extract);
         return "chooseStaff.jsp";
     }
 

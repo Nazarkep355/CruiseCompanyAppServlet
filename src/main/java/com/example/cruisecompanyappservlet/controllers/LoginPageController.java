@@ -7,9 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class LoginPageController implements Controller {
-    public LoginPageController(){
 
-    }
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         return "loginPage.jsp";

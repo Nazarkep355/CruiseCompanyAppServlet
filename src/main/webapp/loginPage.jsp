@@ -24,7 +24,7 @@
             <li class="nav-item"><a href="/controller" class="nav-link active" aria-current="page">
                 <fmt:message key = "Home" bundle ='${bundle}'/>
             </a></li>
-            <li class="nav-item"><a href="/controller?controller=cruises&freeOnly=true&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller?controller=cruises&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
 <%--            <li class="nav-item"><a href="/?command=stations&page=1" class="nav-link"><m:locale-tag key = "Stations"/></a></li>--%>
         </ul>

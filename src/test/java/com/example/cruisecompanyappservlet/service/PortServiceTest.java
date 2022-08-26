@@ -19,9 +19,9 @@ import static org.mockito.Mockito.*;
 
 class PortServiceTest {
     @Mock
-    PortDAO portDAO;
-    PortService portService;
-    List<Port> ports;
+    private PortDAO portDAO;
+    private PortService portService;
+    private List<Port> ports;
 
     public PortServiceTest() {
         MockitoAnnotations.initMocks(this);
@@ -78,5 +78,17 @@ class PortServiceTest {
 
     @Test
     void insert() {
+        Port port = new PortBuilder()
+                .city("City8")
+                .id(8L)
+                .build();
+        Port port2 = new PortBuilder()
+                .city("City9")
+                .id(9L)
+                .build();
+        portService.insert(port);
+        verify(portDAO,times(1)).insert(port);
+        portService.insert(port);
+        verify(portDAO,times(2)).insert(port);
     }
 }

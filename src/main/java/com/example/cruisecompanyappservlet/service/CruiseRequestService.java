@@ -3,10 +3,12 @@ package com.example.cruisecompanyappservlet.service;
 import com.example.cruisecompanyappservlet.dao.*;
 import com.example.cruisecompanyappservlet.entity.*;
 import com.example.cruisecompanyappservlet.entity.builders.TicketBuilder;
+import com.example.cruisecompanyappservlet.util.DBHikariManager;
 import com.example.cruisecompanyappservlet.util.EmailSessionBean;
 
 import javax.ejb.EJB;
 import javax.mail.MessagingException;
+import java.sql.Connection;
 import java.util.List;
 
 public class CruiseRequestService {
@@ -15,13 +17,14 @@ public class CruiseRequestService {
     private UserDAO userDAO;
     private TicketDAO ticketDAO;
     @EJB
-    private EmailSessionBean emailSessionBean = new EmailSessionBean();
+    private EmailSessionBean emailSessionBean ;
 
-    public CruiseRequestService(CruiseRequestDAO cruiseRequestDAO, CruiseDAO cruiseDAO, UserDAO userDAO, TicketDAO ticketDAO) {
+    public CruiseRequestService(CruiseRequestDAO cruiseRequestDAO, CruiseDAO cruiseDAO, UserDAO userDAO, TicketDAO ticketDAO,EmailSessionBean emailSessionBean) {
         this.cruiseRequestDAO = cruiseRequestDAO;
         this.cruiseDAO = cruiseDAO;
         this.userDAO = userDAO;
         this.ticketDAO = ticketDAO;
+        this.emailSessionBean = emailSessionBean;
     }
 
     public CruiseRequestService() {
@@ -71,15 +74,12 @@ public class CruiseRequestService {
             cruise.getFreePlaces().put(cruiseRequest.getRoomClass(),
                     cruise.getFreePlaces().get(cruiseRequest.getRoomClass()) - 1);
             cruiseRequest.setStatus(Status.ACCEPTED);
-            userDAO.updateUser(user);
-            cruiseDAO.update(cruise);
-            cruiseRequestDAO.update(cruiseRequest);
-            Ticket ticket = TicketBuilder.createTicketBy(cruiseRequest);
-            ticketDAO.insert(ticket);
+            cruiseRequestDAO.createTicketTransaction(cruiseRequest);
             emailSessionBean.sendMessageAboutAccepting(cruiseRequest);
             return true;
         } else {
             emailSessionBean.sendMessageAboutRefusing(cruiseRequest);
+            cruiseRequest.setStatus(Status.REFUSED);
             return false;
         }
     }

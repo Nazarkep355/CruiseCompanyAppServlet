@@ -9,34 +9,86 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="336684d1-d890-448f-b743-9d44dbe9f717" name="Changes" comment="adding servlet context/ IOC">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/AddStaffController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/AddStaffPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/ChangeMoneyController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/ChangeMoneyPageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/StaffController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/addStaff.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/changeMoney.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/staff.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/service/PortServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="336684d1-d890-448f-b743-9d44dbe9f717" name="Changes" comment="finish with front">
+      <change afterPath="$PROJECT_DIR$/mail.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/AddPortControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/AddPortPageControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/AddStaffControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/AddStaffPageControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/ChangeMoneyControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/ChangeMoneyPageControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/ChooseNumOfStaffControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/ChooseStaffPageControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/ControllerTester.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/CreateRouteControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/CreateRoutePageControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/CruiseInfoControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/CruisesControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/EnglishLocaleControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/HelloControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/InfoAboutRequestControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/LoginControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/LoginPageControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/controllers/PlanCruiseControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/service/CruiseRequestServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/service/CruiseServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/service/RouteServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/service/StaffServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/service/TicketServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/service/UserServiceTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/95c4e52c-98fe-48f4-b3a3-e530fc92ea08.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/95c4e52c-98fe-48f4-b3a3-e530fc92ea08.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/95c4e52c-98fe-48f4-b3a3-e530fc92ea08/storage_v2/_src_/database/cruisecompanyservlet.PWsZ4Q/schema/information_schema.FNRwLQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/95c4e52c-98fe-48f4-b3a3-e530fc92ea08/storage_v2/_src_/database/cruisecompanyservlet.PWsZ4Q/schema/information_schema.FNRwLQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/95c4e52c-98fe-48f4-b3a3-e530fc92ea08/storage_v2/_src_/database/cruisecompanyservlet.PWsZ4Q/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/95c4e52c-98fe-48f4-b3a3-e530fc92ea08/storage_v2/_src_/database/cruisecompanyservlet.PWsZ4Q/schema/pg_catalog.0S1ZNQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/95c4e52c-98fe-48f4-b3a3-e530fc92ea08/storage_v2/_src_/database/cruisecompanyservlet.PWsZ4Q/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/95c4e52c-98fe-48f4-b3a3-e530fc92ea08/storage_v2/_src_/database/cruisecompanyservlet.PWsZ4Q/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/95c4e52c-98fe-48f4-b3a3-e530fc92ea08/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/95c4e52c-98fe-48f4-b3a3-e530fc92ea08/storage_v2/_src_/database/postgres.edMnLQ/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/StaffDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/StaffDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/ChooseStaffPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/ChooseStaffPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/CreateRouteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/CreateRouteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/CruiseInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/CruiseInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/CruisesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/CruisesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/EnglishLocaleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/EnglishLocaleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/InfoAboutRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/InfoAboutRequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/LoginPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/LoginPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/PlanCruiseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/PlanCruiseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/PlanCruisePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/PlanCruisePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/PortsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/PortsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/SendRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/SendRequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/TicketsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/TicketsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/CruiseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/CruiseDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/CruiseRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/CruiseRequestDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/PortDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/PortDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/TicketDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/TicketDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/Port.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/Port.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/Staff.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/Staff.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/filter/EncodeFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/filter/EncodeFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/frontcontroller/ImagesServlet.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/frontcontroller/MainServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/frontcontroller/MainServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/listener/ContextInitResourcesListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/listener/ContextInitResourcesListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/locale_en.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/locale_en.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/locale_ua.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/locale_ua.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/PortService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/PortService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/StaffService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/StaffService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/CruiseRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/CruiseRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/RouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/RouteService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/EmailSessionBean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/EmailSessionBean.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/RequestReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/RequestReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/accountPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/accountPage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/addPort.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addPort.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addStaff.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addStaff.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/changeMoney.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/changeMoney.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/chooseNumberOfStaff.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/chooseNumberOfStaff.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/chooseStaff.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/chooseStaff.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/createRoute.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/createRoute.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cruiseInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cruiseInfo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/cruises.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cruises.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/loginPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/loginPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/planCruise.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/planCruise.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ports.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ports.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/registerPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/registerPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/requestInfo.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/requestInfo.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/requests.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/requests.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/sendRequest.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/sendRequest.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/staff.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/staff.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/tickets.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/tickets.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/service/PortServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/service/PortServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,8 +101,8 @@
         <option value="Interface" />
         <option value="Enum" />
         <option value="HTML File" />
-        <option value="JUnit5 Test Class" />
         <option value="Jsp File" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -83,7 +135,7 @@
     "WebServerToolWindowFactoryState": "false",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
-    "last_opened_file_path": "C:/Users/Quant/IdeaProjects/FInalProject3",
+    "last_opened_file_path": "C:/Users/Quant/CruiseCompanyAppServlet",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -104,26 +156,27 @@
       <recent name="C:\Users\Quant\CruiseCompanyAppServlet\src\main\webapp\WEB-INF\lib" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Quant\CruiseCompanyAppServlet" />
       <recent name="C:\Users\Quant\CruiseCompanyAppServlet\src\main\webapp" />
       <recent name="C:\Users\Quant\CruiseCompanyAppServlet\src\main\webapp\images" />
       <recent name="C:\Users\Quant\CruiseCompanyAppServlet\src\main" />
       <recent name="C:\Users\Quant\CruiseCompanyAppServlet\src\main\java\com\example\cruisecompanyappservlet" />
-      <recent name="C:\Users\Quant\CruiseCompanyAppServlet\src\main\webapp\WEB-CONTENT\images" />
     </key>
     <key name="CreateTestDialog.Recents.Supers">
       <recent name="" />
     </key>
     <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.example.cruisecompanyappservlet.controllers" />
       <recent name="com.example.cruisecompanyappservlet.service" />
     </key>
   </component>
   <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.62">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.cruisecompanyappservlet.service.Main" />
+      <option name="MAIN_CLASS_NAME" value="com.example.cruisecompanyappservlet.util.Main" />
       <module name="CruiseCompanyAppServlet" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.cruisecompanyappservlet.service.*" />
+          <option name="PATTERN" value="com.example.cruisecompanyappservlet.util.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -131,50 +184,55 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PortServiceTest.findPortByCity" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="All in CruiseCompanyAppServlet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CruiseCompanyAppServlet" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.cruisecompanyappservlet.service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.cruisecompanyappservlet.service" />
-      <option name="MAIN_CLASS_NAME" value="com.example.cruisecompanyappservlet.service.PortServiceTest" />
-      <option name="METHOD_NAME" value="findPortByCity" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PortServiceTest.findPortsPaginated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="InfoAboutRequestControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CruiseCompanyAppServlet" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.cruisecompanyappservlet.service.*" />
+          <option name="PATTERN" value="com.example.cruisecompanyappservlet.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.cruisecompanyappservlet.service" />
-      <option name="MAIN_CLASS_NAME" value="com.example.cruisecompanyappservlet.service.PortServiceTest" />
-      <option name="METHOD_NAME" value="findPortsPaginated" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.example.cruisecompanyappservlet.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.example.cruisecompanyappservlet.controllers.InfoAboutRequestControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PortServiceTest.isPortExists" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="LoginControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CruiseCompanyAppServlet" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.cruisecompanyappservlet.service.*" />
+          <option name="PATTERN" value="com.example.cruisecompanyappservlet.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="com.example.cruisecompanyappservlet.service" />
-      <option name="MAIN_CLASS_NAME" value="com.example.cruisecompanyappservlet.service.PortServiceTest" />
-      <option name="METHOD_NAME" value="isPortExists" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="com.example.cruisecompanyappservlet.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.example.cruisecompanyappservlet.controllers.LoginControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginPageControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CruiseCompanyAppServlet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.cruisecompanyappservlet.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.cruisecompanyappservlet.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.example.cruisecompanyappservlet.controllers.LoginPageControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -267,10 +325,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.PortServiceTest.findPortByCity" />
-        <item itemvalue="JUnit.PortServiceTest.isPortExists" />
-        <item itemvalue="JUnit.PortServiceTest.findPortsPaginated" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.All in CruiseCompanyAppServlet" />
+        <item itemvalue="JUnit.LoginPageControllerTest" />
+        <item itemvalue="JUnit.LoginControllerTest" />
+        <item itemvalue="JUnit.InfoAboutRequestControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -299,6 +358,17 @@
       <workItem from="1659714231890" duration="4578000" />
       <workItem from="1659794903853" duration="341000" />
       <workItem from="1659972156740" duration="9390000" />
+      <workItem from="1660053440121" duration="13602000" />
+      <workItem from="1660075571454" duration="5095000" />
+      <workItem from="1660118946184" duration="17729000" />
+      <workItem from="1660166215153" duration="6000" />
+      <workItem from="1660227372351" duration="596000" />
+      <workItem from="1660236783981" duration="3296000" />
+      <workItem from="1660307120688" duration="1661000" />
+      <workItem from="1660845849057" duration="3369000" />
+      <workItem from="1661158843054" duration="2417000" />
+      <workItem from="1661176033023" duration="144000" />
+      <workItem from="1661429387091" duration="5691000" />
     </task>
     <task id="LOCAL-00001" summary="first Steps">
       <created>1658770161378</created>
@@ -356,7 +426,14 @@
       <option name="project" value="LOCAL" />
       <updated>1659714329680</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="finish with front">
+      <created>1660053737998</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1660053737998</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -382,7 +459,8 @@
     <MESSAGE value="adding requestResponse" />
     <MESSAGE value="adding more front features" />
     <MESSAGE value="adding servlet context/ IOC" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding servlet context/ IOC" />
+    <MESSAGE value="finish with front" />
+    <option name="LAST_COMMIT_MESSAGE" value="finish with front" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -404,6 +482,33 @@
             <option name="WATCH_EXIT" value="false" />
           </properties>
           <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/InfoAboutRequestController.java</url>
+          <line>21</line>
+          <properties class="com.example.cruisecompanyappservlet.controllers.InfoAboutRequestController" method="execute">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="38" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/Cruise.java</url>
+          <line>45</line>
+          <properties class="com.example.cruisecompanyappservlet.entity.Cruise" method="getCostByClass">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/controllers/LoginController.java</url>
+          <line>19</line>
+          <properties class="com.example.cruisecompanyappservlet.controllers.LoginController" method="execute">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/StaffDAO.java</url>
@@ -432,5 +537,14 @@
         <watch expression="timestamp" />
       </configuration>
     </watches-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CruiseCompanyAppServlet$com_example_cruisecompanyappservlet_service_in_CruiseCompanyAppServlet.ic" NAME="com.example.cruisecompanyappservlet.service in CruiseCompanyAppServlet Coverage Results" MODIFIED="1660062089344" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.cruisecompanyappservlet.service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/CruiseCompanyAppServlet$com_example_cruisecompanyappservlet_in_CruiseCompanyAppServlet.ic" NAME="com.example.cruisecompanyappservlet in CruiseCompanyAppServlet Coverage Results" MODIFIED="1660078492706" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>com.example.cruisecompanyappservlet.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/CruiseCompanyAppServlet$All_in_CruiseCompanyAppServlet.ic" NAME="All in CruiseCompanyAppServlet Coverage Results" MODIFIED="1660238972254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

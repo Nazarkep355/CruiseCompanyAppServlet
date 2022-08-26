@@ -18,13 +18,11 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
 </head>
 <body>
-
-
 <header class="d-flex justify-content-center py-3">
     <ul class="nav nav-pills">
         <li class="nav-item"><a href="/controller" class="nav-link active" aria-current="page">
             <fmt:message bundle="${bundle}" key="Home"/></a></li>
-        <li class="nav-item"><a href="/controller?controller=stations&page=1" class="nav-link">
+        <li class="nav-item"><a href="/controller?controller=cruises&page=1" class="nav-link">
             <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
         <c:if test="${isLogged}">  <li class="nav-item"><a
                 href="/controller?controller=tickets&page=1"
@@ -77,32 +75,6 @@
 
 </tbody>
 </table>
-<%--<c:if test='${user!=null&&user.isAdmin()}'>--%>
-<%--    <form  style="width: 300px;padding-left: 150px;" action="/" method="post">--%>
-<%--        <input name="command" type="hidden" value="cancelTrain">--%>
-<%--        <input type="hidden" name="trainId" value="${train.getId()}">--%>
-<%--        <button type="submit"  class="w-100 btn btn-lg btn-primary"><m:locale-tag key="CancelTrain"/></button>--%>
-<%--    </form>--%>
-<%--</c:if>--%>
-<%--<ul style="position: absolute;margin-left: 1000px" class="nav nav-pills">--%>
-<%--    <c:if test="${station1==null}">--%>
-<%--        <form action="/" method="post">--%>
-<%--            <input name="command" type="hidden" value="buyOne">--%>
-<%--            <input type="hidden" name="trainId" value="${train.getId()}">--%>
-<%--            <button  type="submit" style="width: 250px" class="w-100 btn btn-lg btn-primary"><m:locale-tag key="Buy"/></button>--%>
-<%--        </form>--%>
-<%--    </c:if>--%>
-<%--    <c:if test="${station1!=null}">--%>
-        <form action="/controller" method="post">
-            <input name="command" type="hidden" value="buyOne">
-            <input type="hidden" name="from" value="${station1}">
-            <input type="hidden" name="to" value="${station2}">
-            <input type="hidden" name="trainId" value="${train.getId()}">
-            <button  type="submit" style="width: 250px" class="w-100 btn btn-lg btn-primary">
-                <fmt:message bundle="${bundle}" key="Buy"/></button>
-        </form>
-<%--    </c:if>--%>
-<%--</ul>--%>
 
 </div>
 

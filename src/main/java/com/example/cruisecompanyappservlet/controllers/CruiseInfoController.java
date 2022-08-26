@@ -16,9 +16,6 @@ public class CruiseInfoController implements Controller {
         this.cruiseService = cruiseService;
     }
 
-    public CruiseInfoController(){
-        cruiseService = new CruiseService();
-    }
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DAOException {
         long id = Long.parseLong(request.getParameter("id"));

@@ -18,16 +18,24 @@ public class TicketsController implements Controller {
         this.ticketService = ticketService;
     }
 
-    public TicketsController(){
+    public TicketsController() {
         ticketService = new TicketService();
     }
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DAOException {
         int page = Integer.parseInt(request.getParameter("page"));
         User user = (User) request.getSession().getAttribute("user");
-        List<Ticket> tickets = ticketService.findByUserPaginated(user,page);
-        request.setAttribute("tickets",tickets);
-        return  "tickets.jsp";
+        List<Ticket> tickets = ticketService.findByUserPaginated(user, page);
+        request.setAttribute("page",page);
+        if (tickets.size() < 6) {
+            request.setAttribute("max", true);
+            request.setAttribute("tickets", tickets);
+        } else {
+            request.setAttribute("max", false);
+            request.setAttribute("tickets", tickets.subList(0, 5));
+        }
+        return "tickets.jsp";
     }
 
     @Override

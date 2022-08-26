@@ -21,7 +21,7 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="/controller" class="nav-link active" aria-current="page">
                 <fmt:message bundle="${bundle}" key="Home"/></a></li>
-            <li class="nav-item"><a href="/controller?controller=cruises&freeOnly=true&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller?controller=cruises&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
             <c:if test="${isLogged}">
                 <li class="nav-item"><a href="/controller?controller=tickets&page=1" class="nav-link">
@@ -50,18 +50,9 @@
                     <fmt:message bundle="${bundle}" key="goToFirstPage"/></a></li>
             </c:if>
             <c:if test="${page>1}">
-                <li class="page-item">
-                    <a class="page-link"
-                       href="/controller?controller=tickets&page=${page-1}"
-                       aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-            </c:if>
-            <c:if test="${page>1}">
                 <li class="page-item"><a
                         class="page-link"
-                        href="//controller?controller=tickets&page=${page-1}"
+                        href="/controller?controller=tickets&page=${page-1}"
                 >${page-1}</a></li>
             </c:if>
 
@@ -69,17 +60,12 @@
                     class="page-link"
                     href="/controller?controller=tickets&page=${page}">${page}</a>
             </li>
-            <li class="page-item"><a
-                    class="page-link"
-                    href="/controller?controller=tickets&page=${page+1}">${page+1}</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link"
-                   href="/controller?controller=tickets&page=${page+1}"
-                   aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
+            <c:if test="${!max}">
+                <li class="page-item"><a
+                        class="page-link"
+                        href="/controller?controller=tickets&page=${page+1}">${page+1}</a>
+                </li>
+            </c:if>
         </ul>
     </nav>
     <thead>
@@ -92,11 +78,12 @@
     </thead>
     <tbody>
     <c:forEach items="${tickets}" var="ticket">
-        <tr style="table-layout: fixed" onclick="location.replace('/controller?controller=cruiseInfo&id=${ticket.cruise.getId()}')">
+        <tr style="table-layout: fixed"
+            onclick="location.replace('/controller?controller=cruiseInfo&id=${ticket.cruise.getId()}')">
             <td scope="row">${ticket.cruise.schedule.get(ticket.cruise.route.ports.get(0))}</td>
             <td scope="row">${ticket.roomClass}</td>
             <td scope="row" style="max-height: 40px;max-width: 300px;overflow: auto"
-            >${cruise.route.routeToString()}
+            >${ticket.cruise.route.routeToString()}
             </td>
             <td scope="row">${ticket.cruise.schedule.get(ticket.cruise.route.ports.get(ticket.cruise.route.ports.size()-1))}</td>
         </tr>

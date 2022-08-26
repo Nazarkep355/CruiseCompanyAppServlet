@@ -104,7 +104,7 @@ public class TicketDAO {
         try (Connection connection = DBHikariManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(SELECT_TICKETS_BY_USER_PAGINATED)) {
             statement.setLong(1,user.getId());
-            statement.setInt(2,5);
+            statement.setInt(2,6);
             statement.setInt(3,offset);
             ResultSet set = statement.executeQuery();
             while (set.next()){

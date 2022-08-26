@@ -18,10 +18,6 @@ public class InfoAboutRequestController implements Controller {
         this.cruiseRequestService = cruiseRequestService;
     }
 
-    public InfoAboutRequestController(){
-        cruiseRequestService = new CruiseRequestService();
-    }
-
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DAOException {
         long id = Long.parseLong(request.getParameter("id"));

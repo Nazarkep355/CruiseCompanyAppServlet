@@ -21,7 +21,7 @@ public class RouteService {
     public Route findRouteById(Long id){
         return routeDAO.findById(id);
     }
-    public boolean insertRoute(Route route){
+    public boolean insert(Route route){
         return routeDAO.insert(route);
     }
 }

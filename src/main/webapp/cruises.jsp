@@ -21,7 +21,7 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="/controller" class="nav-link active" aria-current="page">
                 <fmt:message bundle="${bundle}" key="Home"/></a></li>
-            <li class="nav-item"><a href="/controller?controller=cruises&freeOnly=true&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller?controller=cruises&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
             <c:if test="${isLogged}">
                 <li class="nav-item"><a href="/controller?controller=tickets&page=1" class="nav-link">
@@ -45,19 +45,19 @@
     <input type="hidden" name="controller" value="cruises">
     <div class="col-sm-3">
         <label class="visually-hidden" for="City">Name</label>
-        <input type="text" name="city" class="form-control"  id="City"
+        <input type="text" name="city" class="form-control" id="City"
                placeholder="<fmt:message bundle="${bundle}" key="City"/>">
     </div>
     <div>
-    <input type="checkbox" name="freeOnly" class="form-check-input mt-0" id="freeOnly">
-    <label for="freeOnly"><fmt:message bundle="${bundle}" key="OnlyFreePlaces"/></label>
+        <input type="checkbox" name="freeOnly" class="form-check-input mt-0" id="freeOnly">
+        <label for="freeOnly"><fmt:message bundle="${bundle}" key="OnlyFreePlaces"/></label>
     </div>
     <div>
-    <input type="checkbox" name="actual" class="form-check-input mt-0" id="actualOnly">
-    <label for="actualOnly"><fmt:message bundle="${bundle}" key="ActualOnly"/></label>
+        <input type="checkbox" name="actual" class="form-check-input mt-0" id="actualOnly">
+        <label for="actualOnly"><fmt:message bundle="${bundle}" key="ActualOnly"/></label>
     </div>
     <div class="col-sm-3">
-        <button type="submit" class="btn btn-primary" ><fmt:message bundle="${bundle}" key="Find"/></button>
+        <button type="submit" class="btn btn-primary"><fmt:message bundle="${bundle}" key="Find"/></button>
     </div>
 </form>
 
@@ -71,15 +71,6 @@
                     <fmt:message bundle="${bundle}" key="goToFirstPage"/></a></li>
             </c:if>
             <c:if test="${page>1}">
-                <li class="page-item">
-                    <a class="page-link"
-                       href="/controller?controller=cruises&page=${page-1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}"
-                       aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-            </c:if>
-            <c:if test="${page>1}">
                 <li class="page-item"><a
                         class="page-link"
                         href="/controller?controller=cruises&page=${page-1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}"
@@ -90,17 +81,12 @@
                     class="page-link"
                     href="/controller?controller=cruises&page=${page}&freeOnly=${freeOnly}&actual=${actual}&city=${city}">${page}</a>
             </li>
-            <li class="page-item"><a
-                    class="page-link"
-                    href="/controller?controller=cruises&page=${page+1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}">${page+1}</a>
-            </li>
-            <li class="page-item">
-                <a class="page-link"
-                   href="/controller?controller=cruises&page=${page+1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}"
-                   aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
+            <c:if test="${!max}">
+                <li class="page-item"><a
+                        class="page-link"
+                        href="/controller?controller=cruises&page=${page+1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}">${page+1}</a>
+                </li>
+            </c:if>
         </ul>
     </nav>
     <thead>
@@ -112,7 +98,8 @@
     </thead>
     <tbody>
     <c:forEach items="${cruises}" var="cruise">
-        <tr style="table-layout: fixed" onclick="location.replace('/controller?controller=cruiseInfo&id=${cruise.getId()}')">
+        <tr style="table-layout: fixed"
+            onclick="location.replace('/controller?controller=cruiseInfo&id=${cruise.getId()}')">
             <td scope="row">${cruise.departureDate()}</td>
             <td scope="row">${cruise.daysInJourney()}</td>
             <td scope="row" style="max-height: 40px;max-width: 300px;overflow: auto"

@@ -50,7 +50,7 @@ public class MainServlet extends HttpServlet {
         controllers.put("planCruisePage", new PlanCruisePageController(routeService));
         controllers.put("chooseStaff", new ChooseStaffPageController(staffService));
         controllers.put("numOfStaff", new ChooseNumOfStaffController());
-        controllers.put("planCruise", new PlanCruiseController(routeService,cruiseService));
+        controllers.put("planCruise", new PlanCruiseController(cruiseService));
         controllers.put("cruiseInfo", new CruiseInfoController(cruiseService));
         controllers.put("sendRequestPage", new SendRequestPageController(cruiseService));
         controllers.put("sendRequest", new SendRequestController(cruiseService,cruiseRequestService));

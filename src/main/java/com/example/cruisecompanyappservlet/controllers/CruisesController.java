@@ -11,15 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public class CruisesController implements Controller {
-    private RequestReader requestReader;
-
-    public CruisesController(RequestReader requestReader) {
-        this.requestReader = requestReader;
+    private RequestReader reader;
+    public CruisesController() {
+        reader = new RequestReader();
     }
 
-    public CruisesController(){
-        requestReader=new RequestReader();
-    }
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DAOException {
         List<Cruise> cruises = RequestReader.getListOfCruisesFromRequest(request);

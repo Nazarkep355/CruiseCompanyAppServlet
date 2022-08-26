@@ -24,7 +24,7 @@
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="/controller" class="nav-link active" aria-current="page">
                 <fmt:message bundle="${bundle}" key="Home"/></a></li>
-            <li class="nav-item"><a href="/controller?controller=stations&page=1" class="nav-link">
+            <li class="nav-item"><a href="/controller?controller=cruises&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Cruises"/></a></li>
             <li class="nav-item"><a href="/controller?controller=tickets&page=1" class="nav-link">
                 <fmt:message bundle="${bundle}" key="Tickets"/></a></li>

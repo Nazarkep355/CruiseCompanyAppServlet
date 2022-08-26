@@ -69,7 +69,7 @@ public class CruiseDAO {
         List<Cruise> cruises = new ArrayList<>();
         try (Connection connection = DBHikariManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(SELECT_PAGINATED_CRUISES)) {
-            statement.setInt(1, 5);
+            statement.setInt(1, 6);
             statement.setInt(2, offset);
             ResultSet set = statement.executeQuery();
             while (set.next()) {
@@ -121,7 +121,7 @@ public class CruiseDAO {
         List<Cruise> cruises = new ArrayList<>();
         try (Connection connection = DBHikariManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(SELECT_CRUISE_WITH_FREE_PLACES_PAGINATED)) {
-            statement.setInt(1, 5);
+            statement.setInt(1, 6);
             statement.setInt(2, offset);
             ResultSet set = statement.executeQuery();
             while (set.next()) {
@@ -140,7 +140,7 @@ public class CruiseDAO {
         try (Connection connection = DBHikariManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(SELECT_CRUISE_BY_CITY)) {
             statement.setString(1, city);
-            statement.setInt(2, 5);
+            statement.setInt(2, 6);
             statement.setInt(3, offset);
             ResultSet set = statement.executeQuery();
             while (set.next()) {

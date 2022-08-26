@@ -15,18 +15,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
 public class PlanCruiseController implements Controller {
-    RouteService routeService;
-    CruiseService cruiseService;
 
-    public PlanCruiseController(RouteService routeService, CruiseService cruiseService) {
-        this.routeService = routeService;
+    private CruiseService cruiseService;
+
+    public PlanCruiseController( CruiseService cruiseService) {
         this.cruiseService = cruiseService;
     }
 
-    public PlanCruiseController(){
-        routeService = new RouteService();
-        cruiseService = new CruiseService();
-    }
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DAOException {
         Cruise cruise = RequestReader.createCruise(request);

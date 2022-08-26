@@ -10,11 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class LoginController implements Controller {
-    UserService userService;
-
-    public LoginController() {
-        userService = new UserService();
-    }
+    private UserService userService;
 
     public LoginController(UserService userService) {
         this.userService = userService;

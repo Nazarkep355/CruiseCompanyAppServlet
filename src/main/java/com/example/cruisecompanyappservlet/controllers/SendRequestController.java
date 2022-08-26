@@ -36,7 +36,6 @@ public class SendRequestController implements Controller {
         Cruise cruise = cruiseService.findById(id);
         if (cruise.getFreePlaces().get(RoomClass.valueOf(rClass)) > 0) {
             try {
-                System.out.println("request creating");
                 CruiseRequest cruiseRequest = new CruiseRequestBuilder()
                         .cruise(cruise)
                         .roomClass(RoomClass.valueOf(rClass))
@@ -45,7 +44,6 @@ public class SendRequestController implements Controller {
                         .photo(RequestReader.saveImage(request))
                         .build();
                 cruiseRequestService.insert(cruiseRequest);
-
             } catch (IOException e) {
                 throw new RuntimeException(e);
             } catch (ServletException e) {
@@ -53,7 +51,6 @@ public class SendRequestController implements Controller {
             }
         }else{
             request.getSession().setAttribute("error","NoFreePlaces");
-            request.setAttribute("redirect",true);
             return "redirect:/controller?controller=sendRequestPage&id="+id+"&room="+rClass;
         }
 

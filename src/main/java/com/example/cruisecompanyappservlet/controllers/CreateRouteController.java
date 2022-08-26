@@ -1,7 +1,6 @@
 package com.example.cruisecompanyappservlet.controllers;
 
 import com.example.cruisecompanyappservlet.dao.DAOException;
-import com.example.cruisecompanyappservlet.dao.RouteDAO;
 import com.example.cruisecompanyappservlet.entity.Route;
 import com.example.cruisecompanyappservlet.frontcontroller.AccessLevel;
 import com.example.cruisecompanyappservlet.frontcontroller.Controller;
@@ -18,9 +17,7 @@ public class CreateRouteController implements Controller {
         this.routeService =routeService;
     }
 
-    public CreateRouteController(){
-        routeService =new RouteService();
-    }
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws DAOException {
         Route route = RequestReader.getRouteFromRequest(request);
@@ -28,7 +25,7 @@ public class CreateRouteController implements Controller {
             request.getSession().setAttribute("error","PortNotFound");
             return "redirect:/controller?controller=createRoutePage";
         }
-        routeService.insertRoute(route);
+        routeService.insert(route);
         return "redirect:/controller";
     }
 

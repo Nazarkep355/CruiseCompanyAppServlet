@@ -12,7 +12,6 @@ public class EnglishLocaleController implements Controller {
     public String execute(HttpServletRequest request, HttpServletResponse response) {
         HttpSession session = request.getSession();
         session.setAttribute("locale","en");
-
         return request.getContextPath()+request.getParameter("prev");
     }
 
