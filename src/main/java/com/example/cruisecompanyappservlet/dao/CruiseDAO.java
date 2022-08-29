@@ -29,21 +29,21 @@ public class CruiseDAO {
     }
     private static final String SELECT_ALL_CRUISES = "SELECT * FROM cruises";
     private static final String SELECT_PAGINATED_CRUISES = "SELECT * FROM cruises ORDER" +
-            " BY id DESC LIMIT ? OFFSET ?";
+            " BY id %s LIMIT ? OFFSET ?";
     private static final String SELECT_CRUISE_BY_ID = "SELECT * FROM cruises WHERE id = ?";
     private static final String SELECT_CRUISE_ACTUAL = "SELECT * FROM cruises WHERE " +
-            "departure > now() ORDER BY id DESC LIMIT ? OFFSET ?";
+            "departure > now() ORDER BY id %s LIMIT ? OFFSET ?";
     private static final String SELECT_CRUISE_WITH_FREE_PLACES_PAGINATED = "SELECT * FROM cruises WHERE " +
             "departure> now() AND (premium @> ARRAY[false] " +
             "OR middle @> ARRAY[false] OR econom @> ARRAY[false])" +
-            " ORDER BY id LIMIT ? OFFSET ?";
+            " ORDER BY id %s LIMIT ? OFFSET ?";
     private static final String SELECT_CRUISE_BY_CITY = "SELECT distinct c.id,c.route, c.departure, " +
             "c.costeconom, c.costmiddle, c.costpremium, c.seats , c.econom," +
             "                c.middle, c.premium, c.staff, c.status  FROM cruises c," +
             "                ports p, routes r WHERE c.departure > now()" +
             "  AND premium @> ARRAY [false]  AND c.route =r.id AND r.ports @> ARRAY [p.id]" +
-            " AND p.city LIKE '%' || ? || '%' AND( middle @> ARRAY [false] " +
-            "OR econom @> ARRAY [false]) LIMIT ? OFFSET ?";
+            " AND p.city %s AND( middle @> ARRAY [false] " +
+            "OR econom @> ARRAY [false]) Order by ID %s LIMIT ? OFFSET ?";
     private final static String INSERT_CRUISE = "INSERT INTO cruises VALUES(default,?,?,?,?,?,?," +
             "'WAITING',?,?,?,?)";
     private final static String UPDATE_CRUISE = "UPDATE cruises SET route =?, departure= ?, " +
@@ -65,10 +65,11 @@ public class CruiseDAO {
         }
     }
 
-    public List<Cruise> findAllPaginatedOrderByIdDesc(int offset) {
+    public List<Cruise> findAllPaginatedOrderByIdDesc(int offset, String order) {
+        String SQLStatement = String.format(SELECT_PAGINATED_CRUISES,order);
         List<Cruise> cruises = new ArrayList<>();
         try (Connection connection = DBHikariManager.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SELECT_PAGINATED_CRUISES)) {
+             PreparedStatement statement = connection.prepareStatement(SQLStatement)) {
             statement.setInt(1, 6);
             statement.setInt(2, offset);
             ResultSet set = statement.executeQuery();
@@ -99,10 +100,11 @@ public class CruiseDAO {
         }
     }
 
-    public List<Cruise> findActualPaginatedOrderByIdDesc(int offset) {
+    public List<Cruise> findActualPaginatedOrderByIdDesc(int offset,String order) {
+        String SQLStatement = String.format(SELECT_CRUISE_ACTUAL,order);
         List<Cruise> cruises = new ArrayList<>();
         try (Connection connection = DBHikariManager.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SELECT_CRUISE_ACTUAL)) {
+             PreparedStatement statement = connection.prepareStatement(SQLStatement )) {
             statement.setInt(1, 5);
             statement.setInt(2, offset);
             ResultSet set = statement.executeQuery();
@@ -117,10 +119,11 @@ public class CruiseDAO {
         }
     }
 
-    public List<Cruise> findActualWithFreePlacesOrderByIdPaginated(int offset) {
+    public List<Cruise> findActualWithFreePlacesOrderByIdPaginated(int offset,String order) {
+        String SQLStatement = String.format(SELECT_CRUISE_WITH_FREE_PLACES_PAGINATED,order);
         List<Cruise> cruises = new ArrayList<>();
         try (Connection connection = DBHikariManager.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SELECT_CRUISE_WITH_FREE_PLACES_PAGINATED)) {
+             PreparedStatement statement = connection.prepareStatement(SQLStatement)) {
             statement.setInt(1, 6);
             statement.setInt(2, offset);
             ResultSet set = statement.executeQuery();
@@ -135,10 +138,11 @@ public class CruiseDAO {
         }
     }
 
-    public List<Cruise> findActualWithFreePlacesCityLike(String city, int offset) {
+    public List<Cruise> findActualWithFreePlacesCityLike(String city, int offset,String order) {
+        String SQLStatement = String.format(SELECT_CRUISE_BY_CITY," LIKE '%' || ? || '%'",order);
         List<Cruise> cruises = new ArrayList<>();
         try (Connection connection = DBHikariManager.getConnection();
-             PreparedStatement statement = connection.prepareStatement(SELECT_CRUISE_BY_CITY)) {
+             PreparedStatement statement = connection.prepareStatement(SQLStatement)) {
             statement.setString(1, city);
             statement.setInt(2, 6);
             statement.setInt(3, offset);

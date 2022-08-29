@@ -11,6 +11,7 @@
 <html lang="en">
 <fmt:setLocale value='${sessionScope.get("locale")}'/>
 <fmt:setBundle basename='com.example.cruisecompanyappservlet.locale' var="bundle"/>
+<%@ taglib uri="/WEB-INF/MyCruiseTagLib.tld" prefix="m" %>
 <head>
     <title><fmt:message bundle="${bundle}" key="Cruises"/></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
@@ -67,28 +68,39 @@
             <c:if test="${page>2}">
                 <li class="page-item"><a
                         class="page-link"
-                        href="/controller?controller=cruises&page=1&freeOnly=${freeOnly}&actual=${actual}&city=${city}">
+                        href="/controller?controller=cruises&page=1&freeOnly=${freeOnly}&actual=${actual}&city=${city}&order=${order}">
                     <fmt:message bundle="${bundle}" key="goToFirstPage"/></a></li>
             </c:if>
             <c:if test="${page>1}">
                 <li class="page-item"><a
                         class="page-link"
-                        href="/controller?controller=cruises&page=${page-1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}"
+                        href="/controller?controller=cruises&page=${page-1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}&order=${order}"
                 >${page-1}</a></li>
             </c:if>
-
             <li class="page-item"><a
                     class="page-link"
-                    href="/controller?controller=cruises&page=${page}&freeOnly=${freeOnly}&actual=${actual}&city=${city}">${page}</a>
+                    href="/controller?controller=cruises&page=${page}&freeOnly=${freeOnly}&actual=${actual}&city=${city}&order=${order}">${page}</a>
             </li>
             <c:if test="${!max}">
                 <li class="page-item"><a
                         class="page-link"
-                        href="/controller?controller=cruises&page=${page+1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}">${page+1}</a>
+                        href="/controller?controller=cruises&page=${page+1}&freeOnly=${freeOnly}&actual=${actual}&city=${city}&order=${order}"
+                >${page+1}</a>
                 </li>
             </c:if>
         </ul>
     </nav>
+    <p>
+        <select onchange="location = this.value" >
+            <option><fmt:message bundle="${bundle}" key="Order"/></option>
+            <option value="/controller?controller=cruises&page=${page}&freeOnly=${freeOnly}&actual=${actual}&city=${city}&order=asc">
+             <fmt:message bundle="${bundle}" key="FromNewToOld"/></option>
+            <label for="descOrder"></label>
+            <option
+                    value="/controller?controller=cruises&page=${page}&freeOnly=${freeOnly}&actual=${actual}&city=${city}&order=desc">
+                <fmt:message bundle="${bundle}" key="FromOldToNew"/></option>
+        </select>
+    </p>
     <thead>
     <tr>
         <th scope="col"><fmt:message bundle="${bundle}" key="DepartureDate"/></th>
@@ -97,16 +109,7 @@
     </tr>
     </thead>
     <tbody>
-    <c:forEach items="${cruises}" var="cruise">
-        <tr style="table-layout: fixed"
-            onclick="location.replace('/controller?controller=cruiseInfo&id=${cruise.getId()}')">
-            <td scope="row">${cruise.departureDate()}</td>
-            <td scope="row">${cruise.daysInJourney()}</td>
-            <td scope="row" style="max-height: 40px;max-width: 300px;overflow: auto"
-            >${cruise.route.routeToString()}
-            </td>
-        </tr>
-    </c:forEach>
+    <m:cruises></m:cruises>
     </tbody>
 </table>
 <footer class="py-3 my-4" style=" position: absolute;

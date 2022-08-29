@@ -3,20 +3,32 @@ package com.example.cruisecompanyappservlet.util;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Properties;
 
 public class DBHikariManager {
     private static HikariConfig config = new HikariConfig();
     private static HikariDataSource dataSource;
     static {
+        Properties properties = new Properties();
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\Quant\\CruiseCompanyAppServlet\\dbConfig.properties"));
+            properties.load(reader);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         config.setDriverClassName(org.postgresql.Driver.class.getName());
         config.setMinimumIdle(400);
-        config.setJdbcUrl("jdbc:postgresql://localhost:5432/cruisecompanyservlet");
-        config.setUsername("postgres");
-        config.setPassword("3228");
+        config.setJdbcUrl(properties.getProperty("url"));
+        config.setUsername(properties.getProperty("username"));
+        config.setPassword(properties.getProperty("password"));
         config.addDataSourceProperty( "cachePrepStmts" , "true" );
         config.addDataSourceProperty( "prepStmtCacheSize" , "250" );
         config.addDataSourceProperty( "prepStmtCacheSqlLimit" , "2048" );

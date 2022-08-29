@@ -69,8 +69,10 @@ public class locale_ua extends ListResourceBundle {
             {"EmployeeAlreadyAdded","Працівник вже доданий"},
             {"Staff","Персонал"},
             {"EnterAmount","Введіть додану на баланс суму"},
-            {"NoUserWith","Користувач з такими данними не знайдений"}
-
+            {"NoUserWith","Користувач з такими данними не знайдений"},
+            {"Order","Порядок"},
+            {"FromNewToOld","Від новіших до старіших"},
+            {"FromOldToNew","Від старіших до новіших"}
 
     };
 

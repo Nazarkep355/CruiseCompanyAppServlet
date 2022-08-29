@@ -51,36 +51,36 @@ class CruiseServiceTest {
 
     @Test
     void getActualCruisesPaginated() {
-        cruiseService.getActualCruisesPaginated(1);
-        verify(cruiseDAO, times(1)).findActualPaginatedOrderByIdDesc(0);
-        cruiseService.getActualCruisesPaginated(2);
-        verify(cruiseDAO, times(1)).findActualPaginatedOrderByIdDesc(5);
+        cruiseService.getActualCruisesPaginated(1,"asc");
+        verify(cruiseDAO, times(1)).findActualPaginatedOrderByIdDesc(0,"asc");
+        cruiseService.getActualCruisesPaginated(2,"asc");
+        verify(cruiseDAO, times(1)).findActualPaginatedOrderByIdDesc(5,"asc");
     }
 
     @Test
     void getAllActualCruisesWithFreePlacesPaginated() {
-        cruiseService.getAllActualCruisesWithFreePlacesPaginated(1);
-        verify(cruiseDAO, times(1)).findActualWithFreePlacesOrderByIdPaginated(0);
-        cruiseService.getAllActualCruisesWithFreePlacesPaginated(2);
-        verify(cruiseDAO, times(1)).findActualWithFreePlacesOrderByIdPaginated(5);
+        cruiseService.getAllActualCruisesWithFreePlacesPaginated(1,"asc");
+        verify(cruiseDAO, times(1)).findActualWithFreePlacesOrderByIdPaginated(0,"asc");
+        cruiseService.getAllActualCruisesWithFreePlacesPaginated(2, "asc");
+        verify(cruiseDAO, times(1)).findActualWithFreePlacesOrderByIdPaginated(5,"asc");
     }
 
     @Test
     void getCruisesByCity() {
         String city = "City";
         String city2 = "City2";
-        cruiseService.getCruisesByCity(city, 1);
-        verify(cruiseDAO, times(1)).findActualWithFreePlacesCityLike(city, 0);
-        cruiseService.getCruisesByCity(city2, 2);
-        verify(cruiseDAO, times(1)).findActualWithFreePlacesCityLike(city2, 5);
+        cruiseService.getCruisesByCity(city, 1,"asc");
+        verify(cruiseDAO, times(1)).findActualWithFreePlacesCityLike(city, 0,"asc");
+        cruiseService.getCruisesByCity(city2, 2, "asc");
+        verify(cruiseDAO, times(1)).findActualWithFreePlacesCityLike(city2, 5,"asc");
     }
 
     @Test
     void getPaginated() {
-        cruiseService.getPaginated(1);
-        verify(cruiseDAO, times(1)).findAllPaginatedOrderByIdDesc(0);
-        cruiseService.getPaginated(2);
-        verify(cruiseDAO, times(1)).findAllPaginatedOrderByIdDesc(5);
+        cruiseService.getPaginated(1,"asc");
+        verify(cruiseDAO, times(1)).findAllPaginatedOrderByIdDesc(0,"asc");
+        cruiseService.getPaginated(2,"asc");
+        verify(cruiseDAO, times(1)).findAllPaginatedOrderByIdDesc(5, "asc");
     }
 
     @Test

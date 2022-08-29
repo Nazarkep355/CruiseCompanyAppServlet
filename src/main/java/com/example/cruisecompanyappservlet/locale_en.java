@@ -68,7 +68,10 @@ public class locale_en extends ListResourceBundle {
             {"EmployeeAlreadyAdded","This employee is already added"},
             {"Staff","Staff"},
             {"EnterAmount","Enter the amount added to the balance"},
-            {"NoUserWith","No user with entered data found"}
+            {"NoUserWith","No user with entered data found"},
+            {"Order","Порядок"},
+            {"FromNewToOld","From newer to older"},
+            {"FromOldToNew","From older to newer"}
 
 
     };

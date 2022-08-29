@@ -214,82 +214,102 @@ public class CruiseRequestDAO {
     }
 
     public boolean createTicketTransaction(CruiseRequest cruiseRequest) {
-        try (Connection connection = DBHikariManager.getConnection();
-             PreparedStatement statementInsertTicket = connection.prepareStatement(INSERT_TICKET);
-             PreparedStatement statementUpdateUser = connection.prepareStatement(UPDATE_USER_BY_ID);
-             PreparedStatement statementUpdateCruise = connection.prepareStatement(UPDATE_CRUISE);
-             PreparedStatement statementUpdateRequest = connection.prepareStatement(UPDATE_REQUEST)) {
-            connection.setAutoCommit(false);
-            Ticket ticket = TicketBuilder.createTicketBy(cruiseRequest);
-            statementUpdateUser.setString(1, cruiseRequest.getSender().getEmail());
-            statementUpdateUser.setString(2, cruiseRequest.getSender().getPassword());
-            statementUpdateUser.setString(3, cruiseRequest.getSender().getName());
-            statementUpdateUser.setInt(4, cruiseRequest.getSender().getMoney());
-            statementUpdateUser.setInt(5, cruiseRequest.getSender().getUserType().ordinal());
-            statementUpdateUser.setLong(6, cruiseRequest.getSender().getId());
-            statementUpdateUser.execute();
+        Connection connection = null;
+        try {
+            connection = DBHikariManager.getConnection();
+            try (PreparedStatement statementInsertTicket = connection.prepareStatement(INSERT_TICKET);
+                 PreparedStatement statementUpdateUser = connection.prepareStatement(UPDATE_USER_BY_ID);
+                 PreparedStatement statementUpdateCruise = connection.prepareStatement(UPDATE_CRUISE);
+                 PreparedStatement statementUpdateRequest = connection.prepareStatement(UPDATE_REQUEST)) {
+
+                connection.setAutoCommit(false);
 
 
-            Date departure = cruiseRequest.getCruise().getSchedule().get(cruiseRequest.getCruise().getRoute().getPorts().get(0));
-            Array staffArray = connection.createArrayOf("integer", cruiseRequest.getCruise().getStaff()
-                    .stream()
-                    .map(a -> a.getId())
-                    .toArray());
-            int premiumPlaces = cruiseRequest.getCruise().getFreePlaces().get(RoomClass.PREMIUM);
-            List<Boolean> booleans = new ArrayList<>();
-            for (int i = 0; i < premiumPlaces; i++)
-                booleans.add(false);
-            Array premiumArray = connection.createArrayOf("boolean", booleans.toArray());
-            int economPlaces = cruiseRequest.getCruise().getFreePlaces().get(RoomClass.ECONOM);
-            booleans = new ArrayList<>();
-            for (int i = 0; i < economPlaces; i++)
-                booleans.add(false);
-            Array economArray = connection.createArrayOf("boolean", booleans.toArray());
-            int middlePlaces = cruiseRequest.getCruise().getFreePlaces().get(RoomClass.MIDDLE);
-            booleans = new ArrayList<>();
-            for (int i = 0; i < middlePlaces; i++)
-                booleans.add(false);
-            Array middleArray = connection.createArrayOf("boolean", booleans.toArray());
-            statementUpdateCruise.setLong(1, cruiseRequest.getCruise().getRoute().getId());
-            statementUpdateCruise.setTimestamp(2, new Timestamp(departure.getTime()));
-            statementUpdateCruise.setInt(3, cruiseRequest.getCruise().getCostEconom());
-            statementUpdateCruise.setArray(4, staffArray);
-            statementUpdateCruise.setArray(5, premiumArray);
-            statementUpdateCruise.setArray(6, economArray);
-            statementUpdateCruise.setArray(7, middleArray);
-            statementUpdateCruise.setString(8, cruiseRequest.getCruise().getStatus().name());
-            statementUpdateCruise.setInt(9, cruiseRequest.getCruise().getSeats());
-            statementUpdateCruise.setInt(10, cruiseRequest.getCruise().getCostMiddle());
-            statementUpdateCruise.setInt(11, cruiseRequest.getCruise().getCostPremium());
-            statementUpdateCruise.setLong(12, cruiseRequest.getCruise().getId());
-            statementUpdateCruise.execute();
+                Ticket ticket = TicketBuilder.createTicketBy(cruiseRequest);
+                statementUpdateUser.setString(1, cruiseRequest.getSender().getEmail());
+                statementUpdateUser.setString(2, cruiseRequest.getSender().getPassword());
+                statementUpdateUser.setString(3, cruiseRequest.getSender().getName());
+                statementUpdateUser.setInt(4, cruiseRequest.getSender().getMoney());
+                statementUpdateUser.setInt(5, cruiseRequest.getSender().getUserType().ordinal());
+                statementUpdateUser.setLong(6, cruiseRequest.getSender().getId());
+                statementUpdateUser.execute();
 
 
+                Date departure = cruiseRequest.getCruise().getSchedule().get(cruiseRequest.getCruise().getRoute().getPorts().get(0));
+                Array staffArray = connection.createArrayOf("integer", cruiseRequest.getCruise().getStaff()
+                        .stream()
+                        .map(a -> a.getId())
+                        .toArray());
+                int premiumPlaces = cruiseRequest.getCruise().getFreePlaces().get(RoomClass.PREMIUM);
+                List<Boolean> booleans = new ArrayList<>();
+                for (int i = 0; i < premiumPlaces; i++)
+                    booleans.add(false);
+                Array premiumArray = connection.createArrayOf("boolean", booleans.toArray());
+                int economPlaces = cruiseRequest.getCruise().getFreePlaces().get(RoomClass.ECONOM);
+                booleans = new ArrayList<>();
+                for (int i = 0; i < economPlaces; i++)
+                    booleans.add(false);
+                Array economArray = connection.createArrayOf("boolean", booleans.toArray());
+                int middlePlaces = cruiseRequest.getCruise().getFreePlaces().get(RoomClass.MIDDLE);
+                booleans = new ArrayList<>();
+                for (int i = 0; i < middlePlaces; i++)
+                    booleans.add(false);
+                Array middleArray = connection.createArrayOf("boolean", booleans.toArray());
+                statementUpdateCruise.setLong(1, cruiseRequest.getCruise().getRoute().getId());
+                statementUpdateCruise.setTimestamp(2, new Timestamp(departure.getTime()));
+                statementUpdateCruise.setInt(3, cruiseRequest.getCruise().getCostEconom());
+                statementUpdateCruise.setArray(4, staffArray);
+                statementUpdateCruise.setArray(5, premiumArray);
+                statementUpdateCruise.setArray(6, economArray);
+                statementUpdateCruise.setArray(7, middleArray);
+                statementUpdateCruise.setString(8, cruiseRequest.getCruise().getStatus().name());
+                statementUpdateCruise.setInt(9, cruiseRequest.getCruise().getSeats());
+                statementUpdateCruise.setInt(10, cruiseRequest.getCruise().getCostMiddle());
+                statementUpdateCruise.setInt(11, cruiseRequest.getCruise().getCostPremium());
+                statementUpdateCruise.setLong(12, cruiseRequest.getCruise().getId());
+                statementUpdateCruise.execute();
 
-            statementUpdateRequest.setLong(1, cruiseRequest.getSender().getId());
-            statementUpdateRequest.setLong(2, cruiseRequest.getCruise().getId());
-            statementUpdateRequest.setString(3, cruiseRequest.getPhoto());
-            statementUpdateRequest.setString(4, cruiseRequest.getStatus().name());
-            statementUpdateRequest.setString(5, cruiseRequest.getRoomClass().name());
-            statementUpdateRequest.setLong(6, cruiseRequest.getId());
-            statementUpdateRequest.execute();
+
+                statementUpdateRequest.setLong(1, cruiseRequest.getSender().getId());
+                statementUpdateRequest.setLong(2, cruiseRequest.getCruise().getId());
+                statementUpdateRequest.setString(3, cruiseRequest.getPhoto());
+                statementUpdateRequest.setString(4, cruiseRequest.getStatus().name());
+                statementUpdateRequest.setString(5, cruiseRequest.getRoomClass().name());
+                statementUpdateRequest.setLong(6, cruiseRequest.getId());
+                statementUpdateRequest.execute();
 
 
-            statementInsertTicket.setLong(1, ticket.getCruise().getId());
-            statementInsertTicket.setLong(2, ticket.getOwner().getId());
-            statementInsertTicket.setString(3, ticket.getRoomClass().name());
-            statementInsertTicket.setInt(4, ticket.getCost());
-            statementInsertTicket.setTimestamp(5, new Timestamp(ticket.getPurchaseDate().getTime()));
-            statementInsertTicket.execute();
+                statementInsertTicket.setLong(1, ticket.getCruise().getId());
+                statementInsertTicket.setLong(2, ticket.getOwner().getId());
+                statementInsertTicket.setString(3, ticket.getRoomClass().name());
+                statementInsertTicket.setInt(4, ticket.getCost());
+                statementInsertTicket.setTimestamp(5, new Timestamp(ticket.getPurchaseDate().getTime()));
+                statementInsertTicket.execute();
 
 
-            connection.commit();
-            return true;
+                connection.commit();
+                return true;
+            }finally {
+                if (connection != null) {
 
-        } catch (Throwable e) {
-            String message = "Can't update request";
-            logger.info(message, e);
-            throw new RuntimeException(message, e);
+                    connection.close();
+
+                }
+
+            }
+
+        } catch (SQLException e) {
+            String msg = "Can't finish transaction on ticket creation";
+            logger.info(msg, e);
+            try {
+                if (connection != null) {
+                    connection.rollback();
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+            throw new RuntimeException(msg,e);
         }
     }
 

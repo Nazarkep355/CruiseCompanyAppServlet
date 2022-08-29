@@ -12,10 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class RequestReader {
     public RequestReader() {
@@ -37,7 +34,9 @@ public class RequestReader {
         String city = request.getParameter("city");
         String actual = request.getParameter("actual");
         String onlyFree = request.getParameter("freeOnly");
-
+        Order ord = Order.valueOf(Optional.ofNullable(request.getParameter("order")).orElse("ASC").toUpperCase());
+        String order = ord.name();
+        request.setAttribute("order",order);
         Boolean onlyFreeBool = (Boolean.parseBoolean(onlyFree) ||
                 !StringUtils.isEmpty(onlyFree) && onlyFree.equals("on"));
 
@@ -50,7 +49,7 @@ public class RequestReader {
 
         if (!StringUtils.isBlank(city)) {
             request.setAttribute("city", city);
-            List<Cruise> cruises = cruiseService.getCruisesByCity(city, page);
+            List<Cruise> cruises = cruiseService.getCruisesByCity(city, page, order);
             if (cruises.size() < 6) {
                 request.setAttribute("max", true);
                 return cruises;
@@ -60,7 +59,7 @@ public class RequestReader {
 
         }
         if (onlyFreeBool) {
-            List<Cruise> cruises = cruiseService.getAllActualCruisesWithFreePlacesPaginated(page);
+            List<Cruise> cruises = cruiseService.getAllActualCruisesWithFreePlacesPaginated(page, order);
             if (cruises.size() < 6) {
                 request.setAttribute("max", true);
                 return cruises;
@@ -69,7 +68,7 @@ public class RequestReader {
             return cruises.subList(0, 5);
         }
         if (actualBool) {
-            List<Cruise> cruises =cruiseService.getActualCruisesPaginated(page);
+            List<Cruise> cruises = cruiseService.getActualCruisesPaginated(page, order);
             if (cruises.size() < 6) {
                 request.setAttribute("max", true);
                 return cruises;
@@ -77,7 +76,7 @@ public class RequestReader {
             request.setAttribute("max", false);
             return cruises.subList(0, 5);
         }
-        List<Cruise> cruises =cruiseService.getPaginated(page);
+        List<Cruise> cruises = cruiseService.getPaginated(page, order);
         if (cruises.size() < 6) {
             request.setAttribute("max", true);
             return cruises;

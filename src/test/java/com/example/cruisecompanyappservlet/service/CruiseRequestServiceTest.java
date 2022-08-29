@@ -117,6 +117,6 @@ class CruiseRequestServiceTest {
         Assertions.assertEquals(Status.REFUSED,request.getStatus());
         requestService.changeRequest(request,true);
         Assertions.assertEquals(Status.ACCEPTED,request.getStatus());
-        verify(cruiseRequestDAO).update(request);
+
     }
 }
