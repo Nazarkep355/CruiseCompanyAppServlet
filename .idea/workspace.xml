@@ -9,26 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="336684d1-d890-448f-b743-9d44dbe9f717" name="Changes" comment="adding transactions, properties and etc.">
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dbConfig.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/entity/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/jstl/CruiseOut.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/mail.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/MyCruiseTagLib.tld" afterDir="false" />
+    <list default="true" id="336684d1-d890-448f-b743-9d44dbe9f717" name="Changes" comment="changing transaction, adding jstl custom tag">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/PasswordEncryptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mail.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mail.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/CruiseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/CruiseDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/CruiseRequestDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/CruiseRequestDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/locale_en.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/locale_en.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/locale_ua.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/locale_ua.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/CruiseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/service/CruiseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/DBHikariManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/DBHikariManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/RequestReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/util/RequestReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/UserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/UserDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/cruises.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/cruises.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/service/CruiseRequestServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/service/CruiseRequestServiceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/service/CruiseServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/cruisecompanyappservlet/service/CruiseServiceTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,9 +112,22 @@
       <recent name="com.example.cruisecompanyappservlet.service" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.62">
+  <component name="RunManager" selected="Application.PasswordEncryptor">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.cruisecompanyappservlet.util.Main" />
+      <module name="CruiseCompanyAppServlet" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.cruisecompanyappservlet.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PasswordEncryptor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.cruisecompanyappservlet.util.PasswordEncryptor" />
       <module name="CruiseCompanyAppServlet" />
       <extension name="coverage">
         <pattern>
@@ -145,21 +143,6 @@
       <module name="CruiseCompanyAppServlet" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CruiseCompanyAppServlet" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.cruisecompanyappservlet.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.cruisecompanyappservlet.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.example.cruisecompanyappservlet.controllers.LoginControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -203,6 +186,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="28b6a9cb-0d9d-440b-8516-fee66437a057" />
+        <option name="JNDI_PORT" value="1200" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -279,13 +263,21 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.PasswordEncryptor" />
+      <item itemvalue="JUnit.All in CruiseCompanyAppServlet" />
+      <item itemvalue="JUnit.com.example.cruisecompanyappservlet in CruiseCompanyAppServlet" />
+      <item itemvalue="JUnit.LoginPageControllerTest" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.62" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.PasswordEncryptor" />
         <item itemvalue="JUnit.com.example.cruisecompanyappservlet in CruiseCompanyAppServlet" />
         <item itemvalue="JUnit.All in CruiseCompanyAppServlet" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.LoginPageControllerTest" />
-        <item itemvalue="JUnit.LoginControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -331,7 +323,9 @@
       <workItem from="1661696001972" duration="1000" />
       <workItem from="1661697411322" duration="979000" />
       <workItem from="1661730424446" duration="5000" />
-      <workItem from="1661777315643" duration="5492000" />
+      <workItem from="1661777315643" duration="6130000" />
+      <workItem from="1661799214399" duration="625000" />
+      <workItem from="1661863248801" duration="2402000" />
     </task>
     <task id="LOCAL-00001" summary="first Steps">
       <created>1658770161378</created>
@@ -403,7 +397,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661510874995</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="changing transaction, adding jstl custom tag">
+      <created>1661782990455</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1661782990456</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -431,14 +432,15 @@
     <MESSAGE value="adding servlet context/ IOC" />
     <MESSAGE value="finish with front" />
     <MESSAGE value="adding transactions, properties and etc." />
-    <option name="LAST_COMMIT_MESSAGE" value="adding transactions, properties and etc." />
+    <MESSAGE value="changing transaction, adding jstl custom tag" />
+    <option name="LAST_COMMIT_MESSAGE" value="changing transaction, adding jstl custom tag" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/cruisecompanyappservlet/dao/UserDAO.java</url>
-          <line>68</line>
+          <line>69</line>
           <properties class="com.example.cruisecompanyappservlet.dao.UserDAO" method="insertUser">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

@@ -3,6 +3,7 @@ package com.example.cruisecompanyappservlet.dao;
 import com.example.cruisecompanyappservlet.entity.User;
 import com.example.cruisecompanyappservlet.entity.builders.UserBuilder;
 import com.example.cruisecompanyappservlet.util.DBHikariManager;
+import com.example.cruisecompanyappservlet.util.PasswordEncryptor;
 import org.apache.log4j.Logger;
 
 import java.sql.Connection;
@@ -70,7 +71,7 @@ public class UserDAO {
         try (Connection connection = DBHikariManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(INSERT_USER)) {
             statement.setString(1, user.getEmail());
-            statement.setString(2, user.getPassword());
+            statement.setString(2, PasswordEncryptor.getEncrypted(user.getPassword()));
             statement.setString(3, user.getName());
             return statement.execute();
         } catch (SQLException e) {
@@ -84,7 +85,7 @@ public class UserDAO {
         try (Connection connection = DBHikariManager.getConnection();
              PreparedStatement statement = connection.prepareStatement(UPDATE_USER_BY_ID)) {
             statement.setString(1, user.getEmail());
-            statement.setString(2, user.getPassword());
+            statement.setString(2, PasswordEncryptor.getEncrypted(user.getPassword()));
             statement.setString(3, user.getName());
             statement.setInt(4, user.getMoney());
             statement.setInt(5, user.getUserType().ordinal());
@@ -101,7 +102,7 @@ public class UserDAO {
     private static User userFromResultSet(ResultSet set) throws SQLException {
         return new UserBuilder().id(set.getInt("id"))
                 .email(set.getString("email"))
-                .password(set.getString("password"))
+                .password(PasswordEncryptor.getDecrypted(set.getString("password")))
                 .name(set.getString("name"))
                 .money(set.getInt("money"))
                 .userType(set.getInt("type"))

@@ -109,7 +109,7 @@
     </tr>
     </thead>
     <tbody>
-    <m:cruises></m:cruises>
+    <m:cruises/>
     </tbody>
 </table>
 <footer class="py-3 my-4" style=" position: absolute;
