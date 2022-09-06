@@ -15,7 +15,4 @@ public class PasswordEncryptor {
         return new String(decoder.decode(encodedPassword));
     }
 
-    public static void main(String[] args) {
-        System.out.println(getEncrypted("Qwerty123"));
-    }
 }
